@@ -4,7 +4,49 @@ title: "Leetcode in Rust"
 
 # Rust in a Nutshell
 
+## Why Rust?
+
 ## Cargo
+
+## Cargo Doc
+
+## Crates
+
+## Basic Data Structures
+
+### Sequences
+
+#### Vec
+
+#### VecDeque
+
+#### LinkedList
+
+### Maps
+
+#### HashMap
+
+#### BTreeMap
+
+### Sets
+
+#### HashSet
+
+#### BTreeSet
+
+### Other
+
+#### BinaryHeap
+
+## Basic Algorithms
+
+## Other Useful things
+
+## Regex
+
+## Derive Macros
+
+## Counting in O(1) space with slices
 
 # Macros for Rust
 
@@ -83,6 +125,31 @@ test! {
 
 > Given an integer array nums, return true if any value appears at least
 > twice in the array, and return false if every element is distinct.
+
+### Intuition
+
+
+
+### Test Cases
+
+```rs
+[] == false
+[1] == false
+[1,1] == true
+[1,2,3] == false
+[1,2,1] == true
+```
+
+### Using Sets
+
+If a slice of numbers is the same length as the set of its numbers, we
+know that the slice **only contains** unique numbers. With this, we can
+find the solution to the problem:
+
+### Complexity
+
+O(n) time, O(n) space. We take O(n) time to convert the slice into the
+HashSet, and the HashSet takes O(n) space as well.
 
 ### Answer
 

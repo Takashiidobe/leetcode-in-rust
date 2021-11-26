@@ -1,0 +1,6 @@
+[build]
+  publish = "output/"
+
+[[redirects]]
+  from = "/*"
+  to = "/book.html"
