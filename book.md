@@ -2,6 +2,36 @@
 title: "Leetcode in Rust"
 ---
 
+# Rust in a Nutshell
+
+# Macros for Rust
+
+# Trees
+
+## Maximum Path through a Binary Tree
+
+```rs
+type Node = Option<Rc<RefCell<TreeNode>>>;
+
+pub fn max_path_sum(root: Node) -> i32 {
+  let mut max_so_far = i32::MIN;
+  fn helper(node: &Node, max_so_far: &mut i32) -> i32 {
+    match node {
+      Some(n) => {
+        let val = n.borrow().val;
+        let l = max(0, helper(&n.borrow().left, max_so_far));
+        let r = max(0, helper(&n.borrow().right, max_so_far));
+        *max_so_far = max(*max_so_far, val + l + r);
+        val + max(l, r)
+      }
+      None => 0,
+    }
+  }
+  helper(&root, &mut max_so_far);
+  max_so_far
+}
+```
+
 ## Validate Binary Search Tree
 
 ```rs
@@ -34,7 +64,7 @@ pub fn is_valid_bst(root: Node) -> bool {
 type Node = Option<Rc<RefCell<TreeNode>>>;
 
 pub fn is_same_tree(p: Node, q: Node) -> bool {
-  fn same(p: &Node, q: &Node) -> bool {
+  fn is_same(p: &Node, q: &Node) -> bool {
     match (p, q) {
       (Some(left), Some(right)) => {
         let left = left.borrow();
@@ -44,10 +74,10 @@ pub fn is_same_tree(p: Node, q: Node) -> bool {
           && same(&left.right, &right.right)
       }
       (None, None) => true,
-        (None, _) | (_, None) => false,
+      (None, _) | (_, None) => false,
     }
   }
-  same(&p, &q)
+  is_same(&p, &q)
 }
 ```
 
