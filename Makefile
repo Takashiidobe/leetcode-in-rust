@@ -20,7 +20,7 @@ PDF_FLAGS =                          \
   -V mainfont="Palatino"             \
   -V documentclass=report            \
   -V papersize=A5                    \
-  -V geometry:"top=1cm, bottom=1cm, left=1cm, right=1cm"
+  -V geometry:"top=1cm, bottom=2cm, left=1cm, right=1cm"
 
 
 html: phony output/book.html

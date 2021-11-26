@@ -4,7 +4,97 @@ title: "Leetcode in Rust"
 
 # Rust in a Nutshell
 
+## Cargo
+
 # Macros for Rust
+
+## `test!`
+
+Unlike C and C++, a testing framework is built into rust. We can create
+our own tests by creating a `mod` block and letting cargo know that we
+want to test it.
+
+Let's say we create this function:
+
+`src/add.rs`
+```rs
+fn add(a: i32, b: i32) -> i32 {
+  a + b
+}
+```
+
+We can test it at the bottom of the file:
+
+`src/add.rs`
+```rs
+...
+#[cfg(test)]
+mod test {
+  use super::*;
+
+  #[test]
+  fn add_one_and_one() {
+    assert_eq!(add(1, 1), 2);
+  }
+
+  #[test]
+  fn add_one_and_two() {
+    assert_eq!(add(1, 2), 3);
+  }
+}
+```
+
+Macros let us reduce most of the boilerplate:
+
+`src/lib.rs`
+```rs
+#[macro_export]
+macro_rules! test {
+  ($($name:ident: $left:expr, $right:expr,)*) => {
+    #[cfg(test)]
+    mod test {
+      use super::*;
+      $(
+          #[test]
+          fn $name() {
+            assert_eq!($left, $right);
+          }
+       )*
+    }
+  }
+}
+```
+
+Test can then be called like so:
+
+`src/add.rs`
+```rs
+test! {
+  add_one_to_one: add(1, 1), 2,
+  add_one_to_two: add(1, 2), 3,
+}
+```
+
+# Introductory
+
+## Contains Duplicate
+
+### Problem
+
+> Given an integer array nums, return true if any value appears at least
+> twice in the array, and return false if every element is distinct.
+
+### Answer
+
+```rs
+use std::collections::HashSet;
+
+pub fn contains_duplicate(nums: &[i32]) -> bool {
+  let num_len = nums.len();
+  let s: HashSet<&i32> = HashSet::from_iter(nums.iter());
+  s.len() != num_len
+}
+```
 
 # Trees
 
@@ -82,3 +172,4 @@ pub fn is_same_tree(p: Node, q: Node) -> bool {
 ```
 
 ![](./figures/same_tree/example.svg)
+
