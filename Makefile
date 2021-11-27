@@ -40,7 +40,7 @@ output/%.pdf: %.md $(FIGURES) Makefile | output figures
 output/%.epub: %.md $(FIGURES) Makefile | output figures
 	pandoc $< -o $@ $(PANDOCFLAGS)
 
-output/%.html: %.md $(FIGURES) Makefile | output figures
+output/%.html: %.md $(FIGURES) Makefile templates/book.html | output figures
 	pandoc $< -o $@ $(HTML_FLAGS) $(PANDOCFLAGS)
 
 output/%.docx: %.md $(FIGURES) Makefile | output figures
