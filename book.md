@@ -153,89 +153,29 @@ HashSet, and the HashSet takes O(n) space as well.
 
 ### Answer
 
-```rs
-use std::collections::HashSet;
-
-pub fn contains_duplicate(nums: &[i32]) -> bool {
-  let num_len = nums.len();
-  let s: HashSet<&i32> = HashSet::from_iter(nums.iter());
-  s.len() != num_len
-}
+```{.rs include=src/questions/contains_duplicate.rs}
 ```
 
 # Trees
 
 ## Maximum Path through a Binary Tree
 
-```rs
-type Node = Option<Rc<RefCell<TreeNode>>>;
-
-pub fn max_path_sum(root: Node) -> i32 {
-  let mut max_so_far = i32::MIN;
-  fn helper(node: &Node, max_so_far: &mut i32) -> i32 {
-    match node {
-      Some(n) => {
-        let val = n.borrow().val;
-        let l = max(0, helper(&n.borrow().left, max_so_far));
-        let r = max(0, helper(&n.borrow().right, max_so_far));
-        *max_so_far = max(*max_so_far, val + l + r);
-        val + max(l, r)
-      }
-      None => 0,
-    }
-  }
-  helper(&root, &mut max_so_far);
-  max_so_far
-}
+```{.rs include=src/questions/binary_tree_maximum_path_sum.rs}
 ```
 
 ## Validate Binary Search Tree
 
-```rs
-type Node = Option<Rc<RefCell<TreeNode>>>;
-
-pub fn is_valid_bst(root: Node) -> bool {
-  fn helper(node: &Node, possible_min: i64, possible_max: i64) -> bool {
-    if let Some(n) = node {
-      let borrowed = n.borrow();
-      let left = &borrowed.left;
-      let right = &borrowed.right;
-      let val: i64 = borrowed.val.into();
-      if val >= possible_min && val <= possible_max {
-        helper(&left, possible_min, val) && \
-        helper(&right, val, possible_max)
-      } else {
-        false
-      }
-    } else {
-      true
-    }
-  }
-  helper(&root, i64::MIN, i64::MAX)
-}
+```{.rs include=src/questions/valid_binary_search_tree.rs}
 ```
 
 ## Same Tree
 
-```rs
-type Node = Option<Rc<RefCell<TreeNode>>>;
+### Test Cases
 
-pub fn is_same_tree(p: Node, q: Node) -> bool {
-  fn is_same(p: &Node, q: &Node) -> bool {
-    match (p, q) {
-      (Some(left), Some(right)) => {
-        let left = left.borrow();
-        let right = right.borrow();
-        left.val == right.val
-          && same(&left.left, &right.left)
-          && same(&left.right, &right.right)
-      }
-      (None, None) => true,
-      (None, _) | (_, None) => false,
-    }
-  }
-  is_same(&p, &q)
-}
+```{.rs include=src/questions/same_tree.rs startLine=3 endLine=6}
+```
+
+```{.rs include=src/questions/same_tree.rs}
 ```
 
 ![](./figures/same_tree/example.svg)

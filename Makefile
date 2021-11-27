@@ -7,6 +7,7 @@ FIGURES = $(shell find ./figures -name '*.svg')
 PANDOCFLAGS =                        \
 	--metadata title=$(BOOK_NAME)      \
   --table-of-contents                \
+	--filter pandoc-include-code       \
   --from=markdown                    \
   --number-sections                  \
   --indented-code-classes=javascript
@@ -17,11 +18,13 @@ HTML_FLAGS =                         \
 
 PDF_FLAGS =                          \
   --pdf-engine=xelatex               \
+	--template=eisvogel                \
   -V mainfont="Palatino"             \
-  -V documentclass=report            \
-  -V papersize=A5                    \
-  -V geometry:"top=1cm, bottom=2cm, left=1cm, right=1cm"
-
+  -V documentclass=krantz            \
+  -V papersize=A4                    \
+	-V book=true                       \
+	-V titlepage=true                  \
+	-V classoption=oneside
 
 html: phony output/book.html
 
