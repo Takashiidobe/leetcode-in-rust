@@ -399,7 +399,18 @@
 <span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <h2 data-number="3.3" id="same-tree"><span class="header-section-number">3.3</span> Same Tree</h2>
 <h3 data-number="3.3.1" id="problem"><span class="header-section-number">3.3.1</span> Problem</h3>
+<blockquote>
+<p>Given the roots of two binary trees p and q, write a function to check if they are the same or not. Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.</p>
+</blockquote>
 <h3 data-number="3.3.2" id="intuition"><span class="header-section-number">3.3.2</span> Intuition</h3>
+<p>This question tests your knowledge of recursion. To do so, start off with the base case:</p>
+<ul>
+<li>What happens when left is None and right has a value? Return false.</li>
+<li>What happens when left has a value and right is None? Return false.</li>
+<li>What happens when both left and right are None? Return true.</li>
+<li>What happens when left and right have different values? Return false.</li>
+<li>What happens when left and right have the same values? Test their left and right nodes for equality as well.</li>
+</ul>
 <h3 data-number="3.3.3" id="test-cases"><span class="header-section-number">3.3.3</span> Test Cases</h3>
 <div class="sourceCode" id="cb7"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="pp">test!</span> <span class="op">{</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    test_1<span class="op">:</span> is_same_tree(<span class="pp">btree!</span>[]<span class="op">,</span> <span class="pp">btree!</span>[])<span class="op">,</span> <span class="cn">true</span><span class="op">,</span></span>
