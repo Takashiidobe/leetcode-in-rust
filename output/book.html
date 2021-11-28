@@ -264,33 +264,16 @@
 <ul>
 <li><a href="#a-macro-for-testing"><span class="toc-section-number">2.1</span> A macro for testing</a></li>
 </ul></li>
-<li><a href="#introductory"><span class="toc-section-number">3</span> Introductory</a>
+<li><a href="#trees"><span class="toc-section-number">3</span> Trees</a>
 <ul>
-<li><a href="#contains-duplicate"><span class="toc-section-number">3.1</span> Contains Duplicate</a>
+<li><a href="#maximum-path-through-a-binary-tree"><span class="toc-section-number">3.1</span> Maximum Path through a Binary Tree</a></li>
+<li><a href="#validate-binary-search-tree"><span class="toc-section-number">3.2</span> Validate Binary Search Tree</a></li>
+<li><a href="#same-tree"><span class="toc-section-number">3.3</span> Same Tree</a>
 <ul>
-<li><a href="#problem"><span class="toc-section-number">3.1.1</span> Problem</a></li>
-<li><a href="#intuition"><span class="toc-section-number">3.1.2</span> Intuition</a></li>
-<li><a href="#test-cases"><span class="toc-section-number">3.1.3</span> Test Cases</a></li>
-<li><a href="#using-sets"><span class="toc-section-number">3.1.4</span> Using Sets</a></li>
-<li><a href="#complexity"><span class="toc-section-number">3.1.5</span> Complexity</a></li>
-<li><a href="#answer"><span class="toc-section-number">3.1.6</span> Answer</a></li>
-</ul></li>
-<li><a href="#valid-anagram"><span class="toc-section-number">3.2</span> Valid Anagram</a>
-<ul>
-<li><a href="#problem"><span class="toc-section-number">3.2.1</span> Problem</a></li>
-<li><a href="#test-cases"><span class="toc-section-number">3.2.2</span> Test Cases</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#trees"><span class="toc-section-number">4</span> Trees</a>
-<ul>
-<li><a href="#maximum-path-through-a-binary-tree"><span class="toc-section-number">4.1</span> Maximum Path through a Binary Tree</a></li>
-<li><a href="#validate-binary-search-tree"><span class="toc-section-number">4.2</span> Validate Binary Search Tree</a></li>
-<li><a href="#same-tree"><span class="toc-section-number">4.3</span> Same Tree</a>
-<ul>
-<li><a href="#problem"><span class="toc-section-number">4.3.1</span> Problem</a></li>
-<li><a href="#intuition"><span class="toc-section-number">4.3.2</span> Intuition</a></li>
-<li><a href="#test-cases"><span class="toc-section-number">4.3.3</span> Test Cases</a></li>
-<li><a href="#answer"><span class="toc-section-number">4.3.4</span> Answer</a></li>
+<li><a href="#problem"><span class="toc-section-number">3.3.1</span> Problem</a></li>
+<li><a href="#intuition"><span class="toc-section-number">3.3.2</span> Intuition</a></li>
+<li><a href="#test-cases"><span class="toc-section-number">3.3.3</span> Test Cases</a></li>
+<li><a href="#answer"><span class="toc-section-number">3.3.4</span> Answer</a></li>
 </ul></li>
 </ul></li>
 </ul></nav>
@@ -321,172 +304,131 @@
 <h2 data-number="2.1" id="a-macro-for-testing"><span class="header-section-number">2.1</span> A macro for testing</h2>
 <p>Unlike C and C++, a testing framework is built into rust. We can create our own tests by creating a <code>mod</code> block and letting cargo know that we want to test it.</p>
 <p>Let’s say we create this function:</p>
-<p><code>src/add.rs</code></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> add(a<span class="op">:</span> <span class="dt">i32</span><span class="op">,</span> b<span class="op">:</span> <span class="dt">i32</span>) <span class="op">-&gt;</span> <span class="dt">i32</span> <span class="op">{</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  a <span class="op">+</span> b</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>We can test it at the bottom of the file:</p>
-<p><code>src/add.rs</code></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>cfg<span class="at">(</span>test<span class="at">)]</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">mod</span> test <span class="op">{</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">use</span> <span class="kw">super</span><span class="pp">::</span><span class="op">*;</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">#[</span>test<span class="at">]</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">fn</span> add_one_and_one() <span class="op">{</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="pp">assert_eq!</span>(add(<span class="dv">1</span><span class="op">,</span> <span class="dv">1</span>)<span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">#[</span>test<span class="at">]</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">fn</span> add_one_and_two() <span class="op">{</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="pp">assert_eq!</span>(add(<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">,</span> <span class="dv">3</span>)<span class="op">;</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>cfg<span class="at">(</span>test<span class="at">)]</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">mod</span> test <span class="op">{</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">use</span> <span class="kw">super</span><span class="pp">::</span><span class="op">*;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">#[</span>test<span class="at">]</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">fn</span> add_one_and_one() <span class="op">{</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="pp">assert_eq!</span>(add(<span class="dv">1</span><span class="op">,</span> <span class="dv">1</span>)<span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">#[</span>test<span class="at">]</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">fn</span> add_one_and_two() <span class="op">{</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="pp">assert_eq!</span>(add(<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">,</span> <span class="dv">3</span>)<span class="op">;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Macros let us reduce most of the boilerplate:</p>
-<p><code>src/lib.rs</code></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>macro_export<span class="at">]</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="pp">macro_rules!</span> test <span class="op">{</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  (<span class="op">$</span>(<span class="op">$</span>name<span class="op">:</span>ident<span class="op">:</span> <span class="op">$</span>left<span class="op">:</span>expr<span class="op">,</span> <span class="op">$</span>right<span class="op">:</span>expr<span class="op">,</span>)<span class="op">*</span>) <span class="op">=&gt;</span> <span class="op">{</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">#[</span>cfg<span class="at">(</span>test<span class="at">)]</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mod</span> test <span class="op">{</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      <span class="kw">use</span> <span class="kw">super</span><span class="pp">::</span><span class="op">*;</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      <span class="op">$</span>(</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">#[</span>test<span class="at">]</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>          <span class="kw">fn</span> $name() <span class="op">{</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>            <span class="pp">assert_eq!</span>(<span class="op">$</span>left<span class="op">,</span> <span class="op">$</span>right)<span class="op">;</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>          <span class="op">}</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>       )<span class="op">*</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    (<span class="op">$</span>(<span class="op">$</span>name<span class="op">:</span>ident<span class="op">:</span> <span class="op">$</span>left<span class="op">:</span>expr<span class="op">,</span> <span class="op">$</span>right<span class="op">:</span>expr<span class="op">,</span>)<span class="op">*</span>) <span class="op">=&gt;</span> <span class="op">{</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">#[</span>cfg<span class="at">(</span>test<span class="at">)]</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">mod</span> test <span class="op">{</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">use</span> <span class="kw">super</span><span class="pp">::</span><span class="op">*;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            <span class="op">$</span>(</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">#[</span>test<span class="at">]</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                <span class="kw">fn</span> $name() <span class="op">{</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                    <span class="pp">assert_eq!</span>(<span class="op">$</span>left<span class="op">,</span> <span class="op">$</span>right)<span class="op">;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>            )<span class="op">*</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Test can then be called like so:</p>
-<p><code>src/add.rs</code></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">test!</span> <span class="op">{</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  add_one_to_one<span class="op">:</span> add(<span class="dv">1</span><span class="op">,</span> <span class="dv">1</span>)<span class="op">,</span> <span class="dv">2</span><span class="op">,</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  add_one_to_two<span class="op">:</span> add(<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">,</span> <span class="dv">3</span><span class="op">,</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<h1 data-number="3" id="introductory"><span class="header-section-number">3</span> Introductory</h1>
-<h2 data-number="3.1" id="contains-duplicate"><span class="header-section-number">3.1</span> Contains Duplicate</h2>
-<h3 data-number="3.1.1" id="problem"><span class="header-section-number">3.1.1</span> Problem</h3>
-<blockquote>
-<p>Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.</p>
-</blockquote>
-<h3 data-number="3.1.2" id="intuition"><span class="header-section-number">3.1.2</span> Intuition</h3>
-<h3 data-number="3.1.3" id="test-cases"><span class="header-section-number">3.1.3</span> Test Cases</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="pp">test!</span> <span class="op">{</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    test_1<span class="op">:</span> contains_duplicate(<span class="op">&amp;</span>[<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">1</span>])<span class="op">,</span> <span class="cn">true</span><span class="op">,</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    test_2<span class="op">:</span> contains_duplicate(<span class="op">&amp;</span>[<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span>])<span class="op">,</span> <span class="cn">false</span><span class="op">,</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    test_3<span class="op">:</span> contains_duplicate(<span class="op">&amp;</span>[<span class="dv">1</span>])<span class="op">,</span> <span class="cn">false</span><span class="op">,</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<h3 data-number="3.1.4" id="using-sets"><span class="header-section-number">3.1.4</span> Using Sets</h3>
-<p>If a slice of numbers is the same length as the set of its numbers, we know that the slice <strong>only contains</strong> unique numbers. With this, we can find the solution to the problem:</p>
-<h3 data-number="3.1.5" id="complexity"><span class="header-section-number">3.1.5</span> Complexity</h3>
-<p>O(n) time, O(n) space. We take O(n) time to convert the slice into the HashSet, and the HashSet takes O(n) space as well.</p>
-<h3 data-number="3.1.6" id="answer"><span class="header-section-number">3.1.6</span> Answer</h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">/// Returns `true` if nums contains a duplicate, `false otherwise.`</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> contains_duplicate(nums<span class="op">:</span> <span class="op">&amp;</span>[<span class="dt">i32</span>]) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> num_len <span class="op">=</span> nums<span class="op">.</span>len()<span class="op">;</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> s<span class="op">:</span> HashSet<span class="op">&lt;&amp;</span><span class="dt">i32</span><span class="op">&gt;</span> <span class="op">=</span> <span class="pp">HashSet::</span>from_iter(nums<span class="op">.</span>iter())<span class="op">;</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    s<span class="op">.</span>len() <span class="op">!=</span> num_len</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<h2 data-number="3.2" id="valid-anagram"><span class="header-section-number">3.2</span> Valid Anagram</h2>
-<h3 data-number="3.2.1" id="problem"><span class="header-section-number">3.2.1</span> Problem</h3>
-<blockquote>
-<p>Given two strings <code>s</code> and <code>t</code>, return true if <code>t</code> is an anagram of <code>s</code>, and false otherwise.</p>
-</blockquote>
-<h3 data-number="3.2.2" id="test-cases"><span class="header-section-number">3.2.2</span> Test Cases</h3>
+<h1 data-number="3" id="trees"><span class="header-section-number">3</span> Trees</h1>
+<h2 data-number="3.1" id="maximum-path-through-a-binary-tree"><span class="header-section-number">3.1</span> Maximum Path through a Binary Tree</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="kw">crate</span><span class="pp">::</span><span class="op">*;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::cmp::</span>max<span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">/// Finds the maximum path sum through a binary tree.</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> max_path_sum(root<span class="op">:</span> BSTNode) <span class="op">-&gt;</span> <span class="dt">i32</span> <span class="op">{</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> max_so_far <span class="op">=</span> <span class="dt">i32</span><span class="pp">::</span><span class="cn">MIN</span><span class="op">;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">fn</span> helper(node<span class="op">:</span> <span class="op">&amp;</span>BSTNode<span class="op">,</span> max_so_far<span class="op">:</span> <span class="op">&amp;</span><span class="kw">mut</span> <span class="dt">i32</span>) <span class="op">-&gt;</span> <span class="dt">i32</span> <span class="op">{</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">match</span> node <span class="op">{</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>      <span class="cn">Some</span>(n) <span class="op">=&gt;</span> <span class="op">{</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> val <span class="op">=</span> n<span class="op">.</span>borrow()<span class="op">.</span>val<span class="op">;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> l <span class="op">=</span> max(<span class="dv">0</span><span class="op">,</span> helper(<span class="op">&amp;</span>n<span class="op">.</span>borrow()<span class="op">.</span>left<span class="op">,</span> max_so_far))<span class="op">;</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> r <span class="op">=</span> max(<span class="dv">0</span><span class="op">,</span> helper(<span class="op">&amp;</span>n<span class="op">.</span>borrow()<span class="op">.</span>right<span class="op">,</span> max_so_far))<span class="op">;</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">*</span>max_so_far <span class="op">=</span> max(<span class="op">*</span>max_so_far<span class="op">,</span> val <span class="op">+</span> l <span class="op">+</span> r)<span class="op">;</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        val <span class="op">+</span> max(l<span class="op">,</span> r)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>      <span class="cn">None</span> <span class="op">=&gt;</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  helper(<span class="op">&amp;</span>root<span class="op">,</span> <span class="op">&amp;</span><span class="kw">mut</span> max_so_far)<span class="op">;</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  max_so_far</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="pp">test!</span> <span class="op">{</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    test_1<span class="op">:</span> max_path_sum(<span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>])<span class="op">,</span> <span class="dv">6</span><span class="op">,</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    test_2<span class="op">:</span> max_path_sum(<span class="pp">btree!</span>[<span class="op">-</span><span class="dv">10</span><span class="op">,</span> <span class="dv">9</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> null<span class="op">,</span> null<span class="op">,</span> <span class="dv">15</span><span class="op">,</span> <span class="dv">7</span>])<span class="op">,</span> <span class="dv">42</span><span class="op">,</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h2 data-number="3.2" id="validate-binary-search-tree"><span class="header-section-number">3.2</span> Validate Binary Search Tree</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="kw">crate</span><span class="pp">::</span><span class="op">*;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> is_valid_bst(root<span class="op">:</span> BSTNode) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> helper(node<span class="op">:</span> <span class="op">&amp;</span>BSTNode<span class="op">,</span> possible_min<span class="op">:</span> <span class="dt">i64</span><span class="op">,</span> possible_max<span class="op">:</span> <span class="dt">i64</span>) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">let</span> <span class="cn">Some</span>(n) <span class="op">=</span> node <span class="op">{</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> borrowed <span class="op">=</span> n<span class="op">.</span>borrow()<span class="op">;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> left <span class="op">=</span> <span class="op">&amp;</span>borrowed<span class="op">.</span>left<span class="op">;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> right <span class="op">=</span> <span class="op">&amp;</span>borrowed<span class="op">.</span>right<span class="op">;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> val<span class="op">:</span> <span class="dt">i64</span> <span class="op">=</span> borrowed<span class="op">.</span>val<span class="op">.</span>into()<span class="op">;</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> val <span class="op">&gt;=</span> possible_min <span class="op">&amp;&amp;</span> val <span class="op">&lt;=</span> possible_max <span class="op">{</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>                helper(<span class="op">&amp;</span>left<span class="op">,</span> possible_min<span class="op">,</span> val) <span class="op">&amp;&amp;</span> helper(<span class="op">&amp;</span>right<span class="op">,</span> val<span class="op">,</span> possible_max)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>                <span class="cn">false</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>            <span class="cn">true</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    helper(<span class="op">&amp;</span>root<span class="op">,</span> <span class="dt">i64</span><span class="pp">::</span><span class="cn">MIN</span><span class="op">,</span> <span class="dt">i64</span><span class="pp">::</span><span class="cn">MAX</span>)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="pp">test!</span> <span class="op">{</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    test_1<span class="op">:</span> is_valid_bst(<span class="pp">btree!</span>[<span class="dv">2</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">3</span>])<span class="op">,</span> <span class="cn">true</span><span class="op">,</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    test_2<span class="op">:</span> is_valid_bst(<span class="pp">btree!</span>[<span class="dv">5</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">3</span>])<span class="op">,</span> <span class="cn">false</span><span class="op">,</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h2 data-number="3.3" id="same-tree"><span class="header-section-number">3.3</span> Same Tree</h2>
+<h3 data-number="3.3.1" id="problem"><span class="header-section-number">3.3.1</span> Problem</h3>
+<h3 data-number="3.3.2" id="intuition"><span class="header-section-number">3.3.2</span> Intuition</h3>
+<h3 data-number="3.3.3" id="test-cases"><span class="header-section-number">3.3.3</span> Test Cases</h3>
 <div class="sourceCode" id="cb7"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="pp">test!</span> <span class="op">{</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    test_1<span class="op">:</span> valid_anagram(<span class="st">&quot;tas&quot;</span><span class="op">,</span> <span class="st">&quot;sat&quot;</span>)<span class="op">,</span> <span class="cn">true</span><span class="op">,</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    test_2<span class="op">:</span> valid_anagram(<span class="st">&quot;rat&quot;</span><span class="op">,</span> <span class="st">&quot;sat&quot;</span>)<span class="op">,</span> <span class="cn">false</span><span class="op">,</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    test_3<span class="op">:</span> valid_anagram(<span class="st">&quot;&quot;</span><span class="op">,</span> <span class="st">&quot;&quot;</span>)<span class="op">,</span> <span class="cn">true</span><span class="op">,</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    test_4<span class="op">:</span> valid_anagram(<span class="st">&quot;anagram&quot;</span><span class="op">,</span> <span class="st">&quot;nagaram&quot;</span>)<span class="op">,</span> <span class="cn">true</span><span class="op">,</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<h1 data-number="4" id="trees"><span class="header-section-number">4</span> Trees</h1>
-<h2 data-number="4.1" id="maximum-path-through-a-binary-tree"><span class="header-section-number">4.1</span> Maximum Path through a Binary Tree</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="kw">crate</span><span class="pp">::</span><span class="op">*;</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::cmp::</span>max<span class="op">;</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">/// Finds the maximum path sum through a binary tree.</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> max_path_sum(root<span class="op">:</span> BSTNode) <span class="op">-&gt;</span> <span class="dt">i32</span> <span class="op">{</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> max_so_far <span class="op">=</span> <span class="dt">i32</span><span class="pp">::</span><span class="cn">MIN</span><span class="op">;</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">fn</span> helper(node<span class="op">:</span> <span class="op">&amp;</span>BSTNode<span class="op">,</span> max_so_far<span class="op">:</span> <span class="op">&amp;</span><span class="kw">mut</span> <span class="dt">i32</span>) <span class="op">-&gt;</span> <span class="dt">i32</span> <span class="op">{</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">match</span> node <span class="op">{</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>      <span class="cn">Some</span>(n) <span class="op">=&gt;</span> <span class="op">{</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> val <span class="op">=</span> n<span class="op">.</span>borrow()<span class="op">.</span>val<span class="op">;</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> l <span class="op">=</span> max(<span class="dv">0</span><span class="op">,</span> helper(<span class="op">&amp;</span>n<span class="op">.</span>borrow()<span class="op">.</span>left<span class="op">,</span> max_so_far))<span class="op">;</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> r <span class="op">=</span> max(<span class="dv">0</span><span class="op">,</span> helper(<span class="op">&amp;</span>n<span class="op">.</span>borrow()<span class="op">.</span>right<span class="op">,</span> max_so_far))<span class="op">;</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">*</span>max_so_far <span class="op">=</span> max(<span class="op">*</span>max_so_far<span class="op">,</span> val <span class="op">+</span> l <span class="op">+</span> r)<span class="op">;</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        val <span class="op">+</span> max(l<span class="op">,</span> r)</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>      <span class="cn">None</span> <span class="op">=&gt;</span> <span class="dv">0</span><span class="op">,</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  helper(<span class="op">&amp;</span>root<span class="op">,</span> <span class="op">&amp;</span><span class="kw">mut</span> max_so_far)<span class="op">;</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  max_so_far</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="pp">test!</span> <span class="op">{</span></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    test_1<span class="op">:</span> max_path_sum(<span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>])<span class="op">,</span> <span class="dv">6</span><span class="op">,</span></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    test_2<span class="op">:</span> max_path_sum(<span class="pp">btree!</span>[<span class="op">-</span><span class="dv">10</span><span class="op">,</span> <span class="dv">9</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> null<span class="op">,</span> null<span class="op">,</span> <span class="dv">15</span><span class="op">,</span> <span class="dv">7</span>])<span class="op">,</span> <span class="dv">42</span><span class="op">,</span></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<h2 data-number="4.2" id="validate-binary-search-tree"><span class="header-section-number">4.2</span> Validate Binary Search Tree</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="kw">crate</span><span class="pp">::</span><span class="op">*;</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> is_valid_bst(root<span class="op">:</span> BSTNode) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> helper(node<span class="op">:</span> <span class="op">&amp;</span>BSTNode<span class="op">,</span> possible_min<span class="op">:</span> <span class="dt">i64</span><span class="op">,</span> possible_max<span class="op">:</span> <span class="dt">i64</span>) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">let</span> <span class="cn">Some</span>(n) <span class="op">=</span> node <span class="op">{</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> borrowed <span class="op">=</span> n<span class="op">.</span>borrow()<span class="op">;</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> left <span class="op">=</span> <span class="op">&amp;</span>borrowed<span class="op">.</span>left<span class="op">;</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> right <span class="op">=</span> <span class="op">&amp;</span>borrowed<span class="op">.</span>right<span class="op">;</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> val<span class="op">:</span> <span class="dt">i64</span> <span class="op">=</span> borrowed<span class="op">.</span>val<span class="op">.</span>into()<span class="op">;</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> val <span class="op">&gt;=</span> possible_min <span class="op">&amp;&amp;</span> val <span class="op">&lt;=</span> possible_max <span class="op">{</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>                helper(<span class="op">&amp;</span>left<span class="op">,</span> possible_min<span class="op">,</span> val) <span class="op">&amp;&amp;</span> helper(<span class="op">&amp;</span>right<span class="op">,</span> val<span class="op">,</span> possible_max)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>                <span class="cn">false</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>            <span class="cn">true</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    helper(<span class="op">&amp;</span>root<span class="op">,</span> <span class="dt">i64</span><span class="pp">::</span><span class="cn">MIN</span><span class="op">,</span> <span class="dt">i64</span><span class="pp">::</span><span class="cn">MAX</span>)</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="pp">test!</span> <span class="op">{</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    test_1<span class="op">:</span> is_valid_bst(<span class="pp">btree!</span>[<span class="dv">2</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">3</span>])<span class="op">,</span> <span class="cn">true</span><span class="op">,</span></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    test_2<span class="op">:</span> is_valid_bst(<span class="pp">btree!</span>[<span class="dv">5</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">3</span>])<span class="op">,</span> <span class="cn">false</span><span class="op">,</span></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<h2 data-number="4.3" id="same-tree"><span class="header-section-number">4.3</span> Same Tree</h2>
-<h3 data-number="4.3.1" id="problem"><span class="header-section-number">4.3.1</span> Problem</h3>
-<h3 data-number="4.3.2" id="intuition"><span class="header-section-number">4.3.2</span> Intuition</h3>
-<h3 data-number="4.3.3" id="test-cases"><span class="header-section-number">4.3.3</span> Test Cases</h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="pp">test!</span> <span class="op">{</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    test_1<span class="op">:</span> is_same_tree(<span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>]<span class="op">,</span> <span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>])<span class="op">,</span> <span class="cn">true</span><span class="op">,</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    test_2<span class="op">:</span> is_same_tree(<span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span>]<span class="op">,</span> <span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>])<span class="op">,</span> <span class="cn">false</span><span class="op">,</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<h3 data-number="4.3.4" id="answer"><span class="header-section-number">4.3.4</span> Answer</h3>
-<div class="sourceCode" id="cb11"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">/// Calculates if two binary search trees have the same values.</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">/// In this question, there are four possible cases:</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">/// 1. Both left and right point to a `None` node. In this case, return true.</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">/// 2. Either left or right points to a `None` node, but the other has a value. In which case, return false.</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">/// 3. Both left and right point to a node with a value, but the values are different. return false.</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">/// 4. Both left and right point to nodes with the same value. Return true.</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">/// Afterwards</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> is_same_tree(p<span class="op">:</span> BSTNode<span class="op">,</span> q<span class="op">:</span> BSTNode) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> same(p<span class="op">:</span> <span class="op">&amp;</span>BSTNode<span class="op">,</span> q<span class="op">:</span> <span class="op">&amp;</span>BSTNode) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">match</span> (p<span class="op">,</span> q) <span class="op">{</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>            (<span class="cn">Some</span>(left)<span class="op">,</span> <span class="cn">Some</span>(right)) <span class="op">=&gt;</span> <span class="op">{</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> left <span class="op">=</span> left<span class="op">.</span>borrow()<span class="op">;</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> right <span class="op">=</span> right<span class="op">.</span>borrow()<span class="op">;</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>                left<span class="op">.</span>val <span class="op">==</span> right<span class="op">.</span>val</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>                    <span class="op">&amp;&amp;</span> same(<span class="op">&amp;</span>left<span class="op">.</span>left<span class="op">,</span> <span class="op">&amp;</span>right<span class="op">.</span>left)</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>                    <span class="op">&amp;&amp;</span> same(<span class="op">&amp;</span>left<span class="op">.</span>right<span class="op">,</span> <span class="op">&amp;</span>right<span class="op">.</span>right)</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>            (<span class="cn">None</span><span class="op">,</span> <span class="cn">None</span>) <span class="op">=&gt;</span> <span class="cn">true</span><span class="op">,</span></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>            (<span class="cn">None</span><span class="op">,</span> _) <span class="op">|</span> (_<span class="op">,</span> <span class="cn">None</span>) <span class="op">=&gt;</span> <span class="cn">false</span><span class="op">,</span></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    same(<span class="op">&amp;</span>p<span class="op">,</span> <span class="op">&amp;</span>q)</span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    test_1<span class="op">:</span> is_same_tree(<span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>]<span class="op">,</span> <span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>])<span class="op">,</span> <span class="cn">true</span><span class="op">,</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    test_2<span class="op">:</span> is_same_tree(<span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span>]<span class="op">,</span> <span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>])<span class="op">,</span> <span class="cn">false</span><span class="op">,</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h3 data-number="3.3.4" id="answer"><span class="header-section-number">3.3.4</span> Answer</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">/// Calculates if two binary search trees have the same values.</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">/// In this question, there are four possible cases:</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">/// 1. Both left and right point to a `None` node. In this case, return true.</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">/// 2. Either left or right points to a `None` node, but the other has a value. In which case, return false.</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">/// 3. Both left and right point to a node with a value, but the values are different. return false.</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">/// 4. Both left and right point to nodes with the same value. Return true.</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">/// Afterwards</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> is_same_tree(p<span class="op">:</span> BSTNode<span class="op">,</span> q<span class="op">:</span> BSTNode) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> same(p<span class="op">:</span> <span class="op">&amp;</span>BSTNode<span class="op">,</span> q<span class="op">:</span> <span class="op">&amp;</span>BSTNode) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">match</span> (p<span class="op">,</span> q) <span class="op">{</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>            (<span class="cn">Some</span>(left)<span class="op">,</span> <span class="cn">Some</span>(right)) <span class="op">=&gt;</span> <span class="op">{</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> left <span class="op">=</span> left<span class="op">.</span>borrow()<span class="op">;</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> right <span class="op">=</span> right<span class="op">.</span>borrow()<span class="op">;</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>                left<span class="op">.</span>val <span class="op">==</span> right<span class="op">.</span>val</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>                    <span class="op">&amp;&amp;</span> same(<span class="op">&amp;</span>left<span class="op">.</span>left<span class="op">,</span> <span class="op">&amp;</span>right<span class="op">.</span>left)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>                    <span class="op">&amp;&amp;</span> same(<span class="op">&amp;</span>left<span class="op">.</span>right<span class="op">,</span> <span class="op">&amp;</span>right<span class="op">.</span>right)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>            (<span class="cn">None</span><span class="op">,</span> <span class="cn">None</span>) <span class="op">=&gt;</span> <span class="cn">true</span><span class="op">,</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>            (<span class="cn">None</span><span class="op">,</span> _) <span class="op">|</span> (_<span class="op">,</span> <span class="cn">None</span>) <span class="op">=&gt;</span> <span class="cn">false</span><span class="op">,</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    same(<span class="op">&amp;</span>p<span class="op">,</span> <span class="op">&amp;</span>q)</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
