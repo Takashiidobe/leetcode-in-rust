@@ -4,6 +4,7 @@ BOOK_NAME="Leetcode in Rust"
 GRAPHVIZ_FILES = $(shell find ./graphviz -name '*.dot')
 FIGURES = $(shell find ./figures -name '*.svg')
 CHAPTERS = $(shell find ./chapters -name '*.md')
+SOURCE_FILES = $(shell find ./src -name '*.rs')
 
 PANDOCFLAGS =                        \
 	--metadata title=$(BOOK_NAME)      \
@@ -41,16 +42,16 @@ docx: phony output/book.docx
 figures:
 	./bin/figures
 
-output/%.pdf: %.md $(FIGURES) $(CHAPTERS) Makefile | output figures
+output/%.pdf: %.md $(FIGURES) $(SOURCE_FILES) $(CHAPTERS) Makefile | output figures
 	pandoc $< -o $@ $(PDF_FLAGS) $(PANDOCFLAGS)
 
-output/%.epub: %.md $(FIGURES) $(CHAPTERS) Makefile | output figures
+output/%.epub: %.md $(FIGURES) $(SOURCE_FILES) $(CHAPTERS) Makefile | output figures
 	pandoc $< -o $@ $(PANDOCFLAGS)
 
-output/%.html: %.md $(FIGURES) $(CHAPTERS) Makefile templates/book.html | output figures
+output/%.html: %.md $(FIGURES) $(SOURCE_FILES) $(CHAPTERS) Makefile templates/book.html | output figures
 	pandoc $< -o $@ $(HTML_FLAGS) $(PANDOCFLAGS)
 
-output/%.docx: %.md $(FIGURES) $(CHAPTERS) Makefile | output figures
+output/%.docx: %.md $(FIGURES) $(SOURCE_FILES) $(CHAPTERS) Makefile | output figures
 	pandoc $< -o $@ $(PANDOCFLAGS)
 
 output:

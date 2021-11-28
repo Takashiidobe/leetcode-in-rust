@@ -1,17 +1,18 @@
 use crate::*;
 
 test! {
-    test_1: is_same_tree(btree![1,2,3], btree![1,2,3]), true,
-    test_2: is_same_tree(btree![1,2,3,4], btree![1,2,3]), false,
+    test_1: is_same_tree(btree![], btree![]), true,
+    test_2: is_same_tree(btree![1], btree![]), false,
+    test_3: is_same_tree(btree![1,2,3], btree![1,2,3]), true,
+    test_4: is_same_tree(btree![1,2,3,4], btree![1,2,3]), false,
 }
 
 /// Calculates if two binary search trees have the same values.
 /// In this question, there are four possible cases:
 /// 1. Both left and right point to a `None` node. In this case, return true.
-/// 2. Either left or right points to a `None` node, but the other has a value. In which case, return false.
-/// 3. Both left and right point to a node with a value, but the values are different. return false.
-/// 4. Both left and right point to nodes with the same value. Return true.
-/// Afterwards
+/// 2. Both left and right point to nodes with the same value. Continue recursing through both
+///    trees left and right subtrees.
+/// 3. For any other case, return false.
 pub fn is_same_tree(p: BSTNode, q: BSTNode) -> bool {
     fn same(p: &BSTNode, q: &BSTNode) -> bool {
         match (p, q) {
@@ -23,7 +24,7 @@ pub fn is_same_tree(p: BSTNode, q: BSTNode) -> bool {
                     && same(&left.right, &right.right)
             }
             (None, None) => true,
-            (None, _) | (_, None) => false,
+            _ => false,
         }
     }
     same(&p, &q)

@@ -6,13 +6,13 @@
 
 ### Test Cases
 
-```{.rs include=src/questions/same_tree.rs startLine=3 endLine=6}
+```{.rs include=src/questions/same_tree.rs startLine=3 endLine=8}
 
 ```
 
 ### Answer
 
-```{.rs include=src/questions/same_tree.rs startLine=8 endLine=30}
+```{.rs include=src/questions/same_tree.rs startLine=10 endLine=40}
 
 ```
 
