@@ -3,6 +3,7 @@
 BOOK_NAME="Leetcode in Rust"
 GRAPHVIZ_FILES = $(shell find ./graphviz -name '*.dot')
 FIGURES = $(shell find ./figures -name '*.svg')
+CHAPTERS = $(shell find ./chapters -name '*.md')
 
 PANDOCFLAGS =                        \
 	--metadata title=$(BOOK_NAME)      \
@@ -10,6 +11,7 @@ PANDOCFLAGS =                        \
   --from=markdown                    \
   --number-sections                  \
 	--top-level-division=chapter       \
+	--filter=pandoc-include            \
 	--filter=pandoc-include-code       \
   --indented-code-classes=javascript
 
@@ -36,19 +38,19 @@ pdf: phony output/book.pdf
 
 docx: phony output/book.docx
 
-figures: phony
+figures:
 	./bin/figures
 
-output/%.pdf: %.md $(FIGURES) Makefile | output figures
+output/%.pdf: %.md $(FIGURES) $(CHAPTERS) Makefile | output figures
 	pandoc $< -o $@ $(PDF_FLAGS) $(PANDOCFLAGS)
 
-output/%.epub: %.md $(FIGURES) Makefile | output figures
+output/%.epub: %.md $(FIGURES) $(CHAPTERS) Makefile | output figures
 	pandoc $< -o $@ $(PANDOCFLAGS)
 
-output/%.html: %.md $(FIGURES) Makefile templates/book.html | output figures
+output/%.html: %.md $(FIGURES) $(CHAPTERS) Makefile templates/book.html | output figures
 	pandoc $< -o $@ $(HTML_FLAGS) $(PANDOCFLAGS)
 
-output/%.docx: %.md $(FIGURES) Makefile | output figures
+output/%.docx: %.md $(FIGURES) $(CHAPTERS) Makefile | output figures
 	pandoc $< -o $@ $(PANDOCFLAGS)
 
 output:

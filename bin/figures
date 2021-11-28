@@ -7,6 +7,5 @@ for i in $(find ./graphviz -name '*.dot'); do
   mkdir -p "./figures/$inbetween_paths/"
   out_name="./figures/$inbetween_paths/$base.svg"
   echo "Building $out_name"
-  mkdir -p $base
   dot -Tsvg $i -o $out_name
 done
