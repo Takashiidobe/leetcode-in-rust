@@ -7,9 +7,10 @@ FIGURES = $(shell find ./figures -name '*.svg')
 PANDOCFLAGS =                        \
 	--metadata title=$(BOOK_NAME)      \
   --table-of-contents                \
-	--filter pandoc-include-code       \
   --from=markdown                    \
   --number-sections                  \
+	--top-level-division=chapter       \
+	--filter=pandoc-include-code       \
   --indented-code-classes=javascript
 
 HTML_FLAGS =                         \
@@ -19,6 +20,7 @@ HTML_FLAGS =                         \
 PDF_FLAGS =                          \
   --pdf-engine=xelatex               \
 	--template=eisvogel                \
+	-V toc-own-page=false              \
   -V mainfont="Palatino"             \
   -V documentclass=krantz            \
   -V papersize=A4                    \

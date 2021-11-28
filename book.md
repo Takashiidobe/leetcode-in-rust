@@ -1,5 +1,7 @@
 ---
 title: "Leetcode in Rust"
+header-includes: |
+  \renewcommand{\chapterheadstartvskip}{}
 ---
 
 # Rust in a Nutshell
