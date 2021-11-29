@@ -264,17 +264,28 @@
 <ul>
 <li><a href="#a-macro-for-testing"><span class="toc-section-number">2.1</span> A macro for testing</a></li>
 </ul></li>
-<li><a href="#trees"><span class="toc-section-number">3</span> Trees</a>
+<li><a href="#how-to-approach-problems"><span class="toc-section-number">3</span> How to Approach Problems</a>
 <ul>
-<li><a href="#validate-binary-search-tree"><span class="toc-section-number">3.1</span> Validate Binary Search Tree</a></li>
-<li><a href="#same-tree"><span class="toc-section-number">3.2</span> Same Tree</a>
+<li><a href="#a-plan-of-attack"><span class="toc-section-number">3.1</span> A Plan of Attack</a>
 <ul>
-<li><a href="#problem"><span class="toc-section-number">3.2.1</span> Problem</a></li>
-<li><a href="#intuition"><span class="toc-section-number">3.2.2</span> Intuition</a></li>
-<li><a href="#test-cases"><span class="toc-section-number">3.2.3</span> Test Cases</a></li>
-<li><a href="#answer"><span class="toc-section-number">3.2.4</span> Answer</a></li>
+<li><a href="#build-intuition"><span class="toc-section-number">3.1.1</span> Build Intuition</a></li>
 </ul></li>
-<li><a href="#maximum-path-through-a-binary-tree"><span class="toc-section-number">3.3</span> Maximum Path through a Binary Tree</a></li>
+<li><a href="#writing-test-cases"><span class="toc-section-number">3.2</span> Writing test cases</a></li>
+<li><a href="#writing-code"><span class="toc-section-number">3.3</span> Writing Code</a></li>
+<li><a href="#refactoring"><span class="toc-section-number">3.4</span> Refactoring</a></li>
+</ul></li>
+<li><a href="#trees"><span class="toc-section-number">4</span> Trees</a>
+<ul>
+<li><a href="#validate-binary-search-tree"><span class="toc-section-number">4.1</span> Validate Binary Search Tree</a></li>
+<li><a href="#same-tree"><span class="toc-section-number">4.2</span> Same Tree</a>
+<ul>
+<li><a href="#problem"><span class="toc-section-number">4.2.1</span> Problem</a></li>
+<li><a href="#intuition"><span class="toc-section-number">4.2.2</span> Intuition</a></li>
+<li><a href="#test-cases"><span class="toc-section-number">4.2.3</span> Test Cases</a></li>
+<li><a href="#answer"><span class="toc-section-number">4.2.4</span> Answer</a></li>
+</ul></li>
+<li><a href="#maximum-path-through-a-binary-tree"><span class="toc-section-number">4.3</span> Maximum Path through a Binary Tree</a></li>
+<li><a href="#references">References</a></li>
 </ul></li>
 </ul></nav>
      <h1 data-number="1" id="rust-in-a-nutshell"><span class="header-section-number">1</span> Rust in a Nutshell</h1>
@@ -369,39 +380,159 @@
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">test</span> test::add_one_and_two ... ok</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="bu">test</span> result: ok. 2 passed<span class="kw">;</span> <span class="ex">0</span> failed<span class="kw">;</span> <span class="ex">0</span> ignored<span class="kw">;</span> <span class="ex">0</span> measured<span class="kw">;</span> <span class="ex">0</span> filtered out<span class="kw">;</span> <span class="ex">finished</span> in 0.01s</span></code></pre></div>
-<h1 data-number="3" id="trees"><span class="header-section-number">3</span> Trees</h1>
-<h2 data-number="3.1" id="validate-binary-search-tree"><span class="header-section-number">3.1</span> Validate Binary Search Tree</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="kw">crate</span><span class="pp">::</span><span class="op">*;</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> is_valid_bst(root<span class="op">:</span> BSTNode) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> helper(node<span class="op">:</span> <span class="op">&amp;</span>BSTNode<span class="op">,</span> possible_min<span class="op">:</span> <span class="dt">i64</span><span class="op">,</span> possible_max<span class="op">:</span> <span class="dt">i64</span>) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">let</span> <span class="cn">Some</span>(n) <span class="op">=</span> node <span class="op">{</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> borrowed <span class="op">=</span> n<span class="op">.</span>borrow()<span class="op">;</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> left <span class="op">=</span> <span class="op">&amp;</span>borrowed<span class="op">.</span>left<span class="op">;</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> right <span class="op">=</span> <span class="op">&amp;</span>borrowed<span class="op">.</span>right<span class="op">;</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> val<span class="op">:</span> <span class="dt">i64</span> <span class="op">=</span> borrowed<span class="op">.</span>val<span class="op">.</span>into()<span class="op">;</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> val <span class="op">&gt;=</span> possible_min <span class="op">&amp;&amp;</span> val <span class="op">&lt;=</span> possible_max <span class="op">{</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>                helper(<span class="op">&amp;</span>left<span class="op">,</span> possible_min<span class="op">,</span> val) <span class="op">&amp;&amp;</span> helper(<span class="op">&amp;</span>right<span class="op">,</span> val<span class="op">,</span> possible_max)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>                <span class="cn">false</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>            <span class="cn">true</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    helper(<span class="op">&amp;</span>root<span class="op">,</span> <span class="dt">i64</span><span class="pp">::</span><span class="cn">MIN</span><span class="op">,</span> <span class="dt">i64</span><span class="pp">::</span><span class="cn">MAX</span>)</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="pp">test!</span> <span class="op">{</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    test_1<span class="op">:</span> is_valid_bst(<span class="pp">btree!</span>[<span class="dv">2</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">3</span>])<span class="op">,</span> <span class="cn">true</span><span class="op">,</span></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    test_2<span class="op">:</span> is_valid_bst(<span class="pp">btree!</span>[<span class="dv">5</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">3</span>])<span class="op">,</span> <span class="cn">false</span><span class="op">,</span></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<h2 data-number="3.2" id="same-tree"><span class="header-section-number">3.2</span> Same Tree</h2>
-<h3 data-number="3.2.1" id="problem"><span class="header-section-number">3.2.1</span> Problem</h3>
+<h1 data-number="3" id="how-to-approach-problems"><span class="header-section-number">3</span> How to Approach Problems</h1>
+<p>Much has been said about how to become a better problem solver<span class="citation" data-cites="citeulike:679515"><sup><a href="#ref-citeulike:679515" role="doc-biblioref">1</a></sup></span>. Here we’ll go over some tips and tricks to solve a hard problem by using some of these techniques.</p>
+<h2 data-number="3.1" id="a-plan-of-attack"><span class="header-section-number">3.1</span> A Plan of Attack</h2>
+<ol type="1">
+<li>Build an intuition about the problem. What are we trying to solve?</li>
+<li>Write some test cases. Note any edge cases your code should take care of.</li>
+<li>Start writing out the code, being wary of any edge cases.</li>
+<li>Refactor your code. How can it be improved?</li>
+</ol>
+<p>Let’s go over our plan step by step, using an example problem called <code>Jewels and Stones</code>:</p>
+<blockquote>
+<p>You’re given strings jewels representing the types of stones that are jewels, and stones representing the stones you have. Each character in stones is a type of stone you have. You want to know how many of the stones you have are also jewels.</p>
+<p>Letters are case sensitive, so “a” is considered a different type of stone from “A”.</p>
+</blockquote>
+<blockquote>
+<p>Example 1:</p>
+<p>Input: jewels = “aA”, stones = “aAAbbbb” Output: 3</p>
+<p>Example 2:</p>
+<p>Input: jewels = “z”, stones = “ZZ” Output: 0</p>
+</blockquote>
+<h3 data-number="3.1.1" id="build-intuition"><span class="header-section-number">3.1.1</span> Build Intuition</h3>
+<p>First, let’s jot down some notes about the problem. It says: <code>We want to know how many of the stones you have are also jewels</code>. This means that we want to return a count of our jewels. A count is going to be a unsigned integer. We can imagine that our return type would be some unsigned integer type, like <code>u32</code>.</p>
+<p>We can start with that:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> jewels_and_stones(<span class="co">/* </span><span class="al">TODO</span><span class="co"> */</span>) <span class="op">-&gt;</span> <span class="dt">u32</span> <span class="op">{</span> <span class="co">/* </span><span class="al">TODO</span><span class="co"> */</span> <span class="op">}</span></span></code></pre></div>
+<p>Next, let’s take note of the two inputs, which are <code>given [as] strings</code>. We can assume we are given one string for the jewels and one for the stones.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> jewels_and_stones(jewels<span class="op">:</span> <span class="dt">String</span><span class="op">,</span> stones<span class="op">:</span> <span class="dt">String</span>) <span class="op">-&gt;</span> <span class="dt">u32</span> <span class="op">{</span> <span class="co">/* </span><span class="al">TODO</span><span class="co"> */</span> <span class="op">}</span></span></code></pre></div>
+<p>The problem also notes that we want to return the number of jewels in our collection of stones, and that every character of jewels is a jewel, and every character of stones is a stone.</p>
+<p>Let’s reduce the problem to something easier. Let’s say that instead of having a collection of stone(s), we have just one stone and one jewel. Does this make the problem easier?</p>
+<p>It should. We now only need to check if the stone is a jewel, and return our counter at the end.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> jewels_and_stones(jewel<span class="op">:</span> <span class="dt">char</span><span class="op">,</span> stone<span class="op">:</span> <span class="dt">char</span>) <span class="op">-&gt;</span> <span class="dt">u32</span> <span class="op">{</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> jewel <span class="op">==</span> stone <span class="op">{</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    count <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  count</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>What if we make it so we have one stone but many jewels? What would we do?</p>
+<p>Well for our one stone, we would want to check every jewel to make sure that it is a jewel, and return the count of jewels we have.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> jewels_and_stones(jewels<span class="op">:</span> <span class="dt">String</span><span class="op">,</span> stone<span class="op">:</span> <span class="dt">char</span>) <span class="op">-&gt;</span> <span class="dt">u32</span> <span class="op">{</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> jewel <span class="kw">in</span> jewels<span class="op">.</span>chars() <span class="op">{</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> jewel <span class="op">==</span> stone <span class="op">{</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>      count <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  count</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>What happens if we have many stones but one jewel? We do the opposite, where every stone that counts as a jewel increments our count by one.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> jewels_and_stones(jewel<span class="op">:</span> <span class="dt">char</span><span class="op">,</span> stones<span class="op">:</span> <span class="dt">String</span>) <span class="op">-&gt;</span> <span class="dt">u32</span> <span class="op">{</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> stone <span class="kw">in</span> stones<span class="op">.</span>chars() <span class="op">{</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> jewel <span class="op">==</span> stone <span class="op">{</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>      count <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  count</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Now that we have some intuition about how to solve simpler problems, we’ll start by writing test cases for this problem:</p>
+<h2 data-number="3.2" id="writing-test-cases"><span class="header-section-number">3.2</span> Writing test cases</h2>
+<p>We’ll start off by writing test cases for our simplified problems:</p>
+<p>If the jewels and stones have a length of one, either they are the same or not. If they are the same, this function should return 1. If not, this function should return 0.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;a&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;a&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;a&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;b&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span></code></pre></div>
+<p>If there is one jewel, we iterate through our stones and increment our count every time we find a jewel.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;a&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;aac&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;a&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;xyz&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span></code></pre></div>
+<p>Otherwise, if there’s one stone, then we check every jewel to see if our stone is a jewel.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;abc&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;a&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;xyz&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;a&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span></code></pre></div>
+<p>Finally, if there’s more than one jewel and more than one stone, for each stone, we check if it is a jewel.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;abc&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;cxx&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;xyz&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;xxa&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span></code></pre></div>
+<h2 data-number="3.3" id="writing-code"><span class="header-section-number">3.3</span> Writing Code</h2>
+<p>Now we can begin writing some code to tackle our original problem:</p>
+<p>We have an intuition that for every stone, we want to check if it is a jewel. To do this, we have to iterate through all the jewels, and compare our stone to it. If they’re the same, we can increment the count.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> jewels_and_stones(jewels<span class="op">:</span> <span class="dt">String</span><span class="op">,</span> stones<span class="op">:</span> <span class="dt">String</span>) <span class="op">-&gt;</span> <span class="dt">u32</span> <span class="op">{</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> stone <span class="kw">in</span> stones<span class="op">.</span>chars() <span class="op">{</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> jewel <span class="kw">in</span> jewels<span class="op">.</span>chars() <span class="op">{</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> stone <span class="op">==</span> jewel <span class="op">{</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>        count <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  count</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>This turns out to pass the tests outlined above, but it has some problems. Time to refactor!</p>
+<h2 data-number="3.4" id="refactoring"><span class="header-section-number">3.4</span> Refactoring</h2>
+<p>When refactoring, let’s discuss some things we can do to improve our code:</p>
+<p>Our code is very concise. There’s not much that can be done to improve its readability, which is a good thing. That being said, it can have a slow runtime. If we say the length of stones is N and the length of jewels is M, the runtime of our code grows in O(N*M) (polynomial time). We should be able to do better. But how?</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">// O(N*M)</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> jewels_and_stones(jewels<span class="op">:</span> <span class="dt">String</span><span class="op">,</span> stones<span class="op">:</span> <span class="dt">String</span>) <span class="op">-&gt;</span> <span class="dt">u32</span> <span class="op">{</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> stone <span class="kw">in</span> stones<span class="op">.</span>chars() <span class="op">{</span> <span class="co">// O(N)</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> jewel <span class="kw">in</span> jewels<span class="op">.</span>chars() <span class="op">{</span> <span class="co">// O(M): Wouldn&#39;t it be nice if this</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>      was O(<span class="dv">1</span>)<span class="op">?</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> stone <span class="op">==</span> jewel <span class="op">{</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>        count <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  count</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>We have a nested for loop, which contributes the slow runtime. Maybe we could represent either jewels or stones in a different fashion, and get rid of a for loop? Would there be a different way of representing jewels that would make this easier? Maybe a data structure that has O(1) time for if it contains an item?</p>
+<p>We can use a set for this:</p>
+<p>So our solution turns into this:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">// O(N)</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> jewels_and_stones(jewels<span class="op">:</span> <span class="dt">String</span><span class="op">,</span> stones<span class="op">:</span> <span class="dt">String</span>) <span class="op">-&gt;</span> <span class="dt">u32</span> <span class="op">{</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> jewels_set<span class="op">:</span> HashSet<span class="op">&lt;</span><span class="dt">char</span><span class="op">&gt;</span> <span class="op">=</span> <span class="pp">HashSet::</span>from_iter(jewels<span class="op">.</span>chars())<span class="op">;</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> stone <span class="kw">in</span> stones<span class="op">.</span>chars() <span class="op">{</span> <span class="co">// O(N)</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> jewels_set<span class="op">.</span>contains(<span class="op">&amp;</span>stone) <span class="op">{</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>      count <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  count</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>And we get down from O(N*M) to O(N) time.</p>
+<h1 data-number="4" id="trees"><span class="header-section-number">4</span> Trees</h1>
+<h2 data-number="4.1" id="validate-binary-search-tree"><span class="header-section-number">4.1</span> Validate Binary Search Tree</h2>
+<div class="sourceCode" id="cb21"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="kw">crate</span><span class="pp">::</span><span class="op">*;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> is_valid_bst(root<span class="op">:</span> BSTNode) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> helper(node<span class="op">:</span> <span class="op">&amp;</span>BSTNode<span class="op">,</span> possible_min<span class="op">:</span> <span class="dt">i64</span><span class="op">,</span> possible_max<span class="op">:</span> <span class="dt">i64</span>) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">let</span> <span class="cn">Some</span>(n) <span class="op">=</span> node <span class="op">{</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> borrowed <span class="op">=</span> n<span class="op">.</span>borrow()<span class="op">;</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> left <span class="op">=</span> <span class="op">&amp;</span>borrowed<span class="op">.</span>left<span class="op">;</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> right <span class="op">=</span> <span class="op">&amp;</span>borrowed<span class="op">.</span>right<span class="op">;</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> val<span class="op">:</span> <span class="dt">i64</span> <span class="op">=</span> borrowed<span class="op">.</span>val<span class="op">.</span>into()<span class="op">;</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> val <span class="op">&gt;=</span> possible_min <span class="op">&amp;&amp;</span> val <span class="op">&lt;=</span> possible_max <span class="op">{</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>                helper(<span class="op">&amp;</span>left<span class="op">,</span> possible_min<span class="op">,</span> val) <span class="op">&amp;&amp;</span> helper(<span class="op">&amp;</span>right<span class="op">,</span> val<span class="op">,</span> possible_max)</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>                <span class="cn">false</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>            <span class="cn">true</span></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>    helper(<span class="op">&amp;</span>root<span class="op">,</span> <span class="dt">i64</span><span class="pp">::</span><span class="cn">MIN</span><span class="op">,</span> <span class="dt">i64</span><span class="pp">::</span><span class="cn">MAX</span>)</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a><span class="pp">test!</span> <span class="op">{</span></span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>    test_1<span class="op">:</span> is_valid_bst(<span class="pp">btree!</span>[<span class="dv">2</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">3</span>])<span class="op">,</span> <span class="cn">true</span><span class="op">,</span></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>    test_2<span class="op">:</span> is_valid_bst(<span class="pp">btree!</span>[<span class="dv">5</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">3</span>])<span class="op">,</span> <span class="cn">false</span><span class="op">,</span></span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h2 data-number="4.2" id="same-tree"><span class="header-section-number">4.2</span> Same Tree</h2>
+<h3 data-number="4.2.1" id="problem"><span class="header-section-number">4.2.1</span> Problem</h3>
 <blockquote>
 <p>Given the roots of two binary trees p and q, write a function to check if they are the same or not. Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.</p>
 </blockquote>
-<h3 data-number="3.2.2" id="intuition"><span class="header-section-number">3.2.2</span> Intuition</h3>
+<h3 data-number="4.2.2" id="intuition"><span class="header-section-number">4.2.2</span> Intuition</h3>
 <p>This question tests your knowledge of recursion. To do so, start off with the base case:</p>
 <ul>
 <li>What happens when left is None and right has a value? Return false.</li>
@@ -410,36 +541,36 @@
 <li>What happens when left and right have different values? Return false.</li>
 <li>What happens when left and right have the same values? Test their left and right nodes for equality as well.</li>
 </ul>
-<h3 data-number="3.2.3" id="test-cases"><span class="header-section-number">3.2.3</span> Test Cases</h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="pp">test!</span> <span class="op">{</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    test_1<span class="op">:</span> is_same_tree(<span class="pp">btree!</span>[]<span class="op">,</span> <span class="pp">btree!</span>[])<span class="op">,</span> <span class="cn">true</span><span class="op">,</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    test_2<span class="op">:</span> is_same_tree(<span class="pp">btree!</span>[<span class="dv">1</span>]<span class="op">,</span> <span class="pp">btree!</span>[])<span class="op">,</span> <span class="cn">false</span><span class="op">,</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    test_3<span class="op">:</span> is_same_tree(<span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>]<span class="op">,</span> <span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>])<span class="op">,</span> <span class="cn">true</span><span class="op">,</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    test_4<span class="op">:</span> is_same_tree(<span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span>]<span class="op">,</span> <span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>])<span class="op">,</span> <span class="cn">false</span><span class="op">,</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<h3 data-number="3.2.4" id="answer"><span class="header-section-number">3.2.4</span> Answer</h3>
-<div class="sourceCode" id="cb11"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">/// Calculates if two binary search trees have the same values.</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">/// In this question, there are four possible cases:</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">/// 1. Both left and right point to a `None` node. In this case, return true.</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">/// 2. Both left and right point to nodes with the same value. Continue recursing through both</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">///    trees left and right subtrees.</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">/// 3. For any other case, return false.</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> is_same_tree(p<span class="op">:</span> BSTNode<span class="op">,</span> q<span class="op">:</span> BSTNode) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> same(p<span class="op">:</span> <span class="op">&amp;</span>BSTNode<span class="op">,</span> q<span class="op">:</span> <span class="op">&amp;</span>BSTNode) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">match</span> (p<span class="op">,</span> q) <span class="op">{</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>            (<span class="cn">Some</span>(left)<span class="op">,</span> <span class="cn">Some</span>(right)) <span class="op">=&gt;</span> <span class="op">{</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> left <span class="op">=</span> left<span class="op">.</span>borrow()<span class="op">;</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> right <span class="op">=</span> right<span class="op">.</span>borrow()<span class="op">;</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>                left<span class="op">.</span>val <span class="op">==</span> right<span class="op">.</span>val</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>                    <span class="op">&amp;&amp;</span> same(<span class="op">&amp;</span>left<span class="op">.</span>left<span class="op">,</span> <span class="op">&amp;</span>right<span class="op">.</span>left)</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>                    <span class="op">&amp;&amp;</span> same(<span class="op">&amp;</span>left<span class="op">.</span>right<span class="op">,</span> <span class="op">&amp;</span>right<span class="op">.</span>right)</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>            (<span class="cn">None</span><span class="op">,</span> <span class="cn">None</span>) <span class="op">=&gt;</span> <span class="cn">true</span><span class="op">,</span></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>            _ <span class="op">=&gt;</span> <span class="cn">false</span><span class="op">,</span></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    same(<span class="op">&amp;</span>p<span class="op">,</span> <span class="op">&amp;</span>q)</span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h3 data-number="4.2.3" id="test-cases"><span class="header-section-number">4.2.3</span> Test Cases</h3>
+<div class="sourceCode" id="cb22"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="pp">test!</span> <span class="op">{</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    test_1<span class="op">:</span> is_same_tree(<span class="pp">btree!</span>[]<span class="op">,</span> <span class="pp">btree!</span>[])<span class="op">,</span> <span class="cn">true</span><span class="op">,</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    test_2<span class="op">:</span> is_same_tree(<span class="pp">btree!</span>[<span class="dv">1</span>]<span class="op">,</span> <span class="pp">btree!</span>[])<span class="op">,</span> <span class="cn">false</span><span class="op">,</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    test_3<span class="op">:</span> is_same_tree(<span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>]<span class="op">,</span> <span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>])<span class="op">,</span> <span class="cn">true</span><span class="op">,</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    test_4<span class="op">:</span> is_same_tree(<span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span>]<span class="op">,</span> <span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>])<span class="op">,</span> <span class="cn">false</span><span class="op">,</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h3 data-number="4.2.4" id="answer"><span class="header-section-number">4.2.4</span> Answer</h3>
+<div class="sourceCode" id="cb23"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">/// Calculates if two binary search trees have the same values.</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">/// In this question, there are four possible cases:</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">/// 1. Both left and right point to a `None` node. In this case, return true.</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">/// 2. Both left and right point to nodes with the same value. Continue recursing through both</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">///    trees left and right subtrees.</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co">/// 3. For any other case, return false.</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> is_same_tree(p<span class="op">:</span> BSTNode<span class="op">,</span> q<span class="op">:</span> BSTNode) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> same(p<span class="op">:</span> <span class="op">&amp;</span>BSTNode<span class="op">,</span> q<span class="op">:</span> <span class="op">&amp;</span>BSTNode) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">match</span> (p<span class="op">,</span> q) <span class="op">{</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>            (<span class="cn">Some</span>(left)<span class="op">,</span> <span class="cn">Some</span>(right)) <span class="op">=&gt;</span> <span class="op">{</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> left <span class="op">=</span> left<span class="op">.</span>borrow()<span class="op">;</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> right <span class="op">=</span> right<span class="op">.</span>borrow()<span class="op">;</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>                left<span class="op">.</span>val <span class="op">==</span> right<span class="op">.</span>val</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>                    <span class="op">&amp;&amp;</span> same(<span class="op">&amp;</span>left<span class="op">.</span>left<span class="op">,</span> <span class="op">&amp;</span>right<span class="op">.</span>left)</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>                    <span class="op">&amp;&amp;</span> same(<span class="op">&amp;</span>left<span class="op">.</span>right<span class="op">,</span> <span class="op">&amp;</span>right<span class="op">.</span>right)</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>            (<span class="cn">None</span><span class="op">,</span> <span class="cn">None</span>) <span class="op">=&gt;</span> <span class="cn">true</span><span class="op">,</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>            _ <span class="op">=&gt;</span> <span class="cn">false</span><span class="op">,</span></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>    same(<span class="op">&amp;</span>p<span class="op">,</span> <span class="op">&amp;</span>q)</span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -454,32 +585,38 @@
 </tr>
 </tbody>
 </table>
-<h2 data-number="3.3" id="maximum-path-through-a-binary-tree"><span class="header-section-number">3.3</span> Maximum Path through a Binary Tree</h2>
-<div class="sourceCode" id="cb12"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="kw">crate</span><span class="pp">::</span><span class="op">*;</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::cmp::</span>max<span class="op">;</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">/// Finds the maximum path sum through a binary tree.</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> max_path_sum(root<span class="op">:</span> BSTNode) <span class="op">-&gt;</span> <span class="dt">i32</span> <span class="op">{</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> max_so_far <span class="op">=</span> <span class="dt">i32</span><span class="pp">::</span><span class="cn">MIN</span><span class="op">;</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">fn</span> helper(node<span class="op">:</span> <span class="op">&amp;</span>BSTNode<span class="op">,</span> max_so_far<span class="op">:</span> <span class="op">&amp;</span><span class="kw">mut</span> <span class="dt">i32</span>) <span class="op">-&gt;</span> <span class="dt">i32</span> <span class="op">{</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">match</span> node <span class="op">{</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>      <span class="cn">Some</span>(n) <span class="op">=&gt;</span> <span class="op">{</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> val <span class="op">=</span> n<span class="op">.</span>borrow()<span class="op">.</span>val<span class="op">;</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> l <span class="op">=</span> max(<span class="dv">0</span><span class="op">,</span> helper(<span class="op">&amp;</span>n<span class="op">.</span>borrow()<span class="op">.</span>left<span class="op">,</span> max_so_far))<span class="op">;</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> r <span class="op">=</span> max(<span class="dv">0</span><span class="op">,</span> helper(<span class="op">&amp;</span>n<span class="op">.</span>borrow()<span class="op">.</span>right<span class="op">,</span> max_so_far))<span class="op">;</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">*</span>max_so_far <span class="op">=</span> max(<span class="op">*</span>max_so_far<span class="op">,</span> val <span class="op">+</span> l <span class="op">+</span> r)<span class="op">;</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>        val <span class="op">+</span> max(l<span class="op">,</span> r)</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>      <span class="cn">None</span> <span class="op">=&gt;</span> <span class="dv">0</span><span class="op">,</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>  helper(<span class="op">&amp;</span>root<span class="op">,</span> <span class="op">&amp;</span><span class="kw">mut</span> max_so_far)<span class="op">;</span></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  max_so_far</span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="pp">test!</span> <span class="op">{</span></span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    test_1<span class="op">:</span> max_path_sum(<span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>])<span class="op">,</span> <span class="dv">6</span><span class="op">,</span></span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    test_2<span class="op">:</span> max_path_sum(<span class="pp">btree!</span>[<span class="op">-</span><span class="dv">10</span><span class="op">,</span> <span class="dv">9</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> null<span class="op">,</span> null<span class="op">,</span> <span class="dv">15</span><span class="op">,</span> <span class="dv">7</span>])<span class="op">,</span> <span class="dv">42</span><span class="op">,</span></span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div> 
+<h2 data-number="4.3" id="maximum-path-through-a-binary-tree"><span class="header-section-number">4.3</span> Maximum Path through a Binary Tree</h2>
+<div class="sourceCode" id="cb24"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="kw">crate</span><span class="pp">::</span><span class="op">*;</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::cmp::</span>max<span class="op">;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co">/// Finds the maximum path sum through a binary tree.</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> max_path_sum(root<span class="op">:</span> BSTNode) <span class="op">-&gt;</span> <span class="dt">i32</span> <span class="op">{</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> max_so_far <span class="op">=</span> <span class="dt">i32</span><span class="pp">::</span><span class="cn">MIN</span><span class="op">;</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">fn</span> helper(node<span class="op">:</span> <span class="op">&amp;</span>BSTNode<span class="op">,</span> max_so_far<span class="op">:</span> <span class="op">&amp;</span><span class="kw">mut</span> <span class="dt">i32</span>) <span class="op">-&gt;</span> <span class="dt">i32</span> <span class="op">{</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">match</span> node <span class="op">{</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>      <span class="cn">Some</span>(n) <span class="op">=&gt;</span> <span class="op">{</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> val <span class="op">=</span> n<span class="op">.</span>borrow()<span class="op">.</span>val<span class="op">;</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> l <span class="op">=</span> max(<span class="dv">0</span><span class="op">,</span> helper(<span class="op">&amp;</span>n<span class="op">.</span>borrow()<span class="op">.</span>left<span class="op">,</span> max_so_far))<span class="op">;</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> r <span class="op">=</span> max(<span class="dv">0</span><span class="op">,</span> helper(<span class="op">&amp;</span>n<span class="op">.</span>borrow()<span class="op">.</span>right<span class="op">,</span> max_so_far))<span class="op">;</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">*</span>max_so_far <span class="op">=</span> max(<span class="op">*</span>max_so_far<span class="op">,</span> val <span class="op">+</span> l <span class="op">+</span> r)<span class="op">;</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>        val <span class="op">+</span> max(l<span class="op">,</span> r)</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>      <span class="cn">None</span> <span class="op">=&gt;</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>  helper(<span class="op">&amp;</span>root<span class="op">,</span> <span class="op">&amp;</span><span class="kw">mut</span> max_so_far)<span class="op">;</span></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>  max_so_far</span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a><span class="pp">test!</span> <span class="op">{</span></span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>    test_1<span class="op">:</span> max_path_sum(<span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>])<span class="op">,</span> <span class="dv">6</span><span class="op">,</span></span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>    test_2<span class="op">:</span> max_path_sum(<span class="pp">btree!</span>[<span class="op">-</span><span class="dv">10</span><span class="op">,</span> <span class="dv">9</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> null<span class="op">,</span> null<span class="op">,</span> <span class="dv">15</span><span class="op">,</span> <span class="dv">7</span>])<span class="op">,</span> <span class="dv">42</span><span class="op">,</span></span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h2 class="unnumbered" id="references">References</h2>
+<div id="refs" class="references csl-bib-body" data-line-spacing="2" role="doc-bibliography">
+<div id="ref-citeulike:679515" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Polya, G. <em><a href="http://www.amazon.com/exec/obidos/redirect?tag=citeulike07-20\&amp;path=ASIN/0691023565">How to solve it</a></em>. (Paperback; <span>Princeton University Press</span>, 1971).</div>
+</div>
+</div> 
   </body>
 </html>

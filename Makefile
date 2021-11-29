@@ -8,12 +8,14 @@ SOURCE_FILES = $(shell find ./src -name '*.rs')
 
 PANDOCFLAGS =                        \
 	--metadata title=$(BOOK_NAME)      \
+	--bibliography references.bib      \
   --table-of-contents                \
   --from=markdown                    \
   --number-sections                  \
 	--top-level-division=chapter       \
 	--filter=pandoc-include            \
 	--filter=pandoc-include-code       \
+	--citeproc 												 \
   --indented-code-classes=javascript
 
 HTML_FLAGS =                         \
