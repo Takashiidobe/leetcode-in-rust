@@ -6,10 +6,10 @@ hard problem by using some of these techniques.
 
 ## A Plan of Attack
 
-1. Build an intuition about the problem. What are we trying to solve?
+1. Build an intuition about the problem. What should the code return?
 2. Write some test cases. Note any edge cases your code should take
    care of.
-3. Start writing out the code, being wary of any edge cases.
+3. Start writing out the code, being wary of edge cases.
 4. Refactor your code. How can it be improved?
 
 Let's go over our plan step by step, using an example problem called
@@ -142,7 +142,7 @@ assert_eq!(jewels_and_stones("xyz".to_string(), "a".to_string()), 0);
 ```
 
 Finally, if there's more than one jewel and more than one stone, for
-each stone, we check if it is a jewel.
+each stone, we check if it is a jewel in our set of jewels.
 
 ```rs
 assert_eq!(jewels_and_stones("abc".to_string(), "cxx".to_string()), 1);
@@ -192,8 +192,7 @@ should be able to do better. But how?
 fn jewels_and_stones(jewels: String, stones: String) -> u32 {
   let mut count = 0;
   for stone in stones.chars() { // O(N)
-    for jewel in jewels.chars() { // O(M): Wouldn't it be nice if this
-      was O(1)?
+    for jewel in jewels.chars() { // O(M): Wouldn't it be nice if this was O(1)?
       if stone == jewel {
         count += 1;
         break;

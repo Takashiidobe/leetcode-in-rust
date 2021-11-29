@@ -384,9 +384,9 @@
 <p>Much has been said about how to become a better problem solver<span class="citation" data-cites="citeulike:679515"><sup><a href="#ref-citeulike:679515" role="doc-biblioref">1</a></sup></span>. Here we’ll go over some tips and tricks to solve a hard problem by using some of these techniques.</p>
 <h2 data-number="3.1" id="a-plan-of-attack"><span class="header-section-number">3.1</span> A Plan of Attack</h2>
 <ol type="1">
-<li>Build an intuition about the problem. What are we trying to solve?</li>
+<li>Build an intuition about the problem. What should the code return?</li>
 <li>Write some test cases. Note any edge cases your code should take care of.</li>
-<li>Start writing out the code, being wary of any edge cases.</li>
+<li>Start writing out the code, being wary of edge cases.</li>
 <li>Refactor your code. How can it be improved?</li>
 </ol>
 <p>Let’s go over our plan step by step, using an example problem called <code>Jewels and Stones</code>:</p>
@@ -449,7 +449,7 @@
 <p>Otherwise, if there’s one stone, then we check every jewel to see if our stone is a jewel.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;abc&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;a&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">1</span>)<span class="op">;</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;xyz&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;a&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span></code></pre></div>
-<p>Finally, if there’s more than one jewel and more than one stone, for each stone, we check if it is a jewel.</p>
+<p>Finally, if there’s more than one jewel and more than one stone, for each stone, we check if it is a jewel in our set of jewels.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;abc&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;cxx&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">1</span>)<span class="op">;</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;xyz&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;xxa&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span></code></pre></div>
 <h2 data-number="3.3" id="writing-code"><span class="header-section-number">3.3</span> Writing Code</h2>
@@ -475,16 +475,15 @@
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> jewels_and_stones(jewels<span class="op">:</span> <span class="dt">String</span><span class="op">,</span> stones<span class="op">:</span> <span class="dt">String</span>) <span class="op">-&gt;</span> <span class="dt">u32</span> <span class="op">{</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> stone <span class="kw">in</span> stones<span class="op">.</span>chars() <span class="op">{</span> <span class="co">// O(N)</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> jewel <span class="kw">in</span> jewels<span class="op">.</span>chars() <span class="op">{</span> <span class="co">// O(M): Wouldn&#39;t it be nice if this</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>      was O(<span class="dv">1</span>)<span class="op">?</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> stone <span class="op">==</span> jewel <span class="op">{</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>        count <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  count</span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> jewel <span class="kw">in</span> jewels<span class="op">.</span>chars() <span class="op">{</span> <span class="co">// O(M): Wouldn&#39;t it be nice if this was O(1)?</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> stone <span class="op">==</span> jewel <span class="op">{</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>        count <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  count</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>We have a nested for loop, which contributes the slow runtime. Maybe we could represent either jewels or stones in a different fashion, and get rid of a for loop? Would there be a different way of representing jewels that would make this easier? Maybe a data structure that has O(1) time for if it contains an item?</p>
 <p>We can use a set for this:</p>
 <p>So our solution turns into this:</p>
