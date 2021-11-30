@@ -250,7 +250,7 @@
 <li><a href="#rust-vs.-javascript-python-ruby"><span class="toc-section-number">1.1.3</span> Rust vs. JavaScript, Python, Ruby</a></li>
 <li><a href="#rust-vs.-haskell-ocaml-f-elixir"><span class="toc-section-number">1.1.4</span> Rust vs. Haskell, OCaml, F#, Elixir</a></li>
 </ul></li>
-<li><a href="#ownership"><span class="toc-section-number">1.2</span> Ownership</a></li>
+<li><a href="#ownership-and-references"><span class="toc-section-number">1.2</span> Ownership and References</a></li>
 <li><a href="#cargo"><span class="toc-section-number">1.3</span> Cargo</a></li>
 <li><a href="#cargo-doc"><span class="toc-section-number">1.4</span> Cargo Doc</a></li>
 <li><a href="#testing"><span class="toc-section-number">1.5</span> Testing</a></li>
@@ -268,35 +268,34 @@
 <li><a href="#enums"><span class="toc-section-number">1.7.9</span> Enums</a></li>
 <li><a href="#unit-type"><span class="toc-section-number">1.7.10</span> Unit Type</a></li>
 </ul></li>
-<li><a href="#references"><span class="toc-section-number">1.8</span> References</a></li>
-<li><a href="#pattern-matching"><span class="toc-section-number">1.9</span> Pattern Matching</a></li>
-<li><a href="#error-handling-at-compile-time"><span class="toc-section-number">1.10</span> Error Handling at Compile Time</a>
+<li><a href="#pattern-matching"><span class="toc-section-number">1.8</span> Pattern Matching</a></li>
+<li><a href="#error-handling-at-compile-time"><span class="toc-section-number">1.9</span> Error Handling at Compile Time</a>
 <ul>
-<li><a href="#option"><span class="toc-section-number">1.10.1</span> Option</a></li>
-<li><a href="#error"><span class="toc-section-number">1.10.2</span> Error</a></li>
+<li><a href="#option"><span class="toc-section-number">1.9.1</span> Option</a></li>
+<li><a href="#error"><span class="toc-section-number">1.9.2</span> Error</a></li>
 </ul></li>
-<li><a href="#impl"><span class="toc-section-number">1.11</span> Impl</a></li>
-<li><a href="#traits"><span class="toc-section-number">1.12</span> Traits</a></li>
-<li><a href="#iterators"><span class="toc-section-number">1.13</span> Iterators</a></li>
-<li><a href="#data-structures"><span class="toc-section-number">1.14</span> Data Structures</a>
+<li><a href="#impl"><span class="toc-section-number">1.10</span> Impl</a></li>
+<li><a href="#traits"><span class="toc-section-number">1.11</span> Traits</a></li>
+<li><a href="#iterators"><span class="toc-section-number">1.12</span> Iterators</a></li>
+<li><a href="#data-structures"><span class="toc-section-number">1.13</span> Data Structures</a>
 <ul>
-<li><a href="#vec"><span class="toc-section-number">1.14.1</span> Vec</a></li>
-<li><a href="#vecdeque"><span class="toc-section-number">1.14.2</span> VecDeque</a></li>
-<li><a href="#linkedlist"><span class="toc-section-number">1.14.3</span> LinkedList</a></li>
-<li><a href="#hashmap"><span class="toc-section-number">1.14.4</span> HashMap</a></li>
-<li><a href="#btreemap"><span class="toc-section-number">1.14.5</span> BTreeMap</a></li>
-<li><a href="#hashset"><span class="toc-section-number">1.14.6</span> HashSet</a></li>
-<li><a href="#btreeset"><span class="toc-section-number">1.14.7</span> BTreeSet</a></li>
-<li><a href="#binaryheap"><span class="toc-section-number">1.14.8</span> BinaryHeap</a></li>
+<li><a href="#vec"><span class="toc-section-number">1.13.1</span> Vec</a></li>
+<li><a href="#vecdeque"><span class="toc-section-number">1.13.2</span> VecDeque</a></li>
+<li><a href="#linkedlist"><span class="toc-section-number">1.13.3</span> LinkedList</a></li>
+<li><a href="#hashmap"><span class="toc-section-number">1.13.4</span> HashMap</a></li>
+<li><a href="#btreemap"><span class="toc-section-number">1.13.5</span> BTreeMap</a></li>
+<li><a href="#hashset"><span class="toc-section-number">1.13.6</span> HashSet</a></li>
+<li><a href="#btreeset"><span class="toc-section-number">1.13.7</span> BTreeSet</a></li>
+<li><a href="#binaryheap"><span class="toc-section-number">1.13.8</span> BinaryHeap</a></li>
 </ul></li>
-<li><a href="#algorithms"><span class="toc-section-number">1.15</span> Algorithms</a>
+<li><a href="#algorithms"><span class="toc-section-number">1.14</span> Algorithms</a>
 <ul>
-<li><a href="#binary-search"><span class="toc-section-number">1.15.1</span> Binary Search</a></li>
+<li><a href="#binary-search"><span class="toc-section-number">1.14.1</span> Binary Search</a></li>
 </ul></li>
-<li><a href="#counting-in-o1-space-with-slices"><span class="toc-section-number">1.16</span> Counting in O(1) space with slices</a></li>
-<li><a href="#regex"><span class="toc-section-number">1.17</span> Regex</a></li>
-<li><a href="#derive-macros"><span class="toc-section-number">1.18</span> Derive Macros</a></li>
-<li><a href="#smart-pointers"><span class="toc-section-number">1.19</span> Smart Pointers</a></li>
+<li><a href="#counting-in-o1-space-with-slices"><span class="toc-section-number">1.15</span> Counting in O(1) space with slices</a></li>
+<li><a href="#regex"><span class="toc-section-number">1.16</span> Regex</a></li>
+<li><a href="#derive-macros"><span class="toc-section-number">1.17</span> Derive Macros</a></li>
+<li><a href="#smart-pointers"><span class="toc-section-number">1.18</span> Smart Pointers</a></li>
 </ul></li>
 <li><a href="#macros-for-rust"><span class="toc-section-number">2</span> Macros for Rust</a>
 <ul>
@@ -332,26 +331,155 @@
 <h3 data-number="1.1.2" id="rust-vs.-java-kotlin-c-swift"><span class="header-section-number">1.1.2</span> Rust vs. Java, Kotlin, C#, Swift</h3>
 <h3 data-number="1.1.3" id="rust-vs.-javascript-python-ruby"><span class="header-section-number">1.1.3</span> Rust vs. JavaScript, Python, Ruby</h3>
 <h3 data-number="1.1.4" id="rust-vs.-haskell-ocaml-f-elixir"><span class="header-section-number">1.1.4</span> Rust vs. Haskell, OCaml, F#, Elixir</h3>
-<h2 data-number="1.2" id="ownership"><span class="header-section-number">1.2</span> Ownership</h2>
+<h2 data-number="1.2" id="ownership-and-references"><span class="header-section-number">1.2</span> Ownership and References</h2>
 <p>Rust’s most unique feature is its ownership system, which can be summed up thusly:</p>
-<p>All data must have exactly one owner, and:</p>
+<ol type="1">
+<li>Each value in Rust has a variable that’s called its owner.</li>
+<li>There can only be one owner at a time.</li>
+<li>When the owner goes out of scope, the value will be dropped.</li>
+</ol>
 <p>Any data can be referred to by either:</p>
 <ol type="1">
 <li>A single mutable reference</li>
 <li>Many immutable references</li>
 </ol>
 <p>This is useful because having more than one <em>active</em> mutable reference can cause issues.</p>
-<p>In this code below, we create a vector with one element, 5. Then we take an immutable reference to it, but mutably append the reference to it.</p>
+<p>To demonstrate that, in this code below, we create a vector with one element, 5. Then we take an immutable reference to it, but mutably append the reference to it.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> vec <span class="op">=</span> <span class="op">{</span><span class="dv">5</span><span class="op">};</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">const</span> <span class="kw">auto</span> <span class="op">&amp;</span>first <span class="op">=</span> vec<span class="op">.</span>front<span class="op">();</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">const</span> <span class="dt">int</span> <span class="op">&amp;</span>first <span class="op">=</span> vec<span class="op">.</span>front<span class="op">();</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">10</span><span class="op">;</span> <span class="op">++</span>i<span class="op">)</span> vec<span class="op">.</span>push_back<span class="op">(</span>first<span class="op">);</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span><span class="at">const</span> <span class="kw">auto</span> item<span class="op">:</span> vec<span class="op">)</span> cout <span class="op">&lt;&lt;</span> item <span class="op">&lt;&lt;</span> <span class="ch">&#39;</span><span class="sc">\n</span><span class="ch">&#39;</span><span class="op">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span><span class="at">const</span> <span class="dt">int</span> item<span class="op">:</span> vec<span class="op">)</span> cout <span class="op">&lt;&lt;</span> item <span class="op">&lt;&lt;</span> <span class="ch">&#39;</span><span class="sc">\n</span><span class="ch">&#39;</span><span class="op">;</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<p>This cause iterator invalidation in C++, where <code>first</code> will eventually point to unowned memory, and will be pushed to vec. Vec will then point to unowned memory. This causes <code>Undefined Behavior</code>, where the program will behave non-deterministically.</p>
+<p>This causes iterator invalidation in C++, where <code>first</code> will eventually point to unowned memory, and will be pushed to vec. Vec will then point to unowned memory. This causes <code>Undefined Behavior</code>, where the program will behave non-deterministically.</p>
+<p>Rust actually stops this in its tracks. First, we convert the above program to rust:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> v <span class="op">=</span> <span class="pp">vec!</span>[<span class="dv">5</span>]<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> first <span class="op">=</span> <span class="op">&amp;</span>v[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> _ <span class="kw">in</span> <span class="dv">1</span><span class="op">..</span><span class="dv">10</span> <span class="op">{</span> v<span class="op">.</span>push(<span class="op">*</span>first)<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> p <span class="kw">in</span> v <span class="op">{</span> <span class="pp">println!</span>(<span class="st">&quot;{}&quot;</span><span class="op">,</span> p)<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>And if compiled, the compiler gives this error:</p>
+<pre><code>error[E0502]: cannot borrow `v` as mutable because it is also borrowed as immutable
+ --&gt; &lt;source&gt;:4:20
+  |
+3 |   let first = &amp;v[0];
+  |                - immutable borrow occurs here
+4 |   for _ in 1..10 { v.push(*first); }
+  |                    ^^^^^^^------^
+  |                    |      |
+  |                    |      immutable borrow later used here
+  |                    mutable borrow occurs here
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0502`.</code></pre>
+<p>The error points us to the exact line and the error, which says that a mutable reference on <code>v</code> cannot exist at the same time as an immutable borrow on <code>v</code>. This could allow for iterator invalidation, and the compiler catches this for us.</p>
+<p>If you’re more used to a language with garbage collection, you might recall that there is a distinction between <code>value types</code> and <code>reference types</code>.</p>
+<p>In JavaScript:</p>
+<p>Numbers are value types so mutating the variable passed into a function doesn’t have an effect on the variable.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> a <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> b <span class="op">=</span> <span class="dv">20</span><span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="dv">20</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="kw">const</span> add <span class="op">=</span> (a<span class="op">,</span> b) <span class="kw">=&gt;</span> a <span class="op">+</span> b<span class="op">;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">undefined</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">add</span>(a<span class="op">,</span> b)<span class="op">;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="dv">30</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> a</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="co">// a is still 10</span></span></code></pre></div>
+<p>But for arrays, which are objects, and thus reference types:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> x <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>[]</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> x</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>[]</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="kw">const</span> append <span class="op">=</span> (array<span class="op">,</span> item) <span class="kw">=&gt;</span> array<span class="op">.</span><span class="fu">push</span>(item)<span class="op">;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">undefined</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="fu">append</span>(x<span class="op">,</span> <span class="dv">10</span>)<span class="op">;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> x</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>[ <span class="dv">10</span> ] <span class="co">// x is now [ 10 ]</span></span></code></pre></div>
+<p>This is meant to ease programming, but it can be hard to remember which types are value types. (For example, strings in JavaScript are heap allocated, but are treated as value types).</p>
+<p>In Rust, functions can take ownership of values by moving values into the function:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> v <span class="op">=</span> <span class="pp">vec!</span>[<span class="dv">5</span>]<span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">fn</span> push_and_print(<span class="kw">mut</span> v<span class="op">:</span> <span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">i32</span><span class="op">&gt;</span>) <span class="op">{</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    v<span class="op">.</span>push(<span class="dv">10</span>)<span class="op">;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{:?}&quot;</span><span class="op">,</span> v)<span class="op">;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  push_and_print(v)<span class="op">;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">// println!(&quot;{:?}&quot;, v); // This now causes a compiler error, as v is not in scope</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>If the last line is uncommented:</p>
+<pre><code>error[E0382]: borrow of moved value: `v`
+ --&gt; &lt;source&gt;:8:20
+  |
+2 |   let v = vec![5];
+  |       - move occurs because `v` has type `Vec&lt;i32&gt;`, which does not implement the `Copy` trait
+...
+7 |   push_and_print(v);
+  |                  - value moved here
+8 |   println!(&quot;{:?}&quot;, v); // This now causes a compiler error, since v has been moved into `push_and_print`.
+  |                    ^ value borrowed here after move
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0382`.</code></pre>
+<p>Functions can take a mutable reference, which does not transfer ownership:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> v <span class="op">=</span> <span class="pp">vec!</span>[<span class="dv">5</span>]<span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">fn</span> push_and_print(v<span class="op">:</span> <span class="op">&amp;</span><span class="kw">mut</span> <span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">i32</span><span class="op">&gt;</span>) <span class="op">{</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    v<span class="op">.</span>push(<span class="dv">10</span>)<span class="op">;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{:?}&quot;</span><span class="op">,</span> v)<span class="op">;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span> <span class="co">// the mut reference is returned to the outer scope here</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  push_and_print(<span class="op">&amp;</span><span class="kw">mut</span> v)<span class="op">;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="pp">println!</span>(<span class="st">&quot;{:?}&quot;</span><span class="op">,</span> v)<span class="op">;</span> <span class="co">// this no longer causes a compiler error</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Or they can take an immutable reference, which does not transfer ownership and disallows mutating the data behind the reference:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> v <span class="op">=</span> <span class="pp">vec!</span>[<span class="dv">5</span>]<span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">fn</span> push_and_print(v<span class="op">:</span> <span class="op">&amp;</span><span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">i32</span><span class="op">&gt;</span>) <span class="op">{</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// v.push(10); // mutating v is no longer allowed</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{:?}&quot;</span><span class="op">,</span> v)<span class="op">;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span> <span class="co">// the reference is returned to the outer scope here</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  push_and_print(<span class="op">&amp;</span>v)<span class="op">;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="pp">println!</span>(<span class="st">&quot;{:?}&quot;</span><span class="op">,</span> v)<span class="op">;</span> <span class="co">// no compiler error. V is in scope.</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Value types (which in Rust implement a trait called <code>Copy</code>) can be treated similarly, except they are not moved into functions.</p>
+<p>They are copied into a function by default:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> num <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">fn</span> add_and_print(<span class="kw">mut</span> num<span class="op">:</span> <span class="dt">i32</span>) <span class="op">{</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    num <span class="op">+=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{}&quot;</span><span class="op">,</span> num)<span class="op">;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  add_and_print(num)<span class="op">;</span> <span class="co">// 20</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="pp">println!</span>(<span class="st">&quot;{}&quot;</span><span class="op">,</span> num)<span class="op">;</span> <span class="co">// 10</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>They can be treated as a mutable reference:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> num <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">fn</span> add_and_print(num<span class="op">:</span> <span class="op">&amp;</span><span class="kw">mut</span> <span class="dt">i32</span>) <span class="op">{</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>num <span class="op">+=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{}&quot;</span><span class="op">,</span> num)<span class="op">;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span> <span class="co">// the reference is returned to the outer scope here</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  add_and_print(<span class="op">&amp;</span><span class="kw">mut</span> num)<span class="op">;</span> <span class="co">// 20</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="pp">println!</span>(<span class="st">&quot;{}&quot;</span><span class="op">,</span> num)<span class="op">;</span> <span class="co">// 20 // no compiler error. num is in scope</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>They can be treated as an immutable reference:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> num <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">fn</span> add_and_print(num<span class="op">:</span> <span class="op">&amp;</span><span class="dt">i32</span>) <span class="op">{</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// *num += 10; // mutation is no longer allowed</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{}&quot;</span><span class="op">,</span> num)<span class="op">;</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span> <span class="co">// the reference is returned to the outer scope here</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  add_and_print(<span class="op">&amp;</span>num)<span class="op">;</span> <span class="co">// 20</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="pp">println!</span>(<span class="st">&quot;{}&quot;</span><span class="op">,</span> num)<span class="op">;</span> <span class="co">// 20 // no compiler error. num is in scope</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>All in all, Rust allows finer grained control of the lifetimes of variables, and functions show if they take ownership of variables that are passed in, or if they take a reference, or if they mutate the underlying data.</p>
 <h2 data-number="1.3" id="cargo"><span class="header-section-number">1.3</span> Cargo</h2>
 <h2 data-number="1.4" id="cargo-doc"><span class="header-section-number">1.4</span> Cargo Doc</h2>
 <h2 data-number="1.5" id="testing"><span class="header-section-number">1.5</span> Testing</h2>
@@ -367,22 +495,21 @@
 <h3 data-number="1.7.8" id="structs"><span class="header-section-number">1.7.8</span> Structs</h3>
 <h3 data-number="1.7.9" id="enums"><span class="header-section-number">1.7.9</span> Enums</h3>
 <h3 data-number="1.7.10" id="unit-type"><span class="header-section-number">1.7.10</span> Unit Type</h3>
-<h2 data-number="1.8" id="references"><span class="header-section-number">1.8</span> References</h2>
-<h2 data-number="1.9" id="pattern-matching"><span class="header-section-number">1.9</span> Pattern Matching</h2>
-<h2 data-number="1.10" id="error-handling-at-compile-time"><span class="header-section-number">1.10</span> Error Handling at Compile Time</h2>
-<h3 data-number="1.10.1" id="option"><span class="header-section-number">1.10.1</span> Option</h3>
-<h3 data-number="1.10.2" id="error"><span class="header-section-number">1.10.2</span> Error</h3>
-<h2 data-number="1.11" id="impl"><span class="header-section-number">1.11</span> Impl</h2>
-<h2 data-number="1.12" id="traits"><span class="header-section-number">1.12</span> Traits</h2>
-<h2 data-number="1.13" id="iterators"><span class="header-section-number">1.13</span> Iterators</h2>
-<h2 data-number="1.14" id="data-structures"><span class="header-section-number">1.14</span> Data Structures</h2>
-<h3 data-number="1.14.1" id="vec"><span class="header-section-number">1.14.1</span> Vec</h3>
+<h2 data-number="1.8" id="pattern-matching"><span class="header-section-number">1.8</span> Pattern Matching</h2>
+<h2 data-number="1.9" id="error-handling-at-compile-time"><span class="header-section-number">1.9</span> Error Handling at Compile Time</h2>
+<h3 data-number="1.9.1" id="option"><span class="header-section-number">1.9.1</span> Option</h3>
+<h3 data-number="1.9.2" id="error"><span class="header-section-number">1.9.2</span> Error</h3>
+<h2 data-number="1.10" id="impl"><span class="header-section-number">1.10</span> Impl</h2>
+<h2 data-number="1.11" id="traits"><span class="header-section-number">1.11</span> Traits</h2>
+<h2 data-number="1.12" id="iterators"><span class="header-section-number">1.12</span> Iterators</h2>
+<h2 data-number="1.13" id="data-structures"><span class="header-section-number">1.13</span> Data Structures</h2>
+<h3 data-number="1.13.1" id="vec"><span class="header-section-number">1.13.1</span> Vec</h3>
 <p>Rust’s growable array type is called <code>Vec</code>, short for <code>vector</code> (which comes from C++). In python any many functional languages it’s called a list, and in other languages, an array.</p>
 <p>To create a vector, one can use this syntax:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="kw">mut</span> v <span class="op">=</span> <span class="dt">Vec</span><span class="pp">::</span>new()<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="kw">mut</span> v <span class="op">=</span> <span class="dt">Vec</span><span class="pp">::</span>new()<span class="op">;</span></span></code></pre></div>
 <p>The main operation of a vector is <code>push</code>, which appends one element to the end of the vector.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="kw">mut</span> v <span class="op">=</span> <span class="dt">Vec</span><span class="pp">::</span>new()<span class="op">;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>v<span class="op">.</span>push(<span class="dv">5</span>)<span class="op">;</span> <span class="co">// The vector now looks like this: [5].</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="kw">mut</span> v <span class="op">=</span> <span class="dt">Vec</span><span class="pp">::</span>new()<span class="op">;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>v<span class="op">.</span>push(<span class="dv">5</span>)<span class="op">;</span> <span class="co">// The vector now looks like this: [5].</span></span></code></pre></div>
 <p>Pushing has an amortized time complexity of O(1). Pushing to a vector has a worst case time complexity of O(n), because vectors dynamically grow.</p>
 <p>If a vector is full, and you push back to a vector, the vector must do the following:</p>
 <ol type="1">
@@ -393,77 +520,77 @@
 </ol>
 <p>The first, third, and fourth step all take constant time, but copying over every item from the previous to the new buffer takes linear (O(n)) time. That being said, as long as you avoid this case as much as possible (which you can mitigate by doubling the buffer size every time) the time complexity for pushing to a vector is constant time on average.</p>
 <p>If you want to check the contents of a vector at any given time, you can print it:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="kw">mut</span> v <span class="op">=</span> <span class="dt">Vec</span><span class="pp">::</span>new()<span class="op">;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>v<span class="op">.</span>push(<span class="dv">5</span>)<span class="op">;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="pp">println!</span>(<span class="st">&quot;{:?}&quot;</span><span class="op">,</span> v)<span class="op">;</span></span></code></pre></div>
-<h3 data-number="1.14.2" id="vecdeque"><span class="header-section-number">1.14.2</span> VecDeque</h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="kw">mut</span> v <span class="op">=</span> <span class="dt">Vec</span><span class="pp">::</span>new()<span class="op">;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>v<span class="op">.</span>push(<span class="dv">5</span>)<span class="op">;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="pp">println!</span>(<span class="st">&quot;{:?}&quot;</span><span class="op">,</span> v)<span class="op">;</span></span></code></pre></div>
+<h3 data-number="1.13.2" id="vecdeque"><span class="header-section-number">1.13.2</span> VecDeque</h3>
 <p>A VecDeque is a Doubly-Ended Queue implemented as a Vector. A VecDeque allows for O(1) appends and pops from either end of the queue, which basically makes it a stack and a queue in one data structure.</p>
-<h3 data-number="1.14.3" id="linkedlist"><span class="header-section-number">1.14.3</span> LinkedList</h3>
+<h3 data-number="1.13.3" id="linkedlist"><span class="header-section-number">1.13.3</span> LinkedList</h3>
 <p>A LinkedList is a doubly linked list.</p>
 <p>There are two Key-Value data structures in the Rust Standard Library.</p>
-<h3 data-number="1.14.4" id="hashmap"><span class="header-section-number">1.14.4</span> HashMap</h3>
+<h3 data-number="1.13.4" id="hashmap"><span class="header-section-number">1.13.4</span> HashMap</h3>
 <p>A HashMap is an Unordered Map. That means that getting, inserting, updating, or deleting a value from this data structure is done in O(1) time.</p>
-<h3 data-number="1.14.5" id="btreemap"><span class="header-section-number">1.14.5</span> BTreeMap</h3>
+<h3 data-number="1.13.5" id="btreemap"><span class="header-section-number">1.13.5</span> BTreeMap</h3>
 <p>A BTreeMap is an Ordered Map. That means that getting, inserting, updating, or deleting a value from this data structure is done in O(log n) time.</p>
-<h3 data-number="1.14.6" id="hashset"><span class="header-section-number">1.14.6</span> HashSet</h3>
-<h3 data-number="1.14.7" id="btreeset"><span class="header-section-number">1.14.7</span> BTreeSet</h3>
-<h3 data-number="1.14.8" id="binaryheap"><span class="header-section-number">1.14.8</span> BinaryHeap</h3>
-<h2 data-number="1.15" id="algorithms"><span class="header-section-number">1.15</span> Algorithms</h2>
-<h3 data-number="1.15.1" id="binary-search"><span class="header-section-number">1.15.1</span> Binary Search</h3>
-<h2 data-number="1.16" id="counting-in-o1-space-with-slices"><span class="header-section-number">1.16</span> Counting in O(1) space with slices</h2>
-<h2 data-number="1.17" id="regex"><span class="header-section-number">1.17</span> Regex</h2>
-<h2 data-number="1.18" id="derive-macros"><span class="header-section-number">1.18</span> Derive Macros</h2>
-<h2 data-number="1.19" id="smart-pointers"><span class="header-section-number">1.19</span> Smart Pointers</h2>
+<h3 data-number="1.13.6" id="hashset"><span class="header-section-number">1.13.6</span> HashSet</h3>
+<h3 data-number="1.13.7" id="btreeset"><span class="header-section-number">1.13.7</span> BTreeSet</h3>
+<h3 data-number="1.13.8" id="binaryheap"><span class="header-section-number">1.13.8</span> BinaryHeap</h3>
+<h2 data-number="1.14" id="algorithms"><span class="header-section-number">1.14</span> Algorithms</h2>
+<h3 data-number="1.14.1" id="binary-search"><span class="header-section-number">1.14.1</span> Binary Search</h3>
+<h2 data-number="1.15" id="counting-in-o1-space-with-slices"><span class="header-section-number">1.15</span> Counting in O(1) space with slices</h2>
+<h2 data-number="1.16" id="regex"><span class="header-section-number">1.16</span> Regex</h2>
+<h2 data-number="1.17" id="derive-macros"><span class="header-section-number">1.17</span> Derive Macros</h2>
+<h2 data-number="1.18" id="smart-pointers"><span class="header-section-number">1.18</span> Smart Pointers</h2>
 <h1 data-number="2" id="macros-for-rust"><span class="header-section-number">2</span> Macros for Rust</h1>
 <h2 data-number="2.1" id="a-macro-for-testing"><span class="header-section-number">2.1</span> A macro for testing</h2>
 <p>Unlike C and C++, a testing framework is built into rust. We can create our own tests by creating a <code>mod</code> block and letting cargo know that we want to test it.</p>
 <p>Let’s say we create this function:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> add(a<span class="op">:</span> <span class="dt">i32</span><span class="op">,</span> b<span class="op">:</span> <span class="dt">i32</span>) <span class="op">-&gt;</span> <span class="dt">i32</span> <span class="op">{</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  a <span class="op">+</span> b</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> add(a<span class="op">:</span> <span class="dt">i32</span><span class="op">,</span> b<span class="op">:</span> <span class="dt">i32</span>) <span class="op">-&gt;</span> <span class="dt">i32</span> <span class="op">{</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  a <span class="op">+</span> b</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>We can test it at the bottom of the file:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>cfg<span class="at">(</span>test<span class="at">)]</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">mod</span> test <span class="op">{</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">use</span> <span class="kw">super</span><span class="pp">::</span><span class="op">*;</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">#[</span>test<span class="at">]</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">fn</span> add_one_and_one() <span class="op">{</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="pp">assert_eq!</span>(add(<span class="dv">1</span><span class="op">,</span> <span class="dv">1</span>)<span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">#[</span>test<span class="at">]</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">fn</span> add_one_and_two() <span class="op">{</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="pp">assert_eq!</span>(add(<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">,</span> <span class="dv">3</span>)<span class="op">;</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>cfg<span class="at">(</span>test<span class="at">)]</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">mod</span> test <span class="op">{</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">use</span> <span class="kw">super</span><span class="pp">::</span><span class="op">*;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">#[</span>test<span class="at">]</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">fn</span> add_one_and_one() <span class="op">{</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="pp">assert_eq!</span>(add(<span class="dv">1</span><span class="op">,</span> <span class="dv">1</span>)<span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">#[</span>test<span class="at">]</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">fn</span> add_one_and_two() <span class="op">{</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="pp">assert_eq!</span>(add(<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">,</span> <span class="dv">3</span>)<span class="op">;</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Macros let us reduce most of the boilerplate:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>macro_export<span class="at">]</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="pp">macro_rules!</span> test <span class="op">{</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    (<span class="op">$</span>(<span class="op">$</span>name<span class="op">:</span>ident<span class="op">:</span> <span class="op">$</span>left<span class="op">:</span>expr<span class="op">,</span> <span class="op">$</span>right<span class="op">:</span>expr<span class="op">,</span>)<span class="op">*</span>) <span class="op">=&gt;</span> <span class="op">{</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">#[</span>cfg<span class="at">(</span>test<span class="at">)]</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">mod</span> test <span class="op">{</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">use</span> <span class="kw">super</span><span class="pp">::</span><span class="op">*;</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>            <span class="op">$</span>(</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">#[</span>test<span class="at">]</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                <span class="kw">fn</span> $name() <span class="op">{</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                    <span class="pp">assert_eq!</span>(<span class="op">$</span>left<span class="op">,</span> <span class="op">$</span>right)<span class="op">;</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>            )<span class="op">*</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>macro_export<span class="at">]</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="pp">macro_rules!</span> test <span class="op">{</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    (<span class="op">$</span>(<span class="op">$</span>name<span class="op">:</span>ident<span class="op">:</span> <span class="op">$</span>left<span class="op">:</span>expr<span class="op">,</span> <span class="op">$</span>right<span class="op">:</span>expr<span class="op">,</span>)<span class="op">*</span>) <span class="op">=&gt;</span> <span class="op">{</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">#[</span>cfg<span class="at">(</span>test<span class="at">)]</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">mod</span> test <span class="op">{</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">use</span> <span class="kw">super</span><span class="pp">::</span><span class="op">*;</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>            <span class="op">$</span>(</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">#[</span>test<span class="at">]</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>                <span class="kw">fn</span> $name() <span class="op">{</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>                    <span class="pp">assert_eq!</span>(<span class="op">$</span>left<span class="op">,</span> <span class="op">$</span>right)<span class="op">;</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>            )<span class="op">*</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Our tests can then be rewritten like so:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="pp">test!</span> <span class="op">{</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  add_one_to_one<span class="op">:</span> add(<span class="dv">1</span><span class="op">,</span> <span class="dv">1</span>)<span class="op">,</span> <span class="dv">2</span><span class="op">,</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  add_one_to_two<span class="op">:</span> add(<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">,</span> <span class="dv">3</span><span class="op">,</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="pp">test!</span> <span class="op">{</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  add_one_to_one<span class="op">:</span> add(<span class="dv">1</span><span class="op">,</span> <span class="dv">1</span>)<span class="op">,</span> <span class="dv">2</span><span class="op">,</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  add_one_to_two<span class="op">:</span> add(<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">,</span> <span class="dv">3</span><span class="op">,</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>And running them gives us this result:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cargo test</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">running</span> 2 tests</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">test</span> test::add_one_and_one ... ok</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">test</span> test::add_one_and_two ... ok</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="bu">test</span> result: ok. 2 passed<span class="kw">;</span> <span class="ex">0</span> failed<span class="kw">;</span> <span class="ex">0</span> ignored<span class="kw">;</span> <span class="ex">0</span> measured<span class="kw">;</span> <span class="ex">0</span> filtered out<span class="kw">;</span> <span class="ex">finished</span> in 0.01s</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cargo test</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">running</span> 2 tests</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">test</span> test::add_one_and_one ... ok</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="bu">test</span> test::add_one_and_two ... ok</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="bu">test</span> result: ok. 2 passed<span class="kw">;</span> <span class="ex">0</span> failed<span class="kw">;</span> <span class="ex">0</span> ignored<span class="kw">;</span> <span class="ex">0</span> measured<span class="kw">;</span> <span class="ex">0</span> filtered out<span class="kw">;</span> <span class="ex">finished</span> in 0.01s</span></code></pre></div>
 <h1 data-number="3" id="how-to-approach-problems"><span class="header-section-number">3</span> How to Approach Problems</h1>
 <p>Much has been said about how to become a better problem solver<span class="citation" data-cites="citeulike:679515"><sup><a href="#ref-citeulike:679515" role="doc-biblioref">1</a></sup></span>. Here we’ll go over some tips and tricks to solve a hard problem by using some of these techniques.</p>
 <h2 data-number="3.1" id="a-plan-of-attack"><span class="header-section-number">3.1</span> A Plan of Attack</h2>
@@ -487,129 +614,129 @@
 <h3 data-number="3.1.1" id="build-intuition"><span class="header-section-number">3.1.1</span> Build Intuition</h3>
 <p>First, let’s jot down some notes about the problem. It says: <code>We want to know how many of the stones you have are also jewels</code>. This means that we want to return a count of our jewels. A count is going to be a unsigned integer. We can imagine that our return type would be some unsigned integer type, like <code>u32</code>.</p>
 <p>We can start with that:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> jewels_and_stones(<span class="co">/* </span><span class="al">TODO</span><span class="co"> */</span>) <span class="op">-&gt;</span> <span class="dt">u32</span> <span class="op">{</span> <span class="co">/* </span><span class="al">TODO</span><span class="co"> */</span> <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> jewels_and_stones(<span class="co">/* </span><span class="al">TODO</span><span class="co"> */</span>) <span class="op">-&gt;</span> <span class="dt">u32</span> <span class="op">{</span> <span class="co">/* </span><span class="al">TODO</span><span class="co"> */</span> <span class="op">}</span></span></code></pre></div>
 <p>Next, let’s take note of the two inputs, which are <code>given [as] strings</code>. We can assume we are given one string for the jewels and one for the stones.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> jewels_and_stones(jewels<span class="op">:</span> <span class="dt">String</span><span class="op">,</span> stones<span class="op">:</span> <span class="dt">String</span>) <span class="op">-&gt;</span> <span class="dt">u32</span> <span class="op">{</span> <span class="co">/* </span><span class="al">TODO</span><span class="co"> */</span> <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> jewels_and_stones(jewels<span class="op">:</span> <span class="dt">String</span><span class="op">,</span> stones<span class="op">:</span> <span class="dt">String</span>) <span class="op">-&gt;</span> <span class="dt">u32</span> <span class="op">{</span> <span class="co">/* </span><span class="al">TODO</span><span class="co"> */</span> <span class="op">}</span></span></code></pre></div>
 <p>The problem also notes that we want to return the number of jewels in our collection of stones, and that every character of jewels is a jewel, and every character of stones is a stone.</p>
 <p>Let’s reduce the problem to something easier. Let’s say that instead of having a collection of stone(s), we have just one stone and one jewel. Does this make the problem easier?</p>
 <p>It should. We now only need to check if the stone is a jewel, and return our counter at the end.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> jewels_and_stones(jewel<span class="op">:</span> <span class="dt">char</span><span class="op">,</span> stone<span class="op">:</span> <span class="dt">char</span>) <span class="op">-&gt;</span> <span class="dt">u32</span> <span class="op">{</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> jewel <span class="op">==</span> stone <span class="op">{</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    count <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  count</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> jewels_and_stones(jewel<span class="op">:</span> <span class="dt">char</span><span class="op">,</span> stone<span class="op">:</span> <span class="dt">char</span>) <span class="op">-&gt;</span> <span class="dt">u32</span> <span class="op">{</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> jewel <span class="op">==</span> stone <span class="op">{</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    count <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  count</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>What if we make it so we have one stone but many jewels? What would we do?</p>
 <p>Well for our one stone, we would want to check every jewel to make sure that it is a jewel, and return the count of jewels we have.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> jewels_and_stones(jewels<span class="op">:</span> <span class="dt">String</span><span class="op">,</span> stone<span class="op">:</span> <span class="dt">char</span>) <span class="op">-&gt;</span> <span class="dt">u32</span> <span class="op">{</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> jewel <span class="kw">in</span> jewels<span class="op">.</span>chars() <span class="op">{</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> jewel <span class="op">==</span> stone <span class="op">{</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>      count <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  count</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> jewels_and_stones(jewels<span class="op">:</span> <span class="dt">String</span><span class="op">,</span> stone<span class="op">:</span> <span class="dt">char</span>) <span class="op">-&gt;</span> <span class="dt">u32</span> <span class="op">{</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> jewel <span class="kw">in</span> jewels<span class="op">.</span>chars() <span class="op">{</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> jewel <span class="op">==</span> stone <span class="op">{</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>      count <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  count</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>What happens if we have many stones but one jewel? We do the opposite, where every stone that counts as a jewel increments our count by one.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> jewels_and_stones(jewel<span class="op">:</span> <span class="dt">char</span><span class="op">,</span> stones<span class="op">:</span> <span class="dt">String</span>) <span class="op">-&gt;</span> <span class="dt">u32</span> <span class="op">{</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> stone <span class="kw">in</span> stones<span class="op">.</span>chars() <span class="op">{</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> jewel <span class="op">==</span> stone <span class="op">{</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>      count <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  count</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> jewels_and_stones(jewel<span class="op">:</span> <span class="dt">char</span><span class="op">,</span> stones<span class="op">:</span> <span class="dt">String</span>) <span class="op">-&gt;</span> <span class="dt">u32</span> <span class="op">{</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> stone <span class="kw">in</span> stones<span class="op">.</span>chars() <span class="op">{</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> jewel <span class="op">==</span> stone <span class="op">{</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>      count <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  count</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Now that we have some intuition about how to solve simpler problems, we’ll start by writing test cases for this problem:</p>
 <h2 data-number="3.2" id="writing-test-cases"><span class="header-section-number">3.2</span> Writing test cases</h2>
 <p>We’ll start off by writing test cases for our simplified problems:</p>
 <p>If the jewels and stones have a length of one, either they are the same or not. If they are the same, this function should return 1. If not, this function should return 0.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;a&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;a&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">1</span>)<span class="op">;</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;a&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;b&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;a&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;a&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;a&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;b&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span></code></pre></div>
 <p>If there is one jewel, we iterate through our stones and increment our count every time we find a jewel.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;a&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;aac&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;a&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;xyz&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;a&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;aac&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;a&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;xyz&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span></code></pre></div>
 <p>Otherwise, if there’s one stone, then we check every jewel to see if our stone is a jewel.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;abc&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;a&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">1</span>)<span class="op">;</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;xyz&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;a&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;abc&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;a&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;xyz&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;a&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span></code></pre></div>
 <p>Finally, if there’s more than one jewel and more than one stone, for each stone, we check if it is a jewel in our set of jewels.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;abc&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;cxx&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">1</span>)<span class="op">;</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;xyz&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;xxa&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;abc&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;cxx&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="pp">assert_eq!</span>(jewels_and_stones(<span class="st">&quot;xyz&quot;</span><span class="op">.</span>to_string()<span class="op">,</span> <span class="st">&quot;xxa&quot;</span><span class="op">.</span>to_string())<span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span></code></pre></div>
 <h2 data-number="3.3" id="writing-code"><span class="header-section-number">3.3</span> Writing Code</h2>
 <p>Now we can begin writing some code to tackle our original problem:</p>
 <p>We have an intuition that for every stone, we want to check if it is a jewel. To do this, we have to iterate through all the jewels, and compare our stone to it. If they’re the same, we can increment the count.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> jewels_and_stones(jewels<span class="op">:</span> <span class="dt">String</span><span class="op">,</span> stones<span class="op">:</span> <span class="dt">String</span>) <span class="op">-&gt;</span> <span class="dt">u32</span> <span class="op">{</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> stone <span class="kw">in</span> stones<span class="op">.</span>chars() <span class="op">{</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> jewel <span class="kw">in</span> jewels<span class="op">.</span>chars() <span class="op">{</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> stone <span class="op">==</span> jewel <span class="op">{</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>        count <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  count</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> jewels_and_stones(jewels<span class="op">:</span> <span class="dt">String</span><span class="op">,</span> stones<span class="op">:</span> <span class="dt">String</span>) <span class="op">-&gt;</span> <span class="dt">u32</span> <span class="op">{</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> stone <span class="kw">in</span> stones<span class="op">.</span>chars() <span class="op">{</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> jewel <span class="kw">in</span> jewels<span class="op">.</span>chars() <span class="op">{</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> stone <span class="op">==</span> jewel <span class="op">{</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>        count <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>  count</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>This turns out to pass the tests outlined above, but it has some problems. Time to refactor!</p>
 <h2 data-number="3.4" id="refactoring"><span class="header-section-number">3.4</span> Refactoring</h2>
 <p>When refactoring, let’s discuss some things we can do to improve our code:</p>
 <p>Our code is very concise. There’s not much that can be done to improve its readability, which is a good thing. That being said, it can have a slow runtime. If we say the length of stones is N and the length of jewels is M, the runtime of our code grows in O(N*M) (polynomial time). We should be able to do better. But how?</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">// O(N*M)</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> jewels_and_stones(jewels<span class="op">:</span> <span class="dt">String</span><span class="op">,</span> stones<span class="op">:</span> <span class="dt">String</span>) <span class="op">-&gt;</span> <span class="dt">u32</span> <span class="op">{</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> stone <span class="kw">in</span> stones<span class="op">.</span>chars() <span class="op">{</span> <span class="co">// O(N)</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> jewel <span class="kw">in</span> jewels<span class="op">.</span>chars() <span class="op">{</span> <span class="co">// O(M): Wouldn&#39;t it be nice if this was O(1)?</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> stone <span class="op">==</span> jewel <span class="op">{</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>        count <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  count</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">// O(N*M)</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> jewels_and_stones(jewels<span class="op">:</span> <span class="dt">String</span><span class="op">,</span> stones<span class="op">:</span> <span class="dt">String</span>) <span class="op">-&gt;</span> <span class="dt">u32</span> <span class="op">{</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> stone <span class="kw">in</span> stones<span class="op">.</span>chars() <span class="op">{</span> <span class="co">// O(N)</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> jewel <span class="kw">in</span> jewels<span class="op">.</span>chars() <span class="op">{</span> <span class="co">// O(M): Wouldn&#39;t it be nice if this was O(1)?</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> stone <span class="op">==</span> jewel <span class="op">{</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>        count <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>  count</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>We have a nested for loop, which contributes the slow runtime. Maybe we could represent either jewels or stones in a different fashion, and get rid of a for loop? Would there be a different way of representing jewels that would make this easier? Maybe a data structure that has O(1) time for if it contains an item?</p>
 <p>We can use a set for this:</p>
 <p>So our solution turns into this:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">// O(N)</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> jewels_and_stones(jewels<span class="op">:</span> <span class="dt">String</span><span class="op">,</span> stones<span class="op">:</span> <span class="dt">String</span>) <span class="op">-&gt;</span> <span class="dt">u32</span> <span class="op">{</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> jewels_set<span class="op">:</span> HashSet<span class="op">&lt;</span><span class="dt">char</span><span class="op">&gt;</span> <span class="op">=</span> <span class="pp">HashSet::</span>from_iter(jewels<span class="op">.</span>chars())<span class="op">;</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> stone <span class="kw">in</span> stones<span class="op">.</span>chars() <span class="op">{</span> <span class="co">// O(N)</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> jewels_set<span class="op">.</span>contains(<span class="op">&amp;</span>stone) <span class="op">{</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>      count <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  count</span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">// O(N)</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> jewels_and_stones(jewels<span class="op">:</span> <span class="dt">String</span><span class="op">,</span> stones<span class="op">:</span> <span class="dt">String</span>) <span class="op">-&gt;</span> <span class="dt">u32</span> <span class="op">{</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> jewels_set<span class="op">:</span> HashSet<span class="op">&lt;</span><span class="dt">char</span><span class="op">&gt;</span> <span class="op">=</span> <span class="pp">HashSet::</span>from_iter(jewels<span class="op">.</span>chars())<span class="op">;</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> stone <span class="kw">in</span> stones<span class="op">.</span>chars() <span class="op">{</span> <span class="co">// O(N)</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> jewels_set<span class="op">.</span>contains(<span class="op">&amp;</span>stone) <span class="op">{</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>      count <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>  count</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>And we get down from O(N*M) to O(N) time.</p>
 <h1 data-number="4" id="trees"><span class="header-section-number">4</span> Trees</h1>
 <h2 data-number="4.1" id="validate-binary-search-tree"><span class="header-section-number">4.1</span> Validate Binary Search Tree</h2>
-<div class="sourceCode" id="cb22"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="kw">crate</span><span class="pp">::</span><span class="op">*;</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> is_valid_bst(root<span class="op">:</span> BSTNode) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> helper(node<span class="op">:</span> <span class="op">&amp;</span>BSTNode<span class="op">,</span> possible_min<span class="op">:</span> <span class="dt">i64</span><span class="op">,</span> possible_max<span class="op">:</span> <span class="dt">i64</span>) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">let</span> <span class="cn">Some</span>(n) <span class="op">=</span> node <span class="op">{</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> borrowed <span class="op">=</span> n<span class="op">.</span>borrow()<span class="op">;</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> left <span class="op">=</span> <span class="op">&amp;</span>borrowed<span class="op">.</span>left<span class="op">;</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> right <span class="op">=</span> <span class="op">&amp;</span>borrowed<span class="op">.</span>right<span class="op">;</span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> val<span class="op">:</span> <span class="dt">i64</span> <span class="op">=</span> borrowed<span class="op">.</span>val<span class="op">.</span>into()<span class="op">;</span></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> val <span class="op">&gt;=</span> possible_min <span class="op">&amp;&amp;</span> val <span class="op">&lt;=</span> possible_max <span class="op">{</span></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>                helper(<span class="op">&amp;</span>left<span class="op">,</span> possible_min<span class="op">,</span> val) <span class="op">&amp;&amp;</span> helper(<span class="op">&amp;</span>right<span class="op">,</span> val<span class="op">,</span> possible_max)</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>                <span class="cn">false</span></span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>            <span class="cn">true</span></span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>    helper(<span class="op">&amp;</span>root<span class="op">,</span> <span class="dt">i64</span><span class="pp">::</span><span class="cn">MIN</span><span class="op">,</span> <span class="dt">i64</span><span class="pp">::</span><span class="cn">MAX</span>)</span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="pp">test!</span> <span class="op">{</span></span>
-<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>    test_1<span class="op">:</span> is_valid_bst(<span class="pp">btree!</span>[<span class="dv">2</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">3</span>])<span class="op">,</span> <span class="cn">true</span><span class="op">,</span></span>
-<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>    test_2<span class="op">:</span> is_valid_bst(<span class="pp">btree!</span>[<span class="dv">5</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">3</span>])<span class="op">,</span> <span class="cn">false</span><span class="op">,</span></span>
-<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="kw">crate</span><span class="pp">::</span><span class="op">*;</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> is_valid_bst(root<span class="op">:</span> BSTNode) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> helper(node<span class="op">:</span> <span class="op">&amp;</span>BSTNode<span class="op">,</span> possible_min<span class="op">:</span> <span class="dt">i64</span><span class="op">,</span> possible_max<span class="op">:</span> <span class="dt">i64</span>) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">let</span> <span class="cn">Some</span>(n) <span class="op">=</span> node <span class="op">{</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> borrowed <span class="op">=</span> n<span class="op">.</span>borrow()<span class="op">;</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> left <span class="op">=</span> <span class="op">&amp;</span>borrowed<span class="op">.</span>left<span class="op">;</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> right <span class="op">=</span> <span class="op">&amp;</span>borrowed<span class="op">.</span>right<span class="op">;</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> val<span class="op">:</span> <span class="dt">i64</span> <span class="op">=</span> borrowed<span class="op">.</span>val<span class="op">.</span>into()<span class="op">;</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> val <span class="op">&gt;=</span> possible_min <span class="op">&amp;&amp;</span> val <span class="op">&lt;=</span> possible_max <span class="op">{</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>                helper(<span class="op">&amp;</span>left<span class="op">,</span> possible_min<span class="op">,</span> val) <span class="op">&amp;&amp;</span> helper(<span class="op">&amp;</span>right<span class="op">,</span> val<span class="op">,</span> possible_max)</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>                <span class="cn">false</span></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>            <span class="cn">true</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>    helper(<span class="op">&amp;</span>root<span class="op">,</span> <span class="dt">i64</span><span class="pp">::</span><span class="cn">MIN</span><span class="op">,</span> <span class="dt">i64</span><span class="pp">::</span><span class="cn">MAX</span>)</span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a><span class="pp">test!</span> <span class="op">{</span></span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>    test_1<span class="op">:</span> is_valid_bst(<span class="pp">btree!</span>[<span class="dv">2</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">3</span>])<span class="op">,</span> <span class="cn">true</span><span class="op">,</span></span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>    test_2<span class="op">:</span> is_valid_bst(<span class="pp">btree!</span>[<span class="dv">5</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">3</span>])<span class="op">,</span> <span class="cn">false</span><span class="op">,</span></span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <h2 data-number="4.2" id="same-tree"><span class="header-section-number">4.2</span> Same Tree</h2>
 <h3 data-number="4.2.1" id="problem"><span class="header-section-number">4.2.1</span> Problem</h3>
 <blockquote>
@@ -625,35 +752,35 @@
 <li>What happens when left and right have the same values? Test their left and right nodes for equality as well.</li>
 </ul>
 <h3 data-number="4.2.3" id="test-cases"><span class="header-section-number">4.2.3</span> Test Cases</h3>
-<div class="sourceCode" id="cb23"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="pp">test!</span> <span class="op">{</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    test_1<span class="op">:</span> is_same_tree(<span class="pp">btree!</span>[]<span class="op">,</span> <span class="pp">btree!</span>[])<span class="op">,</span> <span class="cn">true</span><span class="op">,</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    test_2<span class="op">:</span> is_same_tree(<span class="pp">btree!</span>[<span class="dv">1</span>]<span class="op">,</span> <span class="pp">btree!</span>[])<span class="op">,</span> <span class="cn">false</span><span class="op">,</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    test_3<span class="op">:</span> is_same_tree(<span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>]<span class="op">,</span> <span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>])<span class="op">,</span> <span class="cn">true</span><span class="op">,</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    test_4<span class="op">:</span> is_same_tree(<span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span>]<span class="op">,</span> <span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>])<span class="op">,</span> <span class="cn">false</span><span class="op">,</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="pp">test!</span> <span class="op">{</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    test_1<span class="op">:</span> is_same_tree(<span class="pp">btree!</span>[]<span class="op">,</span> <span class="pp">btree!</span>[])<span class="op">,</span> <span class="cn">true</span><span class="op">,</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    test_2<span class="op">:</span> is_same_tree(<span class="pp">btree!</span>[<span class="dv">1</span>]<span class="op">,</span> <span class="pp">btree!</span>[])<span class="op">,</span> <span class="cn">false</span><span class="op">,</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    test_3<span class="op">:</span> is_same_tree(<span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>]<span class="op">,</span> <span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>])<span class="op">,</span> <span class="cn">true</span><span class="op">,</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    test_4<span class="op">:</span> is_same_tree(<span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span>]<span class="op">,</span> <span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>])<span class="op">,</span> <span class="cn">false</span><span class="op">,</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <h3 data-number="4.2.4" id="answer"><span class="header-section-number">4.2.4</span> Answer</h3>
-<div class="sourceCode" id="cb24"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">/// Calculates if two binary search trees have the same values.</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co">/// In this question, there are four possible cases:</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co">/// 1. Both left and right point to a `None` node. In this case, return true.</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co">/// 2. Both left and right point to nodes with the same value. Continue recursing through both</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co">///    trees left and right subtrees.</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co">/// 3. For any other case, return false.</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> is_same_tree(p<span class="op">:</span> BSTNode<span class="op">,</span> q<span class="op">:</span> BSTNode) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> same(p<span class="op">:</span> <span class="op">&amp;</span>BSTNode<span class="op">,</span> q<span class="op">:</span> <span class="op">&amp;</span>BSTNode) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">match</span> (p<span class="op">,</span> q) <span class="op">{</span></span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>            (<span class="cn">Some</span>(left)<span class="op">,</span> <span class="cn">Some</span>(right)) <span class="op">=&gt;</span> <span class="op">{</span></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> left <span class="op">=</span> left<span class="op">.</span>borrow()<span class="op">;</span></span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> right <span class="op">=</span> right<span class="op">.</span>borrow()<span class="op">;</span></span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>                left<span class="op">.</span>val <span class="op">==</span> right<span class="op">.</span>val</span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>                    <span class="op">&amp;&amp;</span> same(<span class="op">&amp;</span>left<span class="op">.</span>left<span class="op">,</span> <span class="op">&amp;</span>right<span class="op">.</span>left)</span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>                    <span class="op">&amp;&amp;</span> same(<span class="op">&amp;</span>left<span class="op">.</span>right<span class="op">,</span> <span class="op">&amp;</span>right<span class="op">.</span>right)</span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>            (<span class="cn">None</span><span class="op">,</span> <span class="cn">None</span>) <span class="op">=&gt;</span> <span class="cn">true</span><span class="op">,</span></span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>            _ <span class="op">=&gt;</span> <span class="cn">false</span><span class="op">,</span></span>
-<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>    same(<span class="op">&amp;</span>p<span class="op">,</span> <span class="op">&amp;</span>q)</span>
-<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">/// Calculates if two binary search trees have the same values.</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co">/// In this question, there are four possible cases:</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co">/// 1. Both left and right point to a `None` node. In this case, return true.</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co">/// 2. Both left and right point to nodes with the same value. Continue recursing through both</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co">///    trees left and right subtrees.</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co">/// 3. For any other case, return false.</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> is_same_tree(p<span class="op">:</span> BSTNode<span class="op">,</span> q<span class="op">:</span> BSTNode) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> same(p<span class="op">:</span> <span class="op">&amp;</span>BSTNode<span class="op">,</span> q<span class="op">:</span> <span class="op">&amp;</span>BSTNode) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">match</span> (p<span class="op">,</span> q) <span class="op">{</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>            (<span class="cn">Some</span>(left)<span class="op">,</span> <span class="cn">Some</span>(right)) <span class="op">=&gt;</span> <span class="op">{</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> left <span class="op">=</span> left<span class="op">.</span>borrow()<span class="op">;</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> right <span class="op">=</span> right<span class="op">.</span>borrow()<span class="op">;</span></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>                left<span class="op">.</span>val <span class="op">==</span> right<span class="op">.</span>val</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>                    <span class="op">&amp;&amp;</span> same(<span class="op">&amp;</span>left<span class="op">.</span>left<span class="op">,</span> <span class="op">&amp;</span>right<span class="op">.</span>left)</span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>                    <span class="op">&amp;&amp;</span> same(<span class="op">&amp;</span>left<span class="op">.</span>right<span class="op">,</span> <span class="op">&amp;</span>right<span class="op">.</span>right)</span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>            (<span class="cn">None</span><span class="op">,</span> <span class="cn">None</span>) <span class="op">=&gt;</span> <span class="cn">true</span><span class="op">,</span></span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>            _ <span class="op">=&gt;</span> <span class="cn">false</span><span class="op">,</span></span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>    same(<span class="op">&amp;</span>p<span class="op">,</span> <span class="op">&amp;</span>q)</span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -669,32 +796,32 @@
 </tbody>
 </table>
 <h2 data-number="4.3" id="maximum-path-through-a-binary-tree"><span class="header-section-number">4.3</span> Maximum Path through a Binary Tree</h2>
-<div class="sourceCode" id="cb25"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="kw">crate</span><span class="pp">::</span><span class="op">*;</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::cmp::</span>max<span class="op">;</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co">/// Finds the maximum path sum through a binary tree.</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> max_path_sum(root<span class="op">:</span> BSTNode) <span class="op">-&gt;</span> <span class="dt">i32</span> <span class="op">{</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> max_so_far <span class="op">=</span> <span class="dt">i32</span><span class="pp">::</span><span class="cn">MIN</span><span class="op">;</span></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">fn</span> helper(node<span class="op">:</span> <span class="op">&amp;</span>BSTNode<span class="op">,</span> max_so_far<span class="op">:</span> <span class="op">&amp;</span><span class="kw">mut</span> <span class="dt">i32</span>) <span class="op">-&gt;</span> <span class="dt">i32</span> <span class="op">{</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">match</span> node <span class="op">{</span></span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>      <span class="cn">Some</span>(n) <span class="op">=&gt;</span> <span class="op">{</span></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> val <span class="op">=</span> n<span class="op">.</span>borrow()<span class="op">.</span>val<span class="op">;</span></span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> l <span class="op">=</span> max(<span class="dv">0</span><span class="op">,</span> helper(<span class="op">&amp;</span>n<span class="op">.</span>borrow()<span class="op">.</span>left<span class="op">,</span> max_so_far))<span class="op">;</span></span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> r <span class="op">=</span> max(<span class="dv">0</span><span class="op">,</span> helper(<span class="op">&amp;</span>n<span class="op">.</span>borrow()<span class="op">.</span>right<span class="op">,</span> max_so_far))<span class="op">;</span></span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">*</span>max_so_far <span class="op">=</span> max(<span class="op">*</span>max_so_far<span class="op">,</span> val <span class="op">+</span> l <span class="op">+</span> r)<span class="op">;</span></span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>        val <span class="op">+</span> max(l<span class="op">,</span> r)</span>
-<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>      <span class="cn">None</span> <span class="op">=&gt;</span> <span class="dv">0</span><span class="op">,</span></span>
-<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>  helper(<span class="op">&amp;</span>root<span class="op">,</span> <span class="op">&amp;</span><span class="kw">mut</span> max_so_far)<span class="op">;</span></span>
-<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>  max_so_far</span>
-<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a><span class="pp">test!</span> <span class="op">{</span></span>
-<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>    test_1<span class="op">:</span> max_path_sum(<span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>])<span class="op">,</span> <span class="dv">6</span><span class="op">,</span></span>
-<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>    test_2<span class="op">:</span> max_path_sum(<span class="pp">btree!</span>[<span class="op">-</span><span class="dv">10</span><span class="op">,</span> <span class="dv">9</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> null<span class="op">,</span> null<span class="op">,</span> <span class="dv">15</span><span class="op">,</span> <span class="dv">7</span>])<span class="op">,</span> <span class="dv">42</span><span class="op">,</span></span>
-<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="kw">crate</span><span class="pp">::</span><span class="op">*;</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::cmp::</span>max<span class="op">;</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co">/// Finds the maximum path sum through a binary tree.</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> max_path_sum(root<span class="op">:</span> BSTNode) <span class="op">-&gt;</span> <span class="dt">i32</span> <span class="op">{</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> max_so_far <span class="op">=</span> <span class="dt">i32</span><span class="pp">::</span><span class="cn">MIN</span><span class="op">;</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">fn</span> helper(node<span class="op">:</span> <span class="op">&amp;</span>BSTNode<span class="op">,</span> max_so_far<span class="op">:</span> <span class="op">&amp;</span><span class="kw">mut</span> <span class="dt">i32</span>) <span class="op">-&gt;</span> <span class="dt">i32</span> <span class="op">{</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">match</span> node <span class="op">{</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>      <span class="cn">Some</span>(n) <span class="op">=&gt;</span> <span class="op">{</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> val <span class="op">=</span> n<span class="op">.</span>borrow()<span class="op">.</span>val<span class="op">;</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> l <span class="op">=</span> max(<span class="dv">0</span><span class="op">,</span> helper(<span class="op">&amp;</span>n<span class="op">.</span>borrow()<span class="op">.</span>left<span class="op">,</span> max_so_far))<span class="op">;</span></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> r <span class="op">=</span> max(<span class="dv">0</span><span class="op">,</span> helper(<span class="op">&amp;</span>n<span class="op">.</span>borrow()<span class="op">.</span>right<span class="op">,</span> max_so_far))<span class="op">;</span></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">*</span>max_so_far <span class="op">=</span> max(<span class="op">*</span>max_so_far<span class="op">,</span> val <span class="op">+</span> l <span class="op">+</span> r)<span class="op">;</span></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>        val <span class="op">+</span> max(l<span class="op">,</span> r)</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>      <span class="cn">None</span> <span class="op">=&gt;</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>  helper(<span class="op">&amp;</span>root<span class="op">,</span> <span class="op">&amp;</span><span class="kw">mut</span> max_so_far)<span class="op">;</span></span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>  max_so_far</span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a><span class="pp">test!</span> <span class="op">{</span></span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>    test_1<span class="op">:</span> max_path_sum(<span class="pp">btree!</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>])<span class="op">,</span> <span class="dv">6</span><span class="op">,</span></span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>    test_2<span class="op">:</span> max_path_sum(<span class="pp">btree!</span>[<span class="op">-</span><span class="dv">10</span><span class="op">,</span> <span class="dv">9</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> null<span class="op">,</span> null<span class="op">,</span> <span class="dv">15</span><span class="op">,</span> <span class="dv">7</span>])<span class="op">,</span> <span class="dv">42</span><span class="op">,</span></span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <h2 class="unnumbered" id="references">References</h2>
 <div id="refs" class="references csl-bib-body" data-line-spacing="2" role="doc-bibliography">
 <div id="ref-citeulike:679515" class="csl-entry" role="doc-biblioentry">
