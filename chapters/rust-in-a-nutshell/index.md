@@ -2,7 +2,48 @@
 
 ## Why Rust?
 
+### Rust vs. C, C++, Objective-C
+
+### Rust vs. Java, Kotlin, C\#, Swift
+
+### Rust vs. JavaScript, Python, Ruby
+
+### Rust vs. Haskell, OCaml, F\#, Elixir
+
 ## Ownership
+
+Rust's most unique feature is its ownership system, which can be summed
+up thusly:
+
+All data must have exactly one owner, and:
+
+Any data can be referred to by either:
+
+1. A single mutable reference
+2. Many immutable references
+
+This is useful because having more than one _active_ mutable reference
+can cause issues.
+
+In this code below, we create a vector with one element, 5. Then we take
+an immutable reference to it, but mutably append the reference to it.
+
+```cpp
+#include <vector>
+using namespace std;
+
+int main() {
+  vector<int> vec = {5};
+  const auto &first = vec.front();
+  for (int i = 0; i < 10; ++i) vec.push_back(first);
+  for (const auto item: vec) cout << item << '\n';
+}
+```
+
+This cause iterator invalidation in C++, where `first` will eventually
+point to unowned memory, and will be pushed to vec. Vec will then
+point to unowned memory. This causes `Undefined Behavior`, where the
+program will behave non-deterministically.
 
 ## Cargo
 
