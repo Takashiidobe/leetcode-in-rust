@@ -50,7 +50,7 @@
 
 ## Iterators
 
-## Basic Data Structures
+## Data Structures
 
 ### Vec
 
@@ -129,7 +129,7 @@ n) time.
 
 ### BinaryHeap
 
-## Basic Algorithms
+## Algorithms
 
 ### Binary Search
 
