@@ -10,12 +10,23 @@
       :root {
         --background-color: #fdfdfd;
         --color: #111;
+        --code-color: #555;
+        --link-color: #0000ee;
+        --link-color-visited: #0000ee;
+        --link-color-active: #0000ee;
+        --blockquote-color: #828282;
+        --single-tick-color: #9E9E00;
       }
       @media (prefers-color-scheme: dark) {
         :root {
           --background-color: #010101;
           --color: #eee;
           --code-color: #555;
+          --link-color: #9E9EFF;
+          --link-color-visited: #D0ADF0;
+          --link-color-active: #FF9E9E;
+          --blockquote-color: #FF8C69;
+          --single-tick-color: #9E9E00;
         }
       }
       body {
@@ -24,9 +35,6 @@
         background-color: var(--background-color);
         color: var(--color);
         -webkit-text-size-adjust: 100%;
-        -webkit-font-feature-settings: "kern" 1;
-        -moz-font-feature-settings: "kern" 1;
-        -o-font-feature-settings: "kern" 1;
         font-feature-settings: "kern" 1;
         font-kerning: normal;
         margin: 0 auto;
@@ -58,8 +66,7 @@
         padding: 16px;
       }
       code {
-        color: var(--code-color);
-        background-color: rgba(27, 31, 35, 0.05);
+        color: var(--single-tick-color);
         border-radius: 3px;
         font-size: 85%;
         margin: 0;
@@ -69,6 +76,7 @@
           monospace !important;
       }
       pre > code {
+        color: var(--code-color);
         background-color: transparent;
         border: 0;
         display: inline;
@@ -88,7 +96,7 @@
         margin-bottom: calc(1vw);
         border-left-width: 3px;
         padding: 0 1em;
-        color: #828282;
+        color: var(--blockquote-color);
         border-left: 4px solid #e8e8e8;
         padding-left: calc(8px + 1vw);
         font-size: 110%;
@@ -98,7 +106,6 @@
       blockquote * {
         font-style: normal !important;
         letter-spacing: 0;
-        color: #6a737d !important;
       }
       table {
         color: var(--code-color);
@@ -144,8 +151,14 @@
       li + li {
         margin-top: 0.25em;
       }
+      a {
+        color: var(--link-color);
+      }
+      a:active {
+        color: var(--link-color-active);
+      }
       a:visited {
-        color: #0366d6;
+        color: var(--link-color-visited);
       }
       h1 {
         font-size: 125%;
@@ -263,39 +276,45 @@
 <li><a href="#integers"><span class="toc-section-number">1.7.4</span> Integers</a></li>
 <li><a href="#saturing-operations"><span class="toc-section-number">1.7.5</span> Saturing Operations</a></li>
 <li><a href="#unsigned-integers"><span class="toc-section-number">1.7.6</span> Unsigned Integers</a></li>
-<li><a href="#tuples"><span class="toc-section-number">1.7.7</span> Tuples</a></li>
-<li><a href="#structs"><span class="toc-section-number">1.7.8</span> Structs</a></li>
-<li><a href="#enums"><span class="toc-section-number">1.7.9</span> Enums</a></li>
-<li><a href="#unit-type"><span class="toc-section-number">1.7.10</span> Unit Type</a></li>
 </ul></li>
-<li><a href="#pattern-matching"><span class="toc-section-number">1.8</span> Pattern Matching</a></li>
-<li><a href="#error-handling-at-compile-time"><span class="toc-section-number">1.9</span> Error Handling at Compile Time</a>
+<li><a href="#aggregate-types"><span class="toc-section-number">1.8</span> Aggregate types</a>
 <ul>
-<li><a href="#option"><span class="toc-section-number">1.9.1</span> Option</a></li>
-<li><a href="#error"><span class="toc-section-number">1.9.2</span> Error</a></li>
+<li><a href="#tuples"><span class="toc-section-number">1.8.1</span> Tuples</a></li>
+<li><a href="#structs"><span class="toc-section-number">1.8.2</span> Structs</a></li>
+<li><a href="#enums"><span class="toc-section-number">1.8.3</span> Enums</a></li>
+<li><a href="#unit-type"><span class="toc-section-number">1.8.4</span> Unit Type</a></li>
 </ul></li>
-<li><a href="#impl"><span class="toc-section-number">1.10</span> Impl</a></li>
-<li><a href="#traits"><span class="toc-section-number">1.11</span> Traits</a></li>
-<li><a href="#iterators"><span class="toc-section-number">1.12</span> Iterators</a></li>
-<li><a href="#data-structures"><span class="toc-section-number">1.13</span> Data Structures</a>
+<li><a href="#pattern-matching"><span class="toc-section-number">1.9</span> Pattern Matching</a></li>
+<li><a href="#error-handling-at-compile-time"><span class="toc-section-number">1.10</span> Error Handling at Compile Time</a>
 <ul>
-<li><a href="#vec"><span class="toc-section-number">1.13.1</span> Vec</a></li>
-<li><a href="#vecdeque"><span class="toc-section-number">1.13.2</span> VecDeque</a></li>
-<li><a href="#linkedlist"><span class="toc-section-number">1.13.3</span> LinkedList</a></li>
-<li><a href="#hashmap"><span class="toc-section-number">1.13.4</span> HashMap</a></li>
-<li><a href="#btreemap"><span class="toc-section-number">1.13.5</span> BTreeMap</a></li>
-<li><a href="#hashset"><span class="toc-section-number">1.13.6</span> HashSet</a></li>
-<li><a href="#btreeset"><span class="toc-section-number">1.13.7</span> BTreeSet</a></li>
-<li><a href="#binaryheap"><span class="toc-section-number">1.13.8</span> BinaryHeap</a></li>
+<li><a href="#option"><span class="toc-section-number">1.10.1</span> Option</a></li>
+<li><a href="#error"><span class="toc-section-number">1.10.2</span> Error</a></li>
 </ul></li>
-<li><a href="#algorithms"><span class="toc-section-number">1.14</span> Algorithms</a>
+<li><a href="#impl"><span class="toc-section-number">1.11</span> Impl</a></li>
+<li><a href="#traits"><span class="toc-section-number">1.12</span> Traits</a></li>
+<li><a href="#iterators"><span class="toc-section-number">1.13</span> Iterators</a></li>
+<li><a href="#data-structures"><span class="toc-section-number">1.14</span> Data Structures</a>
 <ul>
-<li><a href="#binary-search"><span class="toc-section-number">1.14.1</span> Binary Search</a></li>
+<li><a href="#vec"><span class="toc-section-number">1.14.1</span> Vec</a></li>
+<li><a href="#vecdeque"><span class="toc-section-number">1.14.2</span> VecDeque</a></li>
+<li><a href="#linkedlist"><span class="toc-section-number">1.14.3</span> LinkedList</a></li>
+<li><a href="#hashmap"><span class="toc-section-number">1.14.4</span> HashMap</a></li>
+<li><a href="#btreemap"><span class="toc-section-number">1.14.5</span> BTreeMap</a></li>
+<li><a href="#hashset"><span class="toc-section-number">1.14.6</span> HashSet</a></li>
+<li><a href="#btreeset"><span class="toc-section-number">1.14.7</span> BTreeSet</a></li>
+<li><a href="#binaryheap"><span class="toc-section-number">1.14.8</span> BinaryHeap</a></li>
 </ul></li>
-<li><a href="#counting-in-o1-space-with-slices"><span class="toc-section-number">1.15</span> Counting in O(1) space with slices</a></li>
-<li><a href="#regex"><span class="toc-section-number">1.16</span> Regex</a></li>
-<li><a href="#derive-macros"><span class="toc-section-number">1.17</span> Derive Macros</a></li>
-<li><a href="#smart-pointers"><span class="toc-section-number">1.18</span> Smart Pointers</a></li>
+<li><a href="#algorithms"><span class="toc-section-number">1.15</span> Algorithms</a>
+<ul>
+<li><a href="#binary-search"><span class="toc-section-number">1.15.1</span> Binary Search</a></li>
+</ul></li>
+<li><a href="#counting-in-o1-space-with-slices"><span class="toc-section-number">1.16</span> Counting in O(1) space with slices</a></li>
+<li><a href="#regex"><span class="toc-section-number">1.17</span> Regex</a>
+<ul>
+<li><a href="#matching-on"><span class="toc-section-number">1.17.1</span> Matching on</a></li>
+</ul></li>
+<li><a href="#derive-macros"><span class="toc-section-number">1.18</span> Derive Macros</a></li>
+<li><a href="#smart-pointers"><span class="toc-section-number">1.19</span> Smart Pointers</a></li>
 </ul></li>
 <li><a href="#macros-for-rust"><span class="toc-section-number">2</span> Macros for Rust</a>
 <ul>
@@ -491,19 +510,20 @@ For more information about this error, try `rustc --explain E0382`.</code></pre>
 <h3 data-number="1.7.4" id="integers"><span class="header-section-number">1.7.4</span> Integers</h3>
 <h3 data-number="1.7.5" id="saturing-operations"><span class="header-section-number">1.7.5</span> Saturing Operations</h3>
 <h3 data-number="1.7.6" id="unsigned-integers"><span class="header-section-number">1.7.6</span> Unsigned Integers</h3>
-<h3 data-number="1.7.7" id="tuples"><span class="header-section-number">1.7.7</span> Tuples</h3>
-<h3 data-number="1.7.8" id="structs"><span class="header-section-number">1.7.8</span> Structs</h3>
-<h3 data-number="1.7.9" id="enums"><span class="header-section-number">1.7.9</span> Enums</h3>
-<h3 data-number="1.7.10" id="unit-type"><span class="header-section-number">1.7.10</span> Unit Type</h3>
-<h2 data-number="1.8" id="pattern-matching"><span class="header-section-number">1.8</span> Pattern Matching</h2>
-<h2 data-number="1.9" id="error-handling-at-compile-time"><span class="header-section-number">1.9</span> Error Handling at Compile Time</h2>
-<h3 data-number="1.9.1" id="option"><span class="header-section-number">1.9.1</span> Option</h3>
-<h3 data-number="1.9.2" id="error"><span class="header-section-number">1.9.2</span> Error</h3>
-<h2 data-number="1.10" id="impl"><span class="header-section-number">1.10</span> Impl</h2>
-<h2 data-number="1.11" id="traits"><span class="header-section-number">1.11</span> Traits</h2>
-<h2 data-number="1.12" id="iterators"><span class="header-section-number">1.12</span> Iterators</h2>
-<h2 data-number="1.13" id="data-structures"><span class="header-section-number">1.13</span> Data Structures</h2>
-<h3 data-number="1.13.1" id="vec"><span class="header-section-number">1.13.1</span> Vec</h3>
+<h2 data-number="1.8" id="aggregate-types"><span class="header-section-number">1.8</span> Aggregate types</h2>
+<h3 data-number="1.8.1" id="tuples"><span class="header-section-number">1.8.1</span> Tuples</h3>
+<h3 data-number="1.8.2" id="structs"><span class="header-section-number">1.8.2</span> Structs</h3>
+<h3 data-number="1.8.3" id="enums"><span class="header-section-number">1.8.3</span> Enums</h3>
+<h3 data-number="1.8.4" id="unit-type"><span class="header-section-number">1.8.4</span> Unit Type</h3>
+<h2 data-number="1.9" id="pattern-matching"><span class="header-section-number">1.9</span> Pattern Matching</h2>
+<h2 data-number="1.10" id="error-handling-at-compile-time"><span class="header-section-number">1.10</span> Error Handling at Compile Time</h2>
+<h3 data-number="1.10.1" id="option"><span class="header-section-number">1.10.1</span> Option</h3>
+<h3 data-number="1.10.2" id="error"><span class="header-section-number">1.10.2</span> Error</h3>
+<h2 data-number="1.11" id="impl"><span class="header-section-number">1.11</span> Impl</h2>
+<h2 data-number="1.12" id="traits"><span class="header-section-number">1.12</span> Traits</h2>
+<h2 data-number="1.13" id="iterators"><span class="header-section-number">1.13</span> Iterators</h2>
+<h2 data-number="1.14" id="data-structures"><span class="header-section-number">1.14</span> Data Structures</h2>
+<h3 data-number="1.14.1" id="vec"><span class="header-section-number">1.14.1</span> Vec</h3>
 <p>Rust’s growable array type is called <code>Vec</code>, short for <code>vector</code> (which comes from C++). In python any many functional languages it’s called a list, and in other languages, an array.</p>
 <p>To create a vector, one can use this syntax:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="kw">mut</span> v <span class="op">=</span> <span class="dt">Vec</span><span class="pp">::</span>new()<span class="op">;</span></span></code></pre></div>
@@ -523,24 +543,28 @@ For more information about this error, try `rustc --explain E0382`.</code></pre>
 <div class="sourceCode" id="cb15"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="kw">mut</span> v <span class="op">=</span> <span class="dt">Vec</span><span class="pp">::</span>new()<span class="op">;</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>v<span class="op">.</span>push(<span class="dv">5</span>)<span class="op">;</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="pp">println!</span>(<span class="st">&quot;{:?}&quot;</span><span class="op">,</span> v)<span class="op">;</span></span></code></pre></div>
-<h3 data-number="1.13.2" id="vecdeque"><span class="header-section-number">1.13.2</span> VecDeque</h3>
+<h3 data-number="1.14.2" id="vecdeque"><span class="header-section-number">1.14.2</span> VecDeque</h3>
 <p>A VecDeque is a Doubly-Ended Queue implemented as a Vector. A VecDeque allows for O(1) appends and pops from either end of the queue, which basically makes it a stack and a queue in one data structure.</p>
-<h3 data-number="1.13.3" id="linkedlist"><span class="header-section-number">1.13.3</span> LinkedList</h3>
+<h3 data-number="1.14.3" id="linkedlist"><span class="header-section-number">1.14.3</span> LinkedList</h3>
 <p>A LinkedList is a doubly linked list.</p>
 <p>There are two Key-Value data structures in the Rust Standard Library.</p>
-<h3 data-number="1.13.4" id="hashmap"><span class="header-section-number">1.13.4</span> HashMap</h3>
+<h3 data-number="1.14.4" id="hashmap"><span class="header-section-number">1.14.4</span> HashMap</h3>
 <p>A HashMap is an Unordered Map. That means that getting, inserting, updating, or deleting a value from this data structure is done in O(1) time.</p>
-<h3 data-number="1.13.5" id="btreemap"><span class="header-section-number">1.13.5</span> BTreeMap</h3>
+<h3 data-number="1.14.5" id="btreemap"><span class="header-section-number">1.14.5</span> BTreeMap</h3>
 <p>A BTreeMap is an Ordered Map. That means that getting, inserting, updating, or deleting a value from this data structure is done in O(log n) time.</p>
-<h3 data-number="1.13.6" id="hashset"><span class="header-section-number">1.13.6</span> HashSet</h3>
-<h3 data-number="1.13.7" id="btreeset"><span class="header-section-number">1.13.7</span> BTreeSet</h3>
-<h3 data-number="1.13.8" id="binaryheap"><span class="header-section-number">1.13.8</span> BinaryHeap</h3>
-<h2 data-number="1.14" id="algorithms"><span class="header-section-number">1.14</span> Algorithms</h2>
-<h3 data-number="1.14.1" id="binary-search"><span class="header-section-number">1.14.1</span> Binary Search</h3>
-<h2 data-number="1.15" id="counting-in-o1-space-with-slices"><span class="header-section-number">1.15</span> Counting in O(1) space with slices</h2>
-<h2 data-number="1.16" id="regex"><span class="header-section-number">1.16</span> Regex</h2>
-<h2 data-number="1.17" id="derive-macros"><span class="header-section-number">1.17</span> Derive Macros</h2>
-<h2 data-number="1.18" id="smart-pointers"><span class="header-section-number">1.18</span> Smart Pointers</h2>
+<h3 data-number="1.14.6" id="hashset"><span class="header-section-number">1.14.6</span> HashSet</h3>
+<h3 data-number="1.14.7" id="btreeset"><span class="header-section-number">1.14.7</span> BTreeSet</h3>
+<h3 data-number="1.14.8" id="binaryheap"><span class="header-section-number">1.14.8</span> BinaryHeap</h3>
+<h2 data-number="1.15" id="algorithms"><span class="header-section-number">1.15</span> Algorithms</h2>
+<h3 data-number="1.15.1" id="binary-search"><span class="header-section-number">1.15.1</span> Binary Search</h3>
+<h2 data-number="1.16" id="counting-in-o1-space-with-slices"><span class="header-section-number">1.16</span> Counting in O(1) space with slices</h2>
+<h2 data-number="1.17" id="regex"><span class="header-section-number">1.17</span> Regex</h2>
+<p>Rust, unlike many other languages, does not have regex in its standard library. This is because of its tight integration to crates: if regex is required, it’s assumed that you can download the <code>regex</code> crate from crates.io.</p>
+<p>More documentation can be found here: <a href="https://docs.rs/regex/latest/regex/">Regex Docs</a>.</p>
+<p>Some common use cases include:</p>
+<h3 data-number="1.17.1" id="matching-on"><span class="header-section-number">1.17.1</span> Matching on</h3>
+<h2 data-number="1.18" id="derive-macros"><span class="header-section-number">1.18</span> Derive Macros</h2>
+<h2 data-number="1.19" id="smart-pointers"><span class="header-section-number">1.19</span> Smart Pointers</h2>
 <h1 data-number="2" id="macros-for-rust"><span class="header-section-number">2</span> Macros for Rust</h1>
 <h2 data-number="2.1" id="a-macro-for-testing"><span class="header-section-number">2.1</span> A macro for testing</h2>
 <p>Unlike C and C++, a testing framework is built into rust. We can create our own tests by creating a <code>mod</code> block and letting cargo know that we want to test it.</p>
