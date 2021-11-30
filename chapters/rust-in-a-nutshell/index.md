@@ -2,17 +2,57 @@
 
 ## Why Rust?
 
+## Ownership
+
 ## Cargo
 
 ## Cargo Doc
 
+## Testing
+
 ## Crates
+
+## Basic Types
+
+### Bool
+
+### Char
+
+### Floats
+
+### Integers
+
+### Saturing Operations
+
+### Unsigned Integers
+
+### Tuples
+
+### Structs
+
+### Enums
+
+### Unit Type
+
+## References
+
+## Pattern Matching
+
+## Error Handling at Compile Time
+
+### Option
+
+### Error
+
+## Impl
+
+## Traits
+
+## Iterators
 
 ## Basic Data Structures
 
-### Sequences
-
-#### Vec
+### Vec
 
 Rust's growable array type is called `Vec`, short for `vector` (which
 comes from C++). In python any many functional languages it's called a
@@ -59,32 +99,44 @@ v.push(5);
 println!("{:?}", v);
 ```
 
-#### VecDeque
+### VecDeque
 
-#### LinkedList
+A VecDeque is a Doubly-Ended Queue implemented as a Vector. A VecDeque
+allows for O(1) appends and pops from either end of the queue, which
+basically makes it a stack and a queue in one data structure.
 
-### Maps
+### LinkedList
 
-#### HashMap
+A LinkedList is a doubly linked list.
 
-#### BTreeMap
+There are two Key-Value data structures in the Rust Standard Library.
 
-### Sets
+### HashMap
 
-#### HashSet
+A HashMap is an Unordered Map. That means that getting, inserting,
+updating, or deleting a value from this data structure is done in O(1)
+time.
 
-#### BTreeSet
+### BTreeMap
 
-### Other
+A BTreeMap is an Ordered Map. That means that getting, inserting,
+updating, or deleting a value from this data structure is done in O(log
+n) time.
 
-#### BinaryHeap
+### HashSet
+
+### BTreeSet
+
+### BinaryHeap
 
 ## Basic Algorithms
 
-## Other Useful things
+### Binary Search
+
+## Counting in O(1) space with slices
 
 ## Regex
 
 ## Derive Macros
 
-## Counting in O(1) space with slices
+## Smart Pointers

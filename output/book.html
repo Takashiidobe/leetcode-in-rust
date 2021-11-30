@@ -244,21 +244,53 @@
 <li><a href="#rust-in-a-nutshell"><span class="toc-section-number">1</span> Rust in a Nutshell</a>
 <ul>
 <li><a href="#why-rust"><span class="toc-section-number">1.1</span> Why Rust?</a></li>
-<li><a href="#cargo"><span class="toc-section-number">1.2</span> Cargo</a></li>
-<li><a href="#cargo-doc"><span class="toc-section-number">1.3</span> Cargo Doc</a></li>
-<li><a href="#crates"><span class="toc-section-number">1.4</span> Crates</a></li>
-<li><a href="#basic-data-structures"><span class="toc-section-number">1.5</span> Basic Data Structures</a>
+<li><a href="#ownership"><span class="toc-section-number">1.2</span> Ownership</a></li>
+<li><a href="#cargo"><span class="toc-section-number">1.3</span> Cargo</a></li>
+<li><a href="#cargo-doc"><span class="toc-section-number">1.4</span> Cargo Doc</a></li>
+<li><a href="#testing"><span class="toc-section-number">1.5</span> Testing</a></li>
+<li><a href="#crates"><span class="toc-section-number">1.6</span> Crates</a></li>
+<li><a href="#basic-types"><span class="toc-section-number">1.7</span> Basic Types</a>
 <ul>
-<li><a href="#sequences"><span class="toc-section-number">1.5.1</span> Sequences</a></li>
-<li><a href="#maps"><span class="toc-section-number">1.5.2</span> Maps</a></li>
-<li><a href="#sets"><span class="toc-section-number">1.5.3</span> Sets</a></li>
-<li><a href="#other"><span class="toc-section-number">1.5.4</span> Other</a></li>
+<li><a href="#bool"><span class="toc-section-number">1.7.1</span> Bool</a></li>
+<li><a href="#char"><span class="toc-section-number">1.7.2</span> Char</a></li>
+<li><a href="#floats"><span class="toc-section-number">1.7.3</span> Floats</a></li>
+<li><a href="#integers"><span class="toc-section-number">1.7.4</span> Integers</a></li>
+<li><a href="#saturing-operations"><span class="toc-section-number">1.7.5</span> Saturing Operations</a></li>
+<li><a href="#unsigned-integers"><span class="toc-section-number">1.7.6</span> Unsigned Integers</a></li>
+<li><a href="#tuples"><span class="toc-section-number">1.7.7</span> Tuples</a></li>
+<li><a href="#structs"><span class="toc-section-number">1.7.8</span> Structs</a></li>
+<li><a href="#enums"><span class="toc-section-number">1.7.9</span> Enums</a></li>
+<li><a href="#unit-type"><span class="toc-section-number">1.7.10</span> Unit Type</a></li>
 </ul></li>
-<li><a href="#basic-algorithms"><span class="toc-section-number">1.6</span> Basic Algorithms</a></li>
-<li><a href="#other-useful-things"><span class="toc-section-number">1.7</span> Other Useful things</a></li>
-<li><a href="#regex"><span class="toc-section-number">1.8</span> Regex</a></li>
-<li><a href="#derive-macros"><span class="toc-section-number">1.9</span> Derive Macros</a></li>
-<li><a href="#counting-in-o1-space-with-slices"><span class="toc-section-number">1.10</span> Counting in O(1) space with slices</a></li>
+<li><a href="#references"><span class="toc-section-number">1.8</span> References</a></li>
+<li><a href="#pattern-matching"><span class="toc-section-number">1.9</span> Pattern Matching</a></li>
+<li><a href="#error-handling-at-compile-time"><span class="toc-section-number">1.10</span> Error Handling at Compile Time</a>
+<ul>
+<li><a href="#option"><span class="toc-section-number">1.10.1</span> Option</a></li>
+<li><a href="#error"><span class="toc-section-number">1.10.2</span> Error</a></li>
+</ul></li>
+<li><a href="#impl"><span class="toc-section-number">1.11</span> Impl</a></li>
+<li><a href="#traits"><span class="toc-section-number">1.12</span> Traits</a></li>
+<li><a href="#iterators"><span class="toc-section-number">1.13</span> Iterators</a></li>
+<li><a href="#basic-data-structures"><span class="toc-section-number">1.14</span> Basic Data Structures</a>
+<ul>
+<li><a href="#vec"><span class="toc-section-number">1.14.1</span> Vec</a></li>
+<li><a href="#vecdeque"><span class="toc-section-number">1.14.2</span> VecDeque</a></li>
+<li><a href="#linkedlist"><span class="toc-section-number">1.14.3</span> LinkedList</a></li>
+<li><a href="#hashmap"><span class="toc-section-number">1.14.4</span> HashMap</a></li>
+<li><a href="#btreemap"><span class="toc-section-number">1.14.5</span> BTreeMap</a></li>
+<li><a href="#hashset"><span class="toc-section-number">1.14.6</span> HashSet</a></li>
+<li><a href="#btreeset"><span class="toc-section-number">1.14.7</span> BTreeSet</a></li>
+<li><a href="#binaryheap"><span class="toc-section-number">1.14.8</span> BinaryHeap</a></li>
+</ul></li>
+<li><a href="#basic-algorithms"><span class="toc-section-number">1.15</span> Basic Algorithms</a>
+<ul>
+<li><a href="#binary-search"><span class="toc-section-number">1.15.1</span> Binary Search</a></li>
+</ul></li>
+<li><a href="#counting-in-o1-space-with-slices"><span class="toc-section-number">1.16</span> Counting in O(1) space with slices</a></li>
+<li><a href="#regex"><span class="toc-section-number">1.17</span> Regex</a></li>
+<li><a href="#derive-macros"><span class="toc-section-number">1.18</span> Derive Macros</a></li>
+<li><a href="#smart-pointers"><span class="toc-section-number">1.19</span> Smart Pointers</a></li>
 </ul></li>
 <li><a href="#macros-for-rust"><span class="toc-section-number">2</span> Macros for Rust</a>
 <ul>
@@ -290,12 +322,32 @@
 </ul></nav>
      <h1 data-number="1" id="rust-in-a-nutshell"><span class="header-section-number">1</span> Rust in a Nutshell</h1>
 <h2 data-number="1.1" id="why-rust"><span class="header-section-number">1.1</span> Why Rust?</h2>
-<h2 data-number="1.2" id="cargo"><span class="header-section-number">1.2</span> Cargo</h2>
-<h2 data-number="1.3" id="cargo-doc"><span class="header-section-number">1.3</span> Cargo Doc</h2>
-<h2 data-number="1.4" id="crates"><span class="header-section-number">1.4</span> Crates</h2>
-<h2 data-number="1.5" id="basic-data-structures"><span class="header-section-number">1.5</span> Basic Data Structures</h2>
-<h3 data-number="1.5.1" id="sequences"><span class="header-section-number">1.5.1</span> Sequences</h3>
-<h4 data-number="1.5.1.1" id="vec"><span class="header-section-number">1.5.1.1</span> Vec</h4>
+<h2 data-number="1.2" id="ownership"><span class="header-section-number">1.2</span> Ownership</h2>
+<h2 data-number="1.3" id="cargo"><span class="header-section-number">1.3</span> Cargo</h2>
+<h2 data-number="1.4" id="cargo-doc"><span class="header-section-number">1.4</span> Cargo Doc</h2>
+<h2 data-number="1.5" id="testing"><span class="header-section-number">1.5</span> Testing</h2>
+<h2 data-number="1.6" id="crates"><span class="header-section-number">1.6</span> Crates</h2>
+<h2 data-number="1.7" id="basic-types"><span class="header-section-number">1.7</span> Basic Types</h2>
+<h3 data-number="1.7.1" id="bool"><span class="header-section-number">1.7.1</span> Bool</h3>
+<h3 data-number="1.7.2" id="char"><span class="header-section-number">1.7.2</span> Char</h3>
+<h3 data-number="1.7.3" id="floats"><span class="header-section-number">1.7.3</span> Floats</h3>
+<h3 data-number="1.7.4" id="integers"><span class="header-section-number">1.7.4</span> Integers</h3>
+<h3 data-number="1.7.5" id="saturing-operations"><span class="header-section-number">1.7.5</span> Saturing Operations</h3>
+<h3 data-number="1.7.6" id="unsigned-integers"><span class="header-section-number">1.7.6</span> Unsigned Integers</h3>
+<h3 data-number="1.7.7" id="tuples"><span class="header-section-number">1.7.7</span> Tuples</h3>
+<h3 data-number="1.7.8" id="structs"><span class="header-section-number">1.7.8</span> Structs</h3>
+<h3 data-number="1.7.9" id="enums"><span class="header-section-number">1.7.9</span> Enums</h3>
+<h3 data-number="1.7.10" id="unit-type"><span class="header-section-number">1.7.10</span> Unit Type</h3>
+<h2 data-number="1.8" id="references"><span class="header-section-number">1.8</span> References</h2>
+<h2 data-number="1.9" id="pattern-matching"><span class="header-section-number">1.9</span> Pattern Matching</h2>
+<h2 data-number="1.10" id="error-handling-at-compile-time"><span class="header-section-number">1.10</span> Error Handling at Compile Time</h2>
+<h3 data-number="1.10.1" id="option"><span class="header-section-number">1.10.1</span> Option</h3>
+<h3 data-number="1.10.2" id="error"><span class="header-section-number">1.10.2</span> Error</h3>
+<h2 data-number="1.11" id="impl"><span class="header-section-number">1.11</span> Impl</h2>
+<h2 data-number="1.12" id="traits"><span class="header-section-number">1.12</span> Traits</h2>
+<h2 data-number="1.13" id="iterators"><span class="header-section-number">1.13</span> Iterators</h2>
+<h2 data-number="1.14" id="basic-data-structures"><span class="header-section-number">1.14</span> Basic Data Structures</h2>
+<h3 data-number="1.14.1" id="vec"><span class="header-section-number">1.14.1</span> Vec</h3>
 <p>Rust’s growable array type is called <code>Vec</code>, short for <code>vector</code> (which comes from C++). In python any many functional languages it’s called a list, and in other languages, an array.</p>
 <p>To create a vector, one can use this syntax:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="kw">mut</span> v <span class="op">=</span> <span class="dt">Vec</span><span class="pp">::</span>new()<span class="op">;</span></span></code></pre></div>
@@ -315,21 +367,24 @@
 <div class="sourceCode" id="cb3"><pre class="sourceCode rs"><code class="sourceCode rust"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="kw">mut</span> v <span class="op">=</span> <span class="dt">Vec</span><span class="pp">::</span>new()<span class="op">;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>v<span class="op">.</span>push(<span class="dv">5</span>)<span class="op">;</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="pp">println!</span>(<span class="st">&quot;{:?}&quot;</span><span class="op">,</span> v)<span class="op">;</span></span></code></pre></div>
-<h4 data-number="1.5.1.2" id="vecdeque"><span class="header-section-number">1.5.1.2</span> VecDeque</h4>
-<h4 data-number="1.5.1.3" id="linkedlist"><span class="header-section-number">1.5.1.3</span> LinkedList</h4>
-<h3 data-number="1.5.2" id="maps"><span class="header-section-number">1.5.2</span> Maps</h3>
-<h4 data-number="1.5.2.1" id="hashmap"><span class="header-section-number">1.5.2.1</span> HashMap</h4>
-<h4 data-number="1.5.2.2" id="btreemap"><span class="header-section-number">1.5.2.2</span> BTreeMap</h4>
-<h3 data-number="1.5.3" id="sets"><span class="header-section-number">1.5.3</span> Sets</h3>
-<h4 data-number="1.5.3.1" id="hashset"><span class="header-section-number">1.5.3.1</span> HashSet</h4>
-<h4 data-number="1.5.3.2" id="btreeset"><span class="header-section-number">1.5.3.2</span> BTreeSet</h4>
-<h3 data-number="1.5.4" id="other"><span class="header-section-number">1.5.4</span> Other</h3>
-<h4 data-number="1.5.4.1" id="binaryheap"><span class="header-section-number">1.5.4.1</span> BinaryHeap</h4>
-<h2 data-number="1.6" id="basic-algorithms"><span class="header-section-number">1.6</span> Basic Algorithms</h2>
-<h2 data-number="1.7" id="other-useful-things"><span class="header-section-number">1.7</span> Other Useful things</h2>
-<h2 data-number="1.8" id="regex"><span class="header-section-number">1.8</span> Regex</h2>
-<h2 data-number="1.9" id="derive-macros"><span class="header-section-number">1.9</span> Derive Macros</h2>
-<h2 data-number="1.10" id="counting-in-o1-space-with-slices"><span class="header-section-number">1.10</span> Counting in O(1) space with slices</h2>
+<h3 data-number="1.14.2" id="vecdeque"><span class="header-section-number">1.14.2</span> VecDeque</h3>
+<p>A VecDeque is a Doubly-Ended Queue implemented as a Vector. A VecDeque allows for O(1) appends and pops from either end of the queue, which basically makes it a stack and a queue in one data structure.</p>
+<h3 data-number="1.14.3" id="linkedlist"><span class="header-section-number">1.14.3</span> LinkedList</h3>
+<p>A LinkedList is a doubly linked list.</p>
+<p>There are two Key-Value data structures in the Rust Standard Library.</p>
+<h3 data-number="1.14.4" id="hashmap"><span class="header-section-number">1.14.4</span> HashMap</h3>
+<p>A HashMap is an Unordered Map. That means that getting, inserting, updating, or deleting a value from this data structure is done in O(1) time.</p>
+<h3 data-number="1.14.5" id="btreemap"><span class="header-section-number">1.14.5</span> BTreeMap</h3>
+<p>A BTreeMap is an Ordered Map. That means that getting, inserting, updating, or deleting a value from this data structure is done in O(log n) time.</p>
+<h3 data-number="1.14.6" id="hashset"><span class="header-section-number">1.14.6</span> HashSet</h3>
+<h3 data-number="1.14.7" id="btreeset"><span class="header-section-number">1.14.7</span> BTreeSet</h3>
+<h3 data-number="1.14.8" id="binaryheap"><span class="header-section-number">1.14.8</span> BinaryHeap</h3>
+<h2 data-number="1.15" id="basic-algorithms"><span class="header-section-number">1.15</span> Basic Algorithms</h2>
+<h3 data-number="1.15.1" id="binary-search"><span class="header-section-number">1.15.1</span> Binary Search</h3>
+<h2 data-number="1.16" id="counting-in-o1-space-with-slices"><span class="header-section-number">1.16</span> Counting in O(1) space with slices</h2>
+<h2 data-number="1.17" id="regex"><span class="header-section-number">1.17</span> Regex</h2>
+<h2 data-number="1.18" id="derive-macros"><span class="header-section-number">1.18</span> Derive Macros</h2>
+<h2 data-number="1.19" id="smart-pointers"><span class="header-section-number">1.19</span> Smart Pointers</h2>
 <h1 data-number="2" id="macros-for-rust"><span class="header-section-number">2</span> Macros for Rust</h1>
 <h2 data-number="2.1" id="a-macro-for-testing"><span class="header-section-number">2.1</span> A macro for testing</h2>
 <p>Unlike C and C++, a testing framework is built into rust. We can create our own tests by creating a <code>mod</code> block and letting cargo know that we want to test it.</p>
