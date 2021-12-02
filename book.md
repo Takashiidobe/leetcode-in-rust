@@ -15,5 +15,11 @@ header-includes: |
 
 !include chapters/trees/index.md
 
+!include chapters/heaps/index.md
+
+!include chapters/graphs/index.md
+
+!include chapters/dynamic-programming/index.md
+
 ## References
 
