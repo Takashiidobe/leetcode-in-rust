@@ -139,4 +139,34 @@ n) time.
 
 ## Derive Macros
 
+## Memory
+
+### Swap
+
+Swap does what it says: swaps values at two mutable locations.
+This is particularly useful for linked list problems, where you may need
+to swap values.
+
+```rs
+pub fn swap<T>(x: &mut T, y: &mut T)
+```
+
+```rs
+use std::mem;
+
+let mut x = 5;
+let mut y = 42;
+
+mem::swap(&mut x, &mut y);
+
+assert_eq!(42, x);
+assert_eq!(5, y);
+```
+
+### Take
+
+### Replace
+
+### Transmute
+
 ## Smart Pointers

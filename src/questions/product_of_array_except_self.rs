@@ -1,3 +1,9 @@
+use crate::*;
+
+test! {
+    test_1: product_except_self(vec![1, 2, 3, 4]), vec![24, 12, 8, 6],
+}
+
 pub fn product_except_self(nums: Vec<i32>) -> Vec<i32> {
     let mut ret = vec![1; nums.len()];
 
@@ -14,14 +20,4 @@ pub fn product_except_self(nums: Vec<i32>) -> Vec<i32> {
     });
 
     ret
-}
-
-#[cfg(test)]
-mod test {
-    use super::*;
-
-    #[test]
-    fn test_1() {
-        assert_eq!(product_except_self(vec![1, 2, 3, 4]), vec![24, 12, 8, 6])
-    }
 }

@@ -1,3 +1,4 @@
+pub mod binary_tree_level_order_traversal;
 pub mod binary_tree_maximum_path_sum;
 pub mod climbing_stairs;
 pub mod coin_change;

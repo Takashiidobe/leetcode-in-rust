@@ -1,7 +1,5 @@
 use crate::*;
-use std::cell::RefCell;
 use std::cmp::max;
-use std::rc::Rc;
 
 test! {
     test_1: max_depth(btree![]), 0,
