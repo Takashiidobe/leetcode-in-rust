@@ -15,6 +15,8 @@ header-includes: |
 
 !include chapters/introductory/index.md
 
+!include chapters/arrays/index.md
+
 !include chapters/trees/index.md
 
 !include chapters/heaps/index.md

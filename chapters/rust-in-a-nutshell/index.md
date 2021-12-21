@@ -30,7 +30,7 @@
 
 ### Integers
 
-### Saturing Operations
+### Saturating Operations
 
 ### Unsigned Integers
 
@@ -165,8 +165,66 @@ assert_eq!(5, y);
 
 ### Take
 
+Take grabs a value from a location, and then replaces that with the
+default value of `T`, while returning the value that was previously at
+that location.
+
+```rs
+pub fn take<T>(dest: &mut T) -> T where
+    T: Default,
+```
+
+```rs
+use std::mem;
+
+let mut v: Vec<i32> = vec![1, 2];
+
+let old_v = mem::take(&mut v);
+assert_eq!(vec![1, 2], old_v);
+assert!(v.is_empty());
+```
+
 ### Replace
 
-### Transmute
+Replace moves a value into a mutable reference, and returns the value
+that was previously there.
+
+```rs
+pub fn replace<T>(dest: &mut T, src: T) -> T
+```
+
+```rs
+use std::mem;
+
+let mut v: Vec<i32> = vec![1, 2];
+
+let old_v = mem::replace(&mut v, vec![3, 4, 5]);
+assert_eq!(vec![1, 2], old_v);
+assert_eq!(vec![3, 4, 5], v);
+```
 
 ## Smart Pointers
+
+### Box
+
+Box is a smart pointer that points to data on the heap. Box is analogous
+to C++'s `std::unique_ptr` in that it is a pointer for data on the heap.
+
+```rs
+let five = Box::new(5); // create a new pointer
+```
+
+This is useful for data that doesn't have a size that is known at
+compile time:
+
+```rs
+enum List {
+  Cons(i32, Box<List>),
+  Nil,
+} // this compiles because data on the heap can be unsized
+
+enum List {
+  Cons(i32, List),
+  Nil,
+} // the compiler doesn't accept unsized values on the stack
+```
