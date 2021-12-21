@@ -7,11 +7,10 @@
 
 ### Intuition
 
-
-
 ### Test Cases
 
 ```{.rs include=src/questions/contains_duplicate.rs startLine=4 endLine=8}
+
 ```
 
 ### Using Sets
@@ -27,5 +26,6 @@ HashSet, and the HashSet takes O(n) space as well.
 
 ### Answer
 
-```{.rs include=src/questions/contains_duplicate.rs startLine=10 endLine=15}
+```{.rs include=src/questions/contains_duplicate.rs startLine=10 endLine=14}
+
 ```

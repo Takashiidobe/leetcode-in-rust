@@ -16,7 +16,7 @@ PANDOCFLAGS =                        \
 	--filter=pandoc-include            \
 	--filter=pandoc-include-code       \
 	--citeproc 												 \
-  --indented-code-classes=javascript
+  --indented-code-classes=rust
 
 HTML_FLAGS =                         \
 	--template=./templates/book.html   \

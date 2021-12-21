@@ -9,7 +9,6 @@ test! {
 
 /// Returns `true` if nums contains a duplicate, `false otherwise.`
 pub fn contains_duplicate(nums: &[i32]) -> bool {
-    let num_len = nums.len();
     let s: HashSet<&i32> = HashSet::from_iter(nums.iter());
-    s.len() != num_len
+    s.len() != nums.len()
 }

@@ -84,7 +84,6 @@
 - ✅ [Jump Game](https://leetcode.com/problems/jump-game/)
 - ✅ [Coin Change](https://leetcode.com/problems/coin-change/)
 - ✅ [Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/)
-
 - [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
 - [Group Anagrams](https://leetcode.com/problems/group-anagrams/)
 - [Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/)
