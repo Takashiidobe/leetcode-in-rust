@@ -7,7 +7,6 @@ CHAPTERS = $(shell find ./chapters -name '*.md')
 SOURCE_FILES = $(shell find ./src -name '*.rs')
 
 PANDOCFLAGS =                        \
-	--metadata title=$(BOOK_NAME)      \
 	--bibliography references.bib      \
   --table-of-contents                \
   --from=markdown                    \
@@ -19,6 +18,7 @@ PANDOCFLAGS =                        \
   --indented-code-classes=rust
 
 HTML_FLAGS =                         \
+	--metadata title=$(BOOK_NAME)      \
 	--template=./templates/book.html   \
 	--self-contained
 
@@ -33,7 +33,7 @@ PDF_FLAGS =                          \
 	-V titlepage=true                  \
 	-V classoption=oneside
 
-html: phony output/book.html
+html: phony output/index.html output/book.html
 
 epub: phony output/book.epub
 
@@ -41,8 +41,13 @@ pdf: phony output/book.pdf
 
 docx: phony output/book.docx
 
+index: phony output/index.html
+
 figures:
 	./bin/figures
+
+output/index.html: index.md
+	pandoc $< -o $@ $(HTML_FLAGS)
 
 output/%.pdf: %.md $(FIGURES) $(SOURCE_FILES) $(CHAPTERS) Makefile | output figures
 	pandoc $< -o $@ $(PDF_FLAGS) $(PANDOCFLAGS)
