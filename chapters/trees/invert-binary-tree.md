@@ -18,12 +18,12 @@ with the base case:
 
 ### Test Cases
 
-```{.rs include=src/questions/invert_binary_tree.rs startLine=3 endLine=8}
+```{.rs include=src/questions/invert_binary_tree.rs startLine=3 endLine=21}
 
 ```
 
 ### Answer
 
-```{.rs include=src/questions/invert_binary_tree.rs startLine=10 endLine=40}
+```{.rs include=src/questions/invert_binary_tree.rs startLine=23 endLine=28}
 
 ```

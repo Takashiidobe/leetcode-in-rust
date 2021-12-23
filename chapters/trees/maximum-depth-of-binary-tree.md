@@ -9,9 +9,21 @@
 
 ### Intuition
 
+To Find the maximum depth of a binary tree, assume that every node adds
+to the level of the tree by 1.
+
+Assume that there are four possible states a node can be in:
+
+1. The Node does not exist (is None). In this case, return 0.
+2. The Node exists, but has no children. In this case, return 1.
+3. The Node exists, and has either a left or right child. In this case,
+   return 1 + the depth of the left or right child.
+4. The Node exists, and has both a left and right child. In this case,
+   return 1 + the maximum depth of the right or left child.
+
 ### Test Cases
 
-```{.rs include=src/questions/maximum_depth_of_binary_tree.rs startLine=5 endLine=10}
+```{.rs include=src/questions/maximum_depth_of_binary_tree.rs startLine=4 endLine=8}
 
 ```
 

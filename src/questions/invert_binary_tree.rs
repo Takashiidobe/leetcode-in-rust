@@ -2,10 +2,8 @@ use crate::*;
 
 /// Inverts a Binary Tree.
 /// This is done by taking each node's children and swapping them.
-pub fn invert_binary_tree(
-    mut root: Option<Rc<RefCell<TreeNode>>>,
-) -> Option<Rc<RefCell<TreeNode>>> {
-    fn helper(node: &mut Option<Rc<RefCell<TreeNode>>>) {
+pub fn invert_binary_tree(mut root: BSTNode) -> BSTNode {
+    fn helper(node: &mut BSTNode) {
         if let Some(n) = node {
             let mut n = n.borrow_mut();
 
