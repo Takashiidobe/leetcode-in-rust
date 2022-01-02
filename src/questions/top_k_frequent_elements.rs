@@ -7,7 +7,7 @@ pub fn top_k_frequent(nums: Vec<i32>, k: i32) -> Vec<i32> {
     let mut map = HashMap::new();
 
     for num in nums.into_iter() {
-        *map.entry(num).or_insert(0) += 1;
+        *map.entry(num).or_default() += 1;
     }
 
     let mut v = Vec::new();
