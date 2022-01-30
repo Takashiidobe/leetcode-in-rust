@@ -1,5 +1,12 @@
 use crate::*;
 
+test! {
+    test_1: climbing_stairs(1), 1,
+    test_2: climbing_stairs(2), 2,
+    test_3: climbing_stairs(3), 3,
+    test_4: climbing_stairs(4), 5,
+}
+
 pub fn climbing_stairs(n: i32) -> i32 {
     if n == 1 {
         return 1;
@@ -26,8 +33,4 @@ pub fn climbing_stairs_rec(n: i32) -> i32 {
         traverse(i as usize, &mut v);
     }
     v[n as usize]
-}
-
-test! {
-    test_1: climbing_stairs(1), 1,
 }

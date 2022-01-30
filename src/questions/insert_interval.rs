@@ -1,40 +1,33 @@
+use crate::*;
 use std::cmp::{max, min};
 
-macro_rules! tests {
-    ($($name:ident: $value:expr,)*) => {
-    #[cfg(test)]
-    $(
-        #[test]
-        fn $name() {
-            let (interval, new_interval, expected) = $value;
-            assert_eq!(expected, insert_interval(interval, new_interval));
-        }
-    )*
-    }
-}
-
-tests! {
-    ex1: (vec![vec![1, 3], vec![6, 9]], vec![2, 5], vec![vec![1, 5], vec![6, 9]]),
-    ex2: (vec![vec![1, 2], vec![6, 9]], vec![2, 5], vec![vec![1, 5], vec![6, 9]]),
+test! {
+    test_1: insert_interval(vec![vec![1, 3], vec![6, 8]], vec![2, 5]), vec![vec![1, 5], vec![6, 8]],
+    test_2: insert_interval(vec![vec![]], vec![1,2]), vec![vec![1, 2]],
+    test_3: insert_interval(vec![vec![]], vec![]), vec![vec![]],
 }
 
 pub fn insert_interval(intervals: Vec<Vec<i32>>, new_interval: Vec<i32>) -> Vec<Vec<i32>> {
+    if intervals.iter().all(|x| x.is_empty()) {
+        return vec![new_interval];
+    }
+    if new_interval.is_empty() {
+        return intervals;
+    }
     let mut left = vec![];
+    let mut mid = vec![new_interval[0], new_interval[1]];
     let mut right = vec![];
-    let mut start = new_interval[0];
-    let mut end = new_interval[1];
 
-    for curr in intervals {
-        if curr[1] < new_interval[0] {
-            left.push(curr);
-        } else if curr[0] > new_interval[1] {
-            right.push(curr);
+    for interval in intervals {
+        if interval[1] < new_interval[0] {
+            left.push(interval);
+        } else if interval[0] > new_interval[1] {
+            right.push(interval);
         } else {
-            start = min(curr[0], start);
-            end = max(curr[1], end);
+            mid = vec![min(interval[0], mid[0]), max(interval[1], mid[1])];
         }
     }
-    left.push(vec![start, end]);
+    left.extend(vec![mid]);
     left.extend(right);
     left
 }

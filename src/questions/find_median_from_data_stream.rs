@@ -31,7 +31,7 @@ impl MedianFinder {
         }
     }
 
-    fn find_median(&self) -> f64 {
+    pub fn find_median(&self) -> f64 {
         if self.is_odd() {
             *self.small.peek().unwrap() as f64
         } else {
