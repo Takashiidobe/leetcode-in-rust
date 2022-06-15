@@ -11,3 +11,7 @@ pub fn reverse_list(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
 
     prev
 }
+
+test! {
+    test_1: reverse_list(slist![1, 2, 3]), slist![3,2,1],
+}

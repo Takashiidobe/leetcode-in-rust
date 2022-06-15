@@ -1,24 +1,38 @@
+use std::collections::{HashMap, HashSet, VecDeque};
+
 pub fn course_schedule(num_courses: usize, prerequisites: Vec<Vec<usize>>) -> bool {
-    let mut v: Vec<(usize, Vec<usize>)> = vec![(0, vec![]); num_courses];
-    for p in prerequisites.iter() {
-        v[p[0]].1.push(p[1]);
-        v[p[1]].0 += 1;
+    let mut prereqs = vec![HashSet::new(); num_courses];
+    let mut courses = vec![HashSet::new(); num_courses];
+    let mut courses_taken = HashSet::new();
+
+    for prerequisite in prerequisites {
+        let (course, prereq) = (prerequisite[0], prerequisite[1]);
+
+        prereqs[prereq].insert(course);
+        courses[course].insert(prereq);
     }
-    let mut stack: Vec<usize> = Vec::new();
-    for (i, e) in (0..).zip(v.iter()) {
-        if e.0 == 0 {
-            stack.push(i);
+
+    let mut not_taken = Vec::new();
+
+    for i in 0..num_courses {
+        if courses[i].is_empty() {
+            not_taken.push(i);
         }
     }
-    let mut count = 0;
-    while let Some(last) = stack.pop() {
-        count += 1;
-        for i in v[last].1.clone() {
-            v[i].0 -= 1;
-            if v[i].0 == 0 {
-                stack.push(i);
+
+    let mut q = VecDeque::from(not_taken);
+
+    while !q.is_empty() {
+        let course = q.pop_front().unwrap();
+        courses_taken.insert(course);
+
+        for c in &prereqs[course] {
+            courses[*c].remove(&course);
+            if courses[*c].is_empty() {
+                q.push_back(*c);
             }
         }
     }
-    count == num_courses
+
+    courses_taken.len() == num_courses
 }

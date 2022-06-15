@@ -8,7 +8,7 @@ pub fn is_valid_bst(root: BSTNode) -> bool {
             let right = &borrowed.right;
             let val: i64 = borrowed.val.into();
             if val >= possible_min && val <= possible_max {
-                helper(&left, possible_min, val) && helper(&right, val, possible_max)
+                helper(left, possible_min, val) && helper(right, val, possible_max)
             } else {
                 false
             }

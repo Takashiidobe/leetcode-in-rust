@@ -6,7 +6,7 @@ test! {
 }
 
 pub fn can_jump(nums: Vec<i32>) -> bool {
-    nums.iter().enumerate().fold(0, |acc, (i, v)| {
+    nums.iter().enumerate().fold(0i32, |acc, (i, v)| {
         if acc < i as i32 {
             -1
         } else {
