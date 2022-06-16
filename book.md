@@ -26,4 +26,3 @@ header-includes: |
 !include chapters/dynamic-programming/index.md
 
 ## References
-

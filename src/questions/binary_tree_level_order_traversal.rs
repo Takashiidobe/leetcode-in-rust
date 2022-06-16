@@ -1,4 +1,5 @@
 use crate::*;
+use std::collections::BTreeMap;
 
 test! {
     test_1: level_order(btree![1,2,3]), vec![vec![1], vec![2, 3]],
@@ -6,19 +7,17 @@ test! {
 }
 
 pub fn level_order(root: BSTNode) -> Vec<Vec<i32>> {
-    let mut res: Vec<Vec<i32>> = Vec::new();
-
-    fn traversal(root: &BSTNode, res: &mut Vec<Vec<i32>>, level: usize) {
-        if let Some(r) = root {
-            if res.len() == level {
-                res.push(Vec::new());
-            }
-            res[level].push(r.borrow().val);
-            traversal(&r.borrow().left, res, level + 1);
-            traversal(&r.borrow().right, res, level + 1);
+    let mut hm: BTreeMap<u32, Vec<i32>> = BTreeMap::new();
+    fn traverse(node: &BSTNode, level: u32, hm: &mut BTreeMap<u32, Vec<i32>>) {
+        if let Some(node) = node {
+            let node = node.borrow();
+            hm.entry(level).or_insert(vec![]).push(node.val);
+            traverse(&node.left, level + 1, hm);
+            traverse(&node.right, level + 1, hm);
         }
     }
-    traversal(&root, &mut res, 0);
 
-    res
+    traverse(&root, 0, &mut hm);
+
+    hm.values().cloned().collect()
 }

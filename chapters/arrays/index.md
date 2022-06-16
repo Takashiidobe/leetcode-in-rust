@@ -16,8 +16,8 @@
 
 !include merge-intervals.md
 
-!include valid-parentheses.md
+!include group-anagrams.md
 
-!include example-problem.md
+!include valid-parentheses.md
 
 !include product-of-array-except-self.md

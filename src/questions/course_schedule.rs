@@ -1,4 +1,5 @@
-use std::collections::{HashMap, HashSet, VecDeque};
+use crate::*;
+use std::collections::{HashSet, VecDeque};
 
 pub fn course_schedule(num_courses: usize, prerequisites: Vec<Vec<usize>>) -> bool {
     let mut prereqs = vec![HashSet::new(); num_courses];
@@ -14,11 +15,11 @@ pub fn course_schedule(num_courses: usize, prerequisites: Vec<Vec<usize>>) -> bo
 
     let mut not_taken = Vec::new();
 
-    for i in 0..num_courses {
+    (0..num_courses).for_each(|i| {
         if courses[i].is_empty() {
             not_taken.push(i);
         }
-    }
+    });
 
     let mut q = VecDeque::from(not_taken);
 

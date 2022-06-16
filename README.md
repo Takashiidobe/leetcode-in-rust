@@ -40,7 +40,7 @@
 ### Sorting and Searching
 
 - ✅ [Insert Interval](https://leetcode.com/problems/insert-interval/)
-- [Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/)
+- ✅ [Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/)
 
 ### Linked Lists
 
@@ -74,7 +74,7 @@
 ### Graphs (BFS + DFS)
 
 - ✅ [Number of Islands](https://leetcode.com/problems/number-of-islands/)
-- [Clone Graph](https://leetcode.com/problems/clone-graph/)
+- ✅ [Clone Graph](https://leetcode.com/problems/clone-graph/)
 - [Pacific Atlantic Water Flow](https://leetcode.com/problems/pacific-atlantic-water-flow/)
 
 ### Dynamic Programming
@@ -85,12 +85,12 @@
 - ✅ [Coin Change](https://leetcode.com/problems/coin-change/)
 - ✅ [Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/)
 - [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
-- [Group Anagrams](https://leetcode.com/problems/group-anagrams/)
+- ✅ [Group Anagrams](https://leetcode.com/problems/group-anagrams/)
 - [Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/)
 - [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
 - [Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/)
 - [Palindromic Substrings](https://leetcode.com/problems/palindromic-substrings/)
-- [Course Schedule](https://leetcode.com/problems/course-schedule/)
+- ✅ [Course Schedule](https://leetcode.com/problems/course-schedule/)
 - [Add and Search Word](https://leetcode.com/problems/add-and-search-word-data-structure-design/)
 - [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/)
 - [Word Search II](https://leetcode.com/problems/word-search-ii/)

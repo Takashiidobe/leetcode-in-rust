@@ -37,8 +37,7 @@ pub fn top_k_frequent_bucket_sort(nums: Vec<i32>, k: i32) -> Vec<i32> {
     }
     let ans = buckets
         .iter()
-        .map(|b| b.iter().map(|i| *i))
-        .flatten()
+        .flat_map(|b| b.iter().copied())
         .collect::<Vec<i32>>();
     ans[ans.len() - k as usize..].to_vec()
 }
