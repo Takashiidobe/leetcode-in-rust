@@ -1,5 +1,15 @@
 use crate::*;
 
+test! {
+    test_1: num_islands(vec![
+                vec!['1', '1', '1', '1', '0'],
+                vec!['1', '1', '0', '1', '0'],
+                vec!['1', '1', '0', '0', '0'],
+                vec!['0', '0', '0', '0', '0']
+            ]),
+            1,
+}
+
 pub fn num_islands(mut grid: Vec<Vec<char>>) -> i32 {
     let mut count = 0;
     fn dfs(grid: &mut Vec<Vec<char>>, i: usize, j: usize) {
@@ -31,14 +41,4 @@ pub fn num_islands(mut grid: Vec<Vec<char>>) -> i32 {
     }
 
     count
-}
-
-test! {
-    test_1: num_islands(vec![
-                vec!['1', '1', '1', '1', '0'],
-                vec!['1', '1', '0', '1', '0'],
-                vec!['1', '1', '0', '0', '0'],
-                vec!['0', '0', '0', '0', '0']
-            ]),
-            1,
 }
