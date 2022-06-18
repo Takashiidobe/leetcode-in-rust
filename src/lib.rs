@@ -99,6 +99,8 @@ impl fmt::Debug for ListNode {
     }
 }
 
+type LLNode = Option<Box<ListNode>>;
+
 #[macro_export]
 macro_rules! slist {
     () => {

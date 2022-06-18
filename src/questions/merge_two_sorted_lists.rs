@@ -1,9 +1,6 @@
 use crate::*;
 
-pub fn merge_two_sorted_lists(
-    list1: Option<Box<ListNode>>,
-    list2: Option<Box<ListNode>>,
-) -> Option<Box<ListNode>> {
+pub fn merge_two_sorted_lists(list1: LLNode, list2: LLNode) -> LLNode {
     match (list1, list2) {
         (None, None) => None,
         (Some(l), None) | (None, Some(l)) => Some(l),

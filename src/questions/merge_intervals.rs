@@ -1,8 +1,8 @@
 /// This function finds overlapping intervals in the intervals vector and merges them so no intervals are overlapping.
 pub fn merge_intervals(intervals: Vec<(i32, i32)>) -> Vec<(i32, i32)> {
     let mut sorted_intervals = intervals;
-    sorted_intervals.sort();
-    let mut ans = vec![sorted_intervals[0].clone()];
+    sorted_intervals.sort_unstable();
+    let mut ans = vec![sorted_intervals[0]];
     for curr in sorted_intervals.into_iter().skip(1) {
         let prev = ans.last().unwrap();
         let ans_len = &ans.len();
