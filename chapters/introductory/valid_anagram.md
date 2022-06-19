@@ -13,7 +13,7 @@ anagrams, since they both have one a, one b, one c.
 
 ### Test Cases
 
-```{.rs include=src/questions/valid_anagram.rs startLine=4 endLine=9}
+```{.rs include=src/questions/sequences/valid_anagram.rs startLine=4 endLine=9}
 
 ```
 
@@ -31,6 +31,6 @@ HashMaps, and the HashMaps takes O(n) space as well.
 
 ### Answer
 
-```{.rs include=src/questions/valid_anagram.rs startLine=11 endLine=24}
+```{.rs include=src/questions/sequences/valid_anagram.rs startLine=11 endLine=24}
 
 ```

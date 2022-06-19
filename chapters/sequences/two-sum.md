@@ -7,7 +7,7 @@
 
 ### Test Cases
 
-```{.rs include=src/questions/two_sum.rs startLine=4 endLine=8}
+```{.rs include=src/questions/sequences/two_sum.rs startLine=4 endLine=8}
 
 ```
 
@@ -17,6 +17,6 @@
 
 ### Answer
 
-```{.rs include=src/questions/two_sum.rs startLine=10 endLine=20}
+```{.rs include=src/questions/sequences/two_sum.rs startLine=10 endLine=20}
 
 ```

@@ -6,12 +6,13 @@
 
 ### Test Cases
 
-```{.rs include=src/questions/number_of_islands.rs startLine=3
+```{.rs include=src/questions/data_structures/number_of_islands.rs startLine=3
 endLine=11}
 
 ```
 
 ### Answer
 
-```{.rs include=src/questions/number_of_islands.rs startLine=13
+```{.rs include=src/questions/data_structures/number_of_islands.rs startLine=13
 endLine=44}
+```

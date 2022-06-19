@@ -23,12 +23,12 @@ Assume that there are four possible states a node can be in:
 
 ### Test Cases
 
-```{.rs include=src/questions/maximum_depth_of_binary_tree.rs startLine=4 endLine=8}
+```{.rs include=src/questions/non_linear_data_structures/maximum_depth_of_binary_tree.rs startLine=4 endLine=8}
 
 ```
 
 ### Answer
 
-```{.rs include=src/questions/maximum_depth_of_binary_tree.rs startLine=11 endLine=50}
+```{.rs include=src/questions/non_linear_data_structures/maximum_depth_of_binary_tree.rs startLine=11 endLine=50}
 
 ```

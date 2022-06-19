@@ -45,12 +45,12 @@ invalid.
 
 ### Test Cases
 
-```{.rs include=src/questions/valid_parentheses.rs startLine=3 endLine=27}
+```{.rs include=src/questions/sequences/valid_parentheses.rs startLine=3 endLine=27}
 
 ```
 
 ### Answer
 
-```{.rs include=src/questions/valid_parentheses.rs startLine=29 endLine=36}
+```{.rs include=src/questions/sequences/valid_parentheses.rs startLine=29 endLine=36}
 
 ```

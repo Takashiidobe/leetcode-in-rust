@@ -23,12 +23,12 @@ interval, repeating until we hit the end.
 
 ### Test Cases
 
-```{.rs include=src/questions/merge_intervals.rs startLine=3 endLine=27}
+```{.rs include=src/questions/sequences/merge_intervals.rs startLine=3 endLine=27}
 
 ```
 
 ### Answer
 
-```{.rs include=src/questions/merge_intervals.rs startLine=29 endLine=36}
+```{.rs include=src/questions/sequences/merge_intervals.rs startLine=29 endLine=36}
 
 ```

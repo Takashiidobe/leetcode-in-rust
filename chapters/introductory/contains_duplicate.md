@@ -9,7 +9,7 @@
 
 ### Test Cases
 
-```{.rs include=src/questions/contains_duplicate.rs startLine=4 endLine=8}
+```{.rs include=src/questions/sequences/contains_duplicate.rs startLine=4 endLine=8}
 
 ```
 
@@ -26,6 +26,6 @@ HashSet, and the HashSet takes O(n) space as well.
 
 ### Answer
 
-```{.rs include=src/questions/contains_duplicate.rs startLine=10 endLine=14}
+```{.rs include=src/questions/sequences/contains_duplicate.rs startLine=10 endLine=14}
 
 ```
