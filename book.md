@@ -15,13 +15,13 @@ header-includes: |
 
 !include chapters/introductory/index.md
 
-!include chapters/arrays/index.md
+!include chapters/sequences/index.md
 
-!include chapters/trees/index.md
+!include chapters/data-structures/index.md
 
-!include chapters/heaps/index.md
+!include chapters/non-linear-data-structures/index.md
 
-!include chapters/graphs/index.md
+!include chapters/more-data-structures/index.md
 
 !include chapters/dynamic-programming/index.md
 
