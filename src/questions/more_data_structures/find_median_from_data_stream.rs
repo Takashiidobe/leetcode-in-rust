@@ -2,6 +2,8 @@ use crate::*;
 use std::cmp::Reverse;
 use std::collections::BinaryHeap;
 
+test! {}
+
 #[derive(Default)]
 struct MedianFinder {
     small: BinaryHeap<i32>,
@@ -13,7 +15,7 @@ impl MedianFinder {
         Self::default()
     }
 
-    fn is_odd() -> bool {
+    fn is_odd(&self) -> bool {
         self.small.len() / 2 == 1
     }
 

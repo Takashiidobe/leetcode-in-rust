@@ -126,3 +126,9 @@ macro_rules! slist {
 macro_rules! vec_string {
     ($($e:expr), *) => {vec![$($e.to_owned()), *]};
 }
+
+#[derive(Clone, Default)]
+pub struct GraphNode {
+    val: i32,
+    neighbors: Vec<Rc<GraphNode>>,
+}

@@ -7,5 +7,4 @@ pub mod ongest_repeating_character_replacement;
 pub mod pacific_atlantic_water_flow;
 pub mod palindromic_substrings;
 pub mod remove_nth_node_from_end_of_list;
-pub mod reverse_a_linked_list;
-pub mod reverse_a_linked_list;
+pub mod reverse_linked_list;
