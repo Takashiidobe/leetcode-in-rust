@@ -12,3 +12,23 @@ pub fn contains_duplicate(nums: &[i32]) -> bool {
     let s: HashSet<&i32> = HashSet::from_iter(nums.iter());
     s.len() != nums.len()
 }
+
+pub fn contains_duplicate_sort(nums: &mut [i32]) -> bool {
+    let len = nums.len();
+    if nums.len() < 2 {
+        return false;
+    }
+    nums.sort();
+
+    let mut i = 0;
+    let mut j = 1;
+    while j < len {
+        let (left, right) = (nums[i], nums[j]);
+        if left == right {
+            return true;
+        }
+        i += 1;
+        j += 1;
+    }
+    false
+}
