@@ -46,9 +46,9 @@ fn two_sum_sorted_test() {
         10,
         || {
             let input1: Vec<_> = (-10000..10000).collect();
-            let input1 = input1.leak();
+            input1.leak();
             let input2: Vec<_> = (-20000..20000).collect();
-            let input2 = input2.leak();
+            input2.leak();
         },
         20000,
         || {
@@ -78,9 +78,9 @@ fn two_sum_naive_test() {
         10,
         || {
             let input1: Vec<_> = (-10000..10000).collect();
-            let input1 = input1.leak();
+            input1.leak();
             let input2: Vec<_> = (-20000..20000).collect();
-            let input2 = input2.leak();
+            input2.leak();
         },
         10000,
         || {

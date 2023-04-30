@@ -1,3 +1,5 @@
+use fnv::FnvHashMap;
+
 use crate::*;
 use std::collections::HashMap;
 
@@ -8,7 +10,49 @@ test! {
 }
 
 pub fn two_sum(nums: &[i32], target: i32) -> (i32, i32) {
-    let mut m: HashMap<i32, i32> = HashMap::new();
+    let mut m: HashMap<i32, i32> = HashMap::with_capacity(nums.len());
+    for (index, num) in nums.iter().enumerate() {
+        if let Some(i) = m.get(num) {
+            return (*i, index as i32);
+        } else {
+            m.insert(target - num, index as i32);
+        }
+    }
+
+    (-1, -1)
+}
+
+pub fn two_sum_bumpalo(nums: &[i32], target: i32) -> (i32, i32) {
+    let mut m: HashMap<i32, i32> = HashMap::with_capacity(nums.len());
+    for (index, num) in nums.iter().enumerate() {
+        if let Some(i) = m.get(num) {
+            return (*i, index as i32);
+        } else {
+            m.insert(target - num, index as i32);
+        }
+    }
+
+    (-1, -1)
+}
+
+pub fn two_sum_fnv(nums: &[i32], target: i32) -> (i32, i32) {
+    let mut m: FnvHashMap<i32, i32> = FnvHashMap::default();
+    for (index, num) in nums.iter().enumerate() {
+        if let Some(i) = m.get(num) {
+            return (*i, index as i32);
+        } else {
+            m.insert(target - num, index as i32);
+        }
+    }
+
+    (-1, -1)
+}
+
+pub fn two_sum_no_hash(nums: &[i32], target: i32) -> (i32, i32) {
+    use nohash_hasher::BuildNoHashHasher;
+
+    let mut m: HashMap<i32, i32, BuildNoHashHasher<i32>> =
+        HashMap::with_capacity_and_hasher(nums.len(), BuildNoHashHasher::default());
     for (index, num) in nums.iter().enumerate() {
         if let Some(i) = m.get(num) {
             return (*i, index as i32);

@@ -9,6 +9,7 @@ criterion = "0.4.0"
 iai-callgrind = "0.3.1"
 lazy_static = "1.4.0"
 parking_lot = "0.12.1"
+perfcnt = "0.8.0"
 rand = "0.8.5"
 rand_chacha = "0.3.1"
 static_init = "1.0.3"
@@ -16,3 +17,9 @@ static_init = "1.0.3"
 [[bench]]
 name = "two_sum_cache"
 harness = false
+
+[dependencies]
+bumpalo = { version = "3.12.0", features = ["collections"] }
+fnv = "1.0.7"
+nohash-hasher = "0.2.0"
+# simd = "0.2.4"

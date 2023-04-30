@@ -2,12 +2,12 @@ use crate::*;
 use std::cmp::{max, min, Ordering};
 
 test! {
-    test_1: max_area(vec![1, 1]), 1,
-    test_2: max_area(vec![1, 2, 1]), 2,
-    test_3: max_area(vec![4, 3, 2, 1, 4]), 16,
+    test_1: max_area(&[1, 1]), 1,
+    test_2: max_area(&[1, 2, 1]), 2,
+    test_3: max_area(&[4, 3, 2, 1, 4]), 16,
 }
 
-pub fn max_area(height: Vec<i32>) -> i32 {
+pub fn max_area(height: &[i32]) -> i32 {
     let mut i = 0;
     let mut j = height.len() - 1;
 
@@ -23,7 +23,7 @@ pub fn max_area(height: Vec<i32>) -> i32 {
             Ordering::Less => {
                 i += 1;
             }
-            Ordering::Greater | Ordering::Equal => {
+            _ => {
                 j -= 1;
             }
         }

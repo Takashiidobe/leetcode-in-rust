@@ -38,6 +38,16 @@ fn two_sum_cache() -> (i32, i32) {
 }
 
 #[inline(never)]
+fn two_sum_fnv_cache() -> (i32, i32) {
+    two_sum_fnv(&L1.read(), 200)
+}
+
+#[inline(never)]
+fn two_sum_no_hash_cache() -> (i32, i32) {
+    two_sum_no_hash(&L2.read(), 200)
+}
+
+#[inline(never)]
 fn two_sum_naive_cache() -> (i32, i32) {
     two_sum_naive(&L2.read(), 200)
 }
@@ -54,6 +64,8 @@ fn two_sum_sorted_unstable_cache() -> (i32, i32) {
 
 iai_callgrind::main!(
     two_sum_cache,
+    two_sum_fnv_cache,
+    two_sum_no_hash_cache,
     two_sum_sorted_unstable_cache,
     two_sum_sorted_cache,
     two_sum_naive_cache
